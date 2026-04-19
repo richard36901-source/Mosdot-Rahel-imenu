@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lag B'Omer in Meron | Tzidkat Rashbi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --gold: #A07828;
+  --gold-light: #C9A84C;
+  --ink: #111;
+  --mid: #555;
+  --muted: #888;
+  --border: #e0ddd8;
+  --bg: #f9f7f3;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.header-nav a {
+  font-size: 0.82rem;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.header-nav a:hover { color: var(--ink); }
+.header-cta {
+  background: var(--ink);
+  color: var(--white) !important;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.78rem !important;
+  font-weight: 500;
+  transition: background 0.15s !important;
+}
+.header-cta:hover { background: #333 !important; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 5rem;
+  align-items: center;
+}
+.hero-kicker {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-kicker::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--gold);
+}
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+.hero-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--mid);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.75rem 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  letter-spacing: 0.01em;
+}
+.btn-primary { background: var(--ink); color: var(--white); }
+.btn-primary:hover { background: #333; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1px solid #ccc; }
+.btn-secondary:hover { border-color: var(--ink); background: #f3f1ed; }
+
+/* Hero right — stat block */
+.hero-stat-block {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+.stat-num {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ── TICKER STRIP ── */
+.strip {
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.65rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  overflow: hidden;
+}
+.strip-item { opacity: 0.75; white-space: nowrap; }
+.strip-dot { width: 3px; height: 3px; background: var(--gold-light); border-radius: 50%; opacity: 0.6; }
+
+/* ── MAIN LAYOUT ── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+
+.section-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.section-tag::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.section h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about-body p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.15rem;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+}
+.pull-quote {
+  border-left: 2px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 0;
+  background: var(--white);
+}
+.pull-quote p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #222;
+  line-height: 1.75;
+  margin: 0;
+}
+.pull-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.8rem;
+}
+.about-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--white);
+  margin-top: 0;
+}
+.aside-stat {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.aside-stat:last-child { border-bottom: none; }
+.aside-num {
+  font-family: 'EB Garamond', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.aside-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ── BLESSINGS ── */
+.blessings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-top: 2rem;
+  background: var(--border);
+}
+.blessing {
+  background: var(--white);
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  color: #333;
+  transition: background 0.15s;
+}
+.blessing:hover { background: #f3f1ed; }
+.blessing-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── MIRACLES ── */
+.miracles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--border);
+  margin-top: 2rem;
+}
+.miracle-card {
+  background: var(--white);
+  padding: 2rem;
+  transition: background 0.15s;
+}
+.miracle-card:hover { background: #f9f7f3; }
+.miracle-num {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.miracle-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.02em;
+}
+.miracle-card p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--mid);
+  line-height: 1.75;
+}
+
+/* ── FORM ── */
+.form-outer {
+  background: var(--white);
+  border: 1px solid var(--border);
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+}
+.form-sidebar {
+  background: var(--ink);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.form-sidebar h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+.form-sidebar p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+.sidebar-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.sidebar-points li {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.sidebar-points li::before {
+  content: '—';
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+.form-main {
+  padding: 2.5rem;
+}
+.form-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+  gap: 0;
+}
+.tab-btn {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  position: relative;
+  transition: color 0.15s;
+}
+.tab-btn.active { color: var(--ink); }
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--ink);
+}
+.form-panel { display: none; }
+.form-panel.active { display: block; }
+
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.f-group { margin-bottom: 0.75rem; }
+.f-group label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.f-group input,
+.f-group select,
+.f-group textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0.6rem 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.15s;
+  border-radius: 0;
+  appearance: none;
+}
+.f-group input:focus,
+.f-group select:focus,
+.f-group textarea:focus {
+  border-color: var(--ink);
+  background: var(--white);
+}
+.f-group textarea { min-height: 80px; resize: vertical; }
+
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; margin-bottom: 0.75rem; }
+.check-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #444;
+  transition: all 0.12s;
+  user-select: none;
+}
+.check-opt:hover { border-color: #aaa; }
+.check-opt.on { border-color: var(--ink); color: var(--ink); background: #f0ede8; }
+.check-sq {
+  width: 11px; height: 11px;
+  border: 1px solid currentColor;
+  flex-shrink: 0;
+  position: relative;
+}
+.check-opt.on .check-sq::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--ink);
+}
+
+.amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.35rem; margin-bottom: 0.75rem; }
+.amt {
+  padding: 0.55rem 0.4rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: #333;
+  cursor: pointer;
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.12s;
+}
+.amt:hover { border-color: #aaa; }
+.amt.on { border-color: var(--ink); color: var(--ink); background: #f0ede8; }
+
+.submit {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+.submit:hover { background: #333; }
+.f-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0f0f0f;
+  color: #666;
+  padding: 3rem 2rem;
+  margin-top: 0;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #222;
+  margin-bottom: 2rem;
+}
+.footer-col h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+.footer-col p, .footer-col a {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: #555;
+  text-decoration: none;
+  display: block;
+}
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #333;
+}
+.footer-logo-text {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  color: #444;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-stat-block { flex-direction: row; gap: 0; }
+  .hero-stat { padding-bottom: 0; border-bottom: none; border-right: 1px solid var(--border); padding-right: 2rem; }
+  .hero-stat:last-child { border-right: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .blessings-grid { grid-template-columns: repeat(2,1fr); }
+  .miracles-grid { grid-template-columns: 1fr; }
+  .form-outer { grid-template-columns: 1fr; }
+  .form-sidebar { order: 2; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .header-nav { display: none; }
+  .hero-inner { padding: 3rem 1.5rem 2.5rem; }
+  .f-row { grid-template-columns: 1fr; }
+  .amt-grid { grid-template-columns: repeat(2,1fr); }
+  .hero-stat-block { flex-direction: column; }
+  .hero-stat { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .strip { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="https://www.rashbi.org" style="display:flex;align-items:center;">
+      <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi" style="height:38px;width:auto;display:block;">
+    </a>
+    <nav class="header-nav">
+      <a href="https://www.rashbi.org/lagbaomer">Lag BaOmer</a>
+      <a href="https://www.rashbi.org/lagbaomer-chairotel">Chai Rotel</a>
+      <a href="https://www.rashbi.org/prayer-miracles">Miracles</a>
+      <a href="#form" class="header-cta">Send a Prayer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">Lag B'Omer 2025</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Meron · The Holy Tzion</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Rabbi Shimon Bar Yochai</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Prayers Carried to the Rashbi</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker">Hilula of the Rashbi · 33rd Day of the Omer</div>
+      <h1>Send Your Prayer<br>to the Rashbi<br>in Meron</h1>
+      <p class="hero-desc">Hundreds of thousands gather at the Tzion on this holy day. Your names and prayers are carried personally to the holy resting place of Rabbi Shimon Bar Yochai.</p>
+      <div class="hero-actions">
+        <a href="#form" class="btn btn-primary">Send a Prayer →</a>
+        <a href="#form" class="btn btn-secondary">Make a Donation</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div style="overflow:hidden;border:1px solid var(--border);border-bottom:none;">
+        <img src="hero-campaign.jpeg" alt="Lag BaOmer in Meron — send your prayer to the Rashbi" style="width:100%;display:block;object-fit:cover;max-height:380px;">
+      </div>
+      <div class="hero-stat-block" style="flex-direction:row;gap:0;border-top:none;">
+        <div class="hero-stat" style="flex:1;padding-bottom:0;border-bottom:none;border-right:1px solid var(--border);padding-right:1.25rem;margin-right:1.25rem;">
+          <span class="stat-num">500K+</span>
+          <span class="stat-label">Pilgrims at Meron</span>
+        </div>
+        <div class="hero-stat" style="flex:1;padding-bottom:0;border-bottom:none;border-right:1px solid var(--border);padding-right:1.25rem;margin-right:1.25rem;">
+          <span class="stat-num">2,000</span>
+          <span class="stat-label">Years of prayer</span>
+        </div>
+        <div class="hero-stat" style="flex:1;padding-bottom:0;border-bottom:none;">
+          <span class="stat-num">Free</span>
+          <span class="stat-label">To send your name</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">The Holy Day</div>
+        <h2>Lag BaOmer in Meron</h2>
+        <p>Lag BaOmer marks the Hilula — the anniversary of the passing of the Holy Tannah, Rebbe Shimon Bar Yochai. It is the most powerful day of the year for prayer and divine blessing.</p>
+        <p>Hundreds of thousands of Jews make the journey to the northern Galilean town of Meron to pour out their hearts in prayer at the holy Tzion of the Rashbi.</p>
+        <p>Tzidkat Rashbi brings thousands of kvitlach and prayer requests from across the globe to the holy Tzion. Tzidkat Rashbi also sponsors special learning programs for study of Rashbi's Holy Zohar throughout the year.</p>
+      </div>
+      <div class="about-aside">
+        <div class="aside-stat">
+          <blockquote class="pull-quote" style="border:none;padding:0;background:transparent;">
+            <p>"The Holy Rashbi pledged happiness and joy to all who would contribute to the happiness of his day — and may His merit be a blessing for you the whole year."</p>
+            <cite>Tzidkat Rashbi · Meron, Israel</cite>
+          </blockquote>
+        </div>
+        <div class="aside-stat">
+          <span class="aside-num">∞</span>
+          <span class="aside-label">Miracles witnessed at the holy Tzion</span>
+        </div>
+        <div class="aside-stat">
+          <span class="aside-num">Free</span>
+          <span class="aside-label">Prayer submission — no donation required</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLESSINGS -->
+  <div class="section">
+    <div class="section-tag">Prayers answered for every need</div>
+    <h2>What We Pray For at the Tzion</h2>
+    <p style="font-family:'EB Garamond',serif;font-size:1.1rem;color:var(--mid);max-width:600px;line-height:1.75;margin-bottom:0;">Protection, Children, Refuot, Shidducim, Parnassah, Shalom Bayit, Salvation — all prayers are brought to the holy Tzion of the Rashbi on the day of Lag BaOmer.</p>
+    <div class="blessings-grid">
+      <div class="blessing"><div class="blessing-dot"></div>Protection &amp; Safety</div>
+      <div class="blessing"><div class="blessing-dot"></div>Children &amp; Fertility</div>
+      <div class="blessing"><div class="blessing-dot"></div>Refuah — Healing</div>
+      <div class="blessing"><div class="blessing-dot"></div>Shidduch — Marriage</div>
+      <div class="blessing"><div class="blessing-dot"></div>Parnassah — Livelihood</div>
+      <div class="blessing"><div class="blessing-dot"></div>Shalom Bayit</div>
+      <div class="blessing"><div class="blessing-dot"></div>Salvation &amp; Rescue</div>
+      <div class="blessing"><div class="blessing-dot"></div>Chai Rotel</div>
+    </div>
+  </div>
+
+  <!-- MIRACLES -->
+  <div class="section">
+    <div class="section-tag">Stories of salvation</div>
+    <h2>Witnessed Miracles</h2>
+    <div class="miracles-grid">
+      <div class="miracle-card">
+        <span class="miracle-num">01</span>
+        <h3>A Shidduch Found</h3>
+        <p>A father prayed for his daughter at the Tzion on Lag BaOmer. Within the year she found her match. The Rashbi's merit brought salvation to their home.</p>
+      </div>
+      <div class="miracle-card">
+        <span class="miracle-num">02</span>
+        <h3>A Son Recovered</h3>
+        <p>Parents begged for healing for their sick child at the holy resting place. Their son made a full and complete recovery — a miracle witnessed by all.</p>
+      </div>
+      <div class="miracle-card">
+        <span class="miracle-num">03</span>
+        <h3>Parnassah Restored</h3>
+        <p>A man on the verge of despair, unable to provide for his family, prayed at the Rashbi. Shortly after he was offered management of a successful company.</p>
+      </div>
+      <div class="miracle-card">
+        <span class="miracle-num">04</span>
+        <h3>Children Granted</h3>
+        <p>Couples who had longed for children came to Meron with heartfelt prayer. Time and again their prayers were answered through the merit of Reb Shimon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="section" id="form">
+    <div class="section-tag">Take part now</div>
+    <h2>Send Your Prayer &amp; Donation</h2>
+    <div class="form-outer">
+      <!-- Sidebar -->
+      <div class="form-sidebar">
+        <div>
+          <h3>Your names will be carried to the holy Tzion of the Rashbi in Meron</h3>
+          <p>On the sacred day of Lag BaOmer, hundreds of thousands gather at Meron. Tzidkat Rashbi personally delivers every kvitlach to the Tzion.</p>
+          <ul class="sidebar-points">
+            <li>Prayer submission is completely free</li>
+            <li>All names delivered personally on Lag BaOmer</li>
+            <li>Confirmation sent by email</li>
+            <li>Donation is optional but appreciated</li>
+            <li>Secure payment via Stripe or PayPal</li>
+          </ul>
+        </div>
+        <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin:0;line-height:1.6;">Questions? Contact us at <a href="mailto:office@rashbi.org" style="color:rgba(255,255,255,0.5);text-decoration:none;">office@rashbi.org</a> or call <a href="tel:7189715901" style="color:rgba(255,255,255,0.5);text-decoration:none;">718-971-5901</a></p>
+        </div>
+      </div>
+      <!-- Form -->
+      <div class="form-main">
+        <div class="form-tabs">
+          <button class="tab-btn active" onclick="switchTab('prayer',this)">Send a Prayer</button>
+          <button class="tab-btn" onclick="switchTab('donation',this)">Make a Donation</button>
+        </div>
+
+        <div class="form-panel active" id="panel-prayer">
+          <div class="f-row">
+            <div class="f-group"><label>First Name</label><input type="text" placeholder="First name"></div>
+            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+          </div>
+          <div class="f-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+          <div class="f-group">
+            <label>Names to Pray For</label>
+            <textarea placeholder="Names you'd like us to pray for at the holy Tzion…"></textarea>
+          </div>
+          <div class="f-group">
+            <label>Prayer Intentions</label>
+            <div class="check-grid">
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Protection</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Children</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Refuah</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Shidduch</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Parnassah</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Shalom Bayit</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Chai Rotel</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>General</div>
+            </div>
+          </div>
+          <div class="f-group">
+            <label>Include a Donation? (optional)</label>
+            <div class="amt-grid" id="pa">
+              <div class="amt" onclick="pick(this,'pa')">$36</div>
+              <div class="amt" onclick="pick(this,'pa')">$72</div>
+              <div class="amt" onclick="pick(this,'pa')">$180</div>
+              <div class="amt" onclick="pick(this,'pa')">Other</div>
+            </div>
+          </div>
+          <button class="submit">Send My Prayer to the Rashbi</button>
+          <p class="f-note">Your details are kept private. Confirmation sent by email. No charge unless a donation amount is selected.</p>
+        </div>
+
+        <div class="form-panel" id="panel-donation">
+          <div class="f-row">
+            <div class="f-group"><label>First Name</label><input type="text" placeholder="First name"></div>
+            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+          </div>
+          <div class="f-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+          <div class="f-group">
+            <label>Donation Purpose</label>
+            <select>
+              <option>General Lag BaOmer Support</option>
+              <option>Chai Rotel Festivities</option>
+              <option>Kvitlach to the Tzion</option>
+              <option>Zohar Study Program</option>
+              <option>Chalaka Ceremony</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label>Amount</label>
+            <div class="amt-grid" id="da">
+              <div class="amt" onclick="pick(this,'da')">$36</div>
+              <div class="amt" onclick="pick(this,'da')">$72</div>
+              <div class="amt on" onclick="pick(this,'da')">$180</div>
+              <div class="amt" onclick="pick(this,'da')">$360</div>
+            </div>
+          </div>
+          <div class="f-group"><label>Names to Include (optional)</label><input type="text" placeholder="Names you wish to include"></div>
+          <button class="submit">Donate &amp; Send Names to Meron</button>
+          <p class="f-note">Secure payment via Stripe or PayPal. Receipt and confirmation sent by email.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kupat Tzidkat Rashbi</h4>
+      <p>In Memory of Rebbe Shimon Bar Yochai</p>
+      <p>Tzfat – Meron, Israel</p>
+      <p>Under the Auspices of Berel Freed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:7189715901">US: 718-971-5901</a>
+      <a href="tel:02031501539">UK: 02031501539</a>
+      <a href="mailto:office@rashbi.org">office@rashbi.org</a>
+      <p>91 Taz Street, Safed Israel</p>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <a href="https://www.rashbi.org/lagbaomer-chairotel">Chai Rotel</a>
+      <a href="https://www.rashbi.org/prayer-service">Prayer Service</a>
+      <a href="https://www.rashbi.org/lagbaomer-chalaka">Chalaka Ceremony</a>
+      <a href="https://www.rashbi.org/lagbomer-miracles">Miracles</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-logo-text">Tzidkat Rashbi</span>
+    <span>© 2025 Kupat Tzidkat Rashbi. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+function switchTab(tab,el){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+}
+function pick(el,id){
+  document.getElementById(id).querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));
+  el.classList.add('on');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>

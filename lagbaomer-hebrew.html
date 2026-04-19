@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ל"ג בעומר במירון | קופת צדקת רשב"י</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --gold: #A07828;
+  --gold-light: #C9A84C;
+  --ink: #111;
+  --mid: #555;
+  --muted: #888;
+  --border: #e0ddd8;
+  --bg: #f9f7f3;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  direction: rtl;
+}
+
+/* HEADER */
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.header-nav a {
+  font-size: 0.85rem;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.15s;
+  font-weight: 400;
+}
+.header-nav a:hover { color: var(--ink); }
+.header-cta {
+  background: var(--ink) !important;
+  color: var(--white) !important;
+  padding: 0.45rem 1.1rem;
+  font-weight: 500 !important;
+}
+
+/* STRIP */
+.strip {
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.65rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  overflow: hidden;
+}
+.strip-item { opacity: 0.7; white-space: nowrap; }
+.strip-dot { width: 3px; height: 3px; background: var(--gold-light); border-radius: 50%; opacity: 0.5; }
+
+/* HERO */
+.hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 5rem;
+  align-items: center;
+}
+.hero-kicker {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.hero-kicker::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--gold);
+}
+.hero h1 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+.hero-desc {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.75rem 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  font-family: 'Heebo', sans-serif;
+}
+.btn-primary { background: var(--ink); color: var(--white); }
+.btn-primary:hover { background: #333; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1px solid #ccc; }
+.btn-secondary:hover { border-color: var(--ink); background: #f3f1ed; }
+
+.hero-stat-block {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hero-stat {
+  padding-bottom: 1.8rem;
+  margin-bottom: 1.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-stat:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.stat-num {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
+
+/* CONTENT */
+.content-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.section { padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
+
+.section-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.section-tag::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--gold);
+}
+.section h2 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.about-body p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.15rem;
+  color: #333;
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+  font-weight: 400;
+}
+.about-aside {
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+.aside-row {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.aside-row:last-child { border-bottom: none; }
+.pull-quote p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #222;
+  line-height: 1.8;
+}
+.pull-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-top: 0.7rem;
+  font-weight: 400;
+}
+.aside-num {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.aside-label { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+
+/* BLESSINGS */
+.blessings-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  background: var(--border);
+  border: 1px solid var(--border);
+  gap: 0;
+  margin-top: 2rem;
+}
+.blessing {
+  background: var(--white);
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+  color: #333;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.blessing:hover { background: #f3f1ed; }
+.bdot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* MIRACLES */
+.miracles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--border);
+  border: 1px solid var(--border);
+  gap: 0;
+  margin-top: 2rem;
+}
+.miracle-card { background: var(--white); padding: 2rem; transition: background 0.15s; }
+.miracle-card:hover { background: var(--bg); }
+.miracle-num { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; display: block; font-weight: 300; }
+.miracle-card h3 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.miracle-card p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.05rem;
+  color: var(--mid);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* FORM */
+.form-outer {
+  background: var(--white);
+  border: 1px solid var(--border);
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+}
+.form-sidebar {
+  background: var(--ink);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  order: 2;
+}
+.form-sidebar h3 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+.form-sidebar p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.sidebar-points { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.sidebar-points li {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+}
+.sidebar-points li::before { content: '—'; color: var(--gold-light); flex-shrink: 0; }
+.form-main { padding: 2.5rem; order: 1; }
+
+.form-tabs {
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+.tab-btn {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.65rem 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  position: relative;
+  transition: color 0.15s;
+  font-family: 'Heebo', sans-serif;
+}
+.tab-btn.active { color: var(--ink); }
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--ink);
+}
+.form-panel { display: none; }
+.form-panel.active { display: block; }
+
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.f-group { margin-bottom: 0.75rem; }
+.f-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+  font-family: 'Heebo', sans-serif;
+}
+.f-group input,
+.f-group select,
+.f-group textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0.6rem 0.85rem;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.15s;
+  direction: rtl;
+}
+.f-group input:focus,
+.f-group select:focus,
+.f-group textarea:focus { border-color: var(--ink); background: var(--white); }
+.f-group textarea { min-height: 80px; resize: vertical; }
+
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; margin-bottom: 0.75rem; }
+.check-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #444;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  transition: all 0.12s;
+  user-select: none;
+}
+.check-opt:hover { border-color: #aaa; }
+.check-opt.on { border-color: var(--ink); color: var(--ink); background: #f0ede8; }
+.check-sq { width: 11px; height: 11px; border: 1px solid currentColor; flex-shrink: 0; position: relative; }
+.check-opt.on .check-sq::after { content: ''; position: absolute; inset: 2px; background: var(--ink); }
+
+.amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.35rem; margin-bottom: 0.75rem; }
+.amt {
+  padding: 0.55rem 0.4rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: #333;
+  cursor: pointer;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.12s;
+}
+.amt:hover { border-color: #aaa; }
+.amt.on { border-color: var(--ink); color: var(--ink); background: #f0ede8; }
+
+.submit {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+.submit:hover { background: #333; }
+.f-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.6rem; line-height: 1.5; font-weight: 300; }
+
+/* FOOTER */
+footer { background: #0f0f0f; color: #555; padding: 3rem 2rem; }
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #1e1e1e;
+  margin-bottom: 2rem;
+}
+.footer-col h4 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+.footer-col p, .footer-col a {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: #555;
+  text-decoration: none;
+  display: block;
+  font-weight: 300;
+}
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #333;
+}
+.footer-logo-text {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 0.9rem;
+  color: #444;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .blessings-grid { grid-template-columns: repeat(2,1fr); }
+  .miracles-grid { grid-template-columns: 1fr; }
+  .form-outer { grid-template-columns: 1fr; }
+  .form-sidebar { order: 2; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .header-nav { display: none; }
+  .f-row { grid-template-columns: 1fr; }
+  .amt-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .strip { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="https://www.rashbi.org" style="display:flex;align-items:center;">
+      <img src="logo-banner.jpeg" alt="קופת צדקת רשב"י" style="height:38px;width:auto;display:block;">
+    </a>
+    <nav class="header-nav">
+      <a href="https://www.rashbi.org/lagbaomer">ל"ג בעומר</a>
+      <a href="https://www.rashbi.org/lagbaomer-chairotel">חי רוטל</a>
+      <a href="https://www.rashbi.org/prayer-miracles">ניסים</a>
+      <a href="#form" class="header-cta">מסירת שמות</a>
+    </nav>
+  </div>
+</header>
+
+<div class="strip">
+  <span class="strip-item">ל"ג בעומר תשפ"ה</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">מירון · ציון הרשב"י</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">רבי שמעון בר יוחאי</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">מסירת שמות חינם</span>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker">הילולא דרשב"י · יום ל"ג לעומר</div>
+      <h1>הנס שלך<br>מתחיל כאן</h1>
+      <p class="hero-desc">מאות אלפי יהודים עולים למירון ביום הקדוש הזה. שמותיכם ותפילותיכם יועברו אישית אל ציון הרשב"י הקדוש.</p>
+      <div class="hero-actions">
+        <a href="#form" class="btn btn-primary">מסירת שמות חינם ←</a>
+        <a href="#form" class="btn btn-secondary">תרומה למדורה</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div style="overflow:hidden;border:1px solid var(--border);border-bottom:none;">
+        <img src="hero-campaign.jpeg" alt="הנס שלך מתחיל כאן — ל״ג בעומר במירון" style="width:100%;display:block;object-fit:cover;max-height:380px;">
+      </div>
+      <div class="hero-stat-block" style="flex-direction:row;gap:0;padding:0;border-top:none;">
+        <div class="hero-stat" style="flex:1;padding:1.25rem;margin:0;border-bottom:none;border-left:1px solid var(--border);">
+          <span class="stat-num">500K+</span>
+          <span class="stat-label">עולי רגל למירון</span>
+        </div>
+        <div class="hero-stat" style="flex:1;padding:1.25rem;margin:0;border-bottom:none;border-left:1px solid var(--border);">
+          <span class="stat-num">2,000</span>
+          <span class="stat-label">שנות תפילה</span>
+        </div>
+        <div class="hero-stat" style="flex:1;padding:1.25rem;margin:0;border-bottom:none;">
+          <span class="stat-num">חינם</span>
+          <span class="stat-label">מסירת שמות</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">על היום הקדוש</div>
+        <h2>ל"ג בעומר במירון</h2>
+        <p>ל"ג בעומר הוא יום ההילולא של רבי שמעון בר יוחאי — הרשב"י הקדוש. ביום זה נפתחים שערי שמים לקבל תפילות בכוח מיוחד.</p>
+        <p>מאות אלפים עולים למירון כדי לשפוך את לבם ליד ציון הרשב"י. קופת צדקת רשב"י מביאה אלפי קוויטלאך ובקשות תפילה מרחבי העולם אל המקום הקדוש.</p>
+        <p>הרשב"י הקדוש הבטיח שמחה וטוב לכל מי שיתרום לשמחת יומו. זכותו תגן עלינו ותברך אותנו כל השנה.</p>
+      </div>
+      <div class="about-aside">
+        <div class="aside-row">
+          <blockquote class="pull-quote">
+            <p>"השתתף בתוכניות המיוחדות לכבוד רבינו הקדוש — ויהי זכותו למגן וברכה לכל השנה!"</p>
+            <cite>קופת צדקת רשב"י · מירון, ישראל</cite>
+          </blockquote>
+        </div>
+        <div class="aside-row">
+          <span class="aside-num">∞</span>
+          <span class="aside-label">ניסים שנתרחשו בציון הקדוש</span>
+        </div>
+        <div class="aside-row">
+          <span class="aside-num">חינם</span>
+          <span class="aside-label">מסירת שמות ללא תשלום</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">תפילות שנענות לכל צורך</div>
+    <h2>על מה מתפללים ליד הציון</h2>
+    <p style="font-family:'Frank Ruhl Libre',serif;font-size:1.1rem;color:var(--mid);max-width:600px;line-height:1.8;margin-bottom:0;font-weight:400;">הגנה, ילדים, רפואה, שידוך, פרנסה, שלום בית, ישועה — כל תפילה מגיעה ישירות לציון הרשב"י.</p>
+    <div class="blessings-grid">
+      <div class="blessing"><div class="bdot"></div>הגנה ושמירה</div>
+      <div class="blessing"><div class="bdot"></div>ילדים ופריון</div>
+      <div class="blessing"><div class="bdot"></div>רפואה שלמה</div>
+      <div class="blessing"><div class="bdot"></div>שידוך</div>
+      <div class="blessing"><div class="bdot"></div>פרנסה</div>
+      <div class="blessing"><div class="bdot"></div>שלום בית</div>
+      <div class="blessing"><div class="bdot"></div>ישועה</div>
+      <div class="blessing"><div class="bdot"></div>חי רוטל</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">עדויות אמיתיות</div>
+    <h2>ניסים שקרו</h2>
+    <div class="miracles-grid">
+      <div class="miracle-card">
+        <span class="miracle-num">01</span>
+        <h3>שידוך שנמצא</h3>
+        <p>אב התפלל ליד ציון הרשב"י בל"ג בעומר על שידוך לבתו — ותוך שנה מצאה את זיווגה. זכות הרשב"י הביאה ישועה לביתם.</p>
+      </div>
+      <div class="miracle-card">
+        <span class="miracle-num">02</span>
+        <h3>הבן התרפא</h3>
+        <p>הורים ביכו על בנם החולה ליד הציון הקדוש. לאחר תפילתם הבן החלים לגמרי — נס שכל המשפחה עדה לו.</p>
+      </div>
+      <div class="miracle-card">
+        <span class="miracle-num">03</span>
+        <h3>פרנסה שחזרה</h3>
+        <p>איש שהיה בייאוש גמור התפלל ברשב"י. זמן קצר לאחר מכן הוצע לו תפקיד ניהולי בחברה מצליחה.</p>
+      </div>
+      <div class="miracle-card">
+        <span class="miracle-num">04</span>
+        <h3>ברכת הבנים</h3>
+        <p>זוגות שהתאוננו על כי לא זכו לילדים באו למירון עם לב שבור. שוב ושוב תפילותיהם נענו בזכות רבי שמעון.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="form">
+    <div class="section-tag">הצטרף עכשיו</div>
+    <h2>מסור שמות ותרומה</h2>
+    <div class="form-outer">
+      <div class="form-sidebar">
+        <div>
+          <h3>שמותיכם יועברו אישית לציון הרשב"י במירון</h3>
+          <p>ביום המסוגל של ל"ג בעומר, קופת צדקת רשב"י מעבירה כל קוויטל אל הציון הקדוש.</p>
+          <ul class="sidebar-points">
+            <li>מסירת שמות חינם לחלוטין</li>
+            <li>כל השמות מועברים אישית בל"ג בעומר</li>
+            <li>אישור נשלח במייל ובווצאפ</li>
+            <li>תרומה לא חובה</li>
+            <li>תשלום מאובטח דרך Stripe / PayPal</li>
+          </ul>
+        </div>
+        <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);">
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.3);margin:0;line-height:1.6;font-family:'Heebo',sans-serif;font-weight:300;">שאלות? <a href="mailto:office@rashbi.org" style="color:rgba(255,255,255,0.45);text-decoration:none;">office@rashbi.org</a> · <a href="tel:7189715901" style="color:rgba(255,255,255,0.45);text-decoration:none;">718-971-5901</a></p>
+        </div>
+      </div>
+      <div class="form-main">
+        <div class="form-tabs">
+          <button class="tab-btn active" onclick="switchTab('prayer',this)">מסירת שמות חינם</button>
+          <button class="tab-btn" onclick="switchTab('donation',this)">תרומה למדורה</button>
+        </div>
+
+        <div class="form-panel active" id="panel-prayer">
+          <div class="f-row">
+            <div class="f-group"><label>שם פרטי</label><input type="text" placeholder="שמך"></div>
+            <div class="f-group"><label>שם משפחה</label><input type="text" placeholder="שם משפחתך"></div>
+          </div>
+          <div class="f-group"><label>כתובת מייל</label><input type="email" placeholder="your@email.com" dir="ltr"></div>
+          <div class="f-group"><label>טלפון / ווצאפ</label><input type="tel" placeholder="+972..." dir="ltr"></div>
+          <div class="f-group">
+            <label>שמות לתפילה</label>
+            <textarea placeholder="הכנס את השמות שברצונך שנתפלל עבורם ליד ציון הרשב"י..."></textarea>
+          </div>
+          <div class="f-group">
+            <label>על מה לתפלל</label>
+            <div class="check-grid">
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>הגנה ושמירה</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>ילדים ופריון</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>רפואה שלמה</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>שידוך</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>פרנסה</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>שלום בית</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>חי רוטל</div>
+              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>תפילה כללית</div>
+            </div>
+          </div>
+          <div class="f-group">
+            <label>כלול תרומה? (לא חובה)</label>
+            <div class="amt-grid" id="pa">
+              <div class="amt" onclick="pick(this,'pa')">₪50</div>
+              <div class="amt" onclick="pick(this,'pa')">₪100</div>
+              <div class="amt" onclick="pick(this,'pa')">₪180</div>
+              <div class="amt" onclick="pick(this,'pa')">אחר</div>
+            </div>
+          </div>
+          <button class="submit">שלח את שמותי לרשב"י ←</button>
+          <p class="f-note">הפרטים שלך נשמרים בסודיות. אישור ישלח אליך במייל ובווצאפ.</p>
+        </div>
+
+        <div class="form-panel" id="panel-donation">
+          <div class="f-row">
+            <div class="f-group"><label>שם פרטי</label><input type="text" placeholder="שמך"></div>
+            <div class="f-group"><label>שם משפחה</label><input type="text" placeholder="שם משפחתך"></div>
+          </div>
+          <div class="f-group"><label>כתובת מייל</label><input type="email" placeholder="your@email.com" dir="ltr"></div>
+          <div class="f-group"><label>טלפון / ווצאפ</label><input type="tel" placeholder="+972..." dir="ltr"></div>
+          <div class="f-group">
+            <label>מטרת התרומה</label>
+            <select>
+              <option>תרומה כללית ל"ג בעומר</option>
+              <option>חי רוטל — חלוקת משקה</option>
+              <option>קוויטל על הציון</option>
+              <option>לימוד זוהר הקדוש</option>
+              <option>חלאקה — תגלחת ראשונה</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label>בחר סכום</label>
+            <div class="amt-grid" id="da">
+              <div class="amt" onclick="pick(this,'da')">₪100</div>
+              <div class="amt" onclick="pick(this,'da')">₪180</div>
+              <div class="amt on" onclick="pick(this,'da')">₪360</div>
+              <div class="amt" onclick="pick(this,'da')">אחר</div>
+            </div>
+          </div>
+          <div class="f-group"><label>שמות לתפילה (לא חובה)</label><input type="text" placeholder="שמות שתרצה לכלול"></div>
+          <button class="submit">תרום ושלח שמות ←</button>
+          <p class="f-note">תשלום מאובטח דרך Stripe / PayPal. קבלה ואישור ישלחו אליך במייל.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>קופת צדקת רשב"י</h4>
+      <p>לזכר רבי שמעון בר יוחאי</p>
+      <p>צפת – מירון, ישראל</p>
+      <p>בחסות: ברל פריד</p>
+    </div>
+    <div class="footer-col">
+      <h4>יצירת קשר</h4>
+      <a href="tel:7189715901">ארה"ב: 718-971-5901</a>
+      <a href="tel:02031501539">בריטניה: 02031501539</a>
+      <a href="mailto:office@rashbi.org">office@rashbi.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>תוכניות</h4>
+      <a href="https://www.rashbi.org/lagbaomer-chairotel">חי רוטל</a>
+      <a href="https://www.rashbi.org/prayer-service">שירות תפילה</a>
+      <a href="https://www.rashbi.org/lagbaomer-chalaka">חלאקה</a>
+      <a href="https://www.rashbi.org/lagbomer-miracles">ניסים</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-logo-text">קופת צדקת רשב"י</span>
+    <span>© 2025 כל הזכויות שמורות</span>
+  </div>
+</footer>
+
+<script>
+function switchTab(tab,el){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+}
+function pick(el,id){
+  document.getElementById(id).querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));
+  el.classList.add('on');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
