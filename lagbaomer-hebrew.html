@@ -481,133 +481,181 @@ body {
   </div>
 </div>
 
-<!-- STEP 1: שם + מייל -->
+<!-- STEP 1: פרטים אישיים -->
 <div class="overlay" id="overlay-step1">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-step">שלב 1 מתוך 3</span>
-      <div class="modal-title">עבור מי נתפלל?</div>
+      <span class="modal-step">שלב 1 מתוך 4 — פרטים אישיים</span>
+      <div class="modal-title">מי שולח את התפילה?</div>
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-progress">
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
+        <div class="prog-step active"></div><div class="prog-step"></div><div class="prog-step"></div><div class="prog-step"></div>
       </div>
       <div class="f-row" style="margin-bottom:1rem;">
-        <div class="f-group" style="margin:0;"><label>שם פרטי</label><input type="text" id="s1-fname" placeholder="שמך"></div>
-        <div class="f-group" style="margin:0;"><label>שם משפחה</label><input type="text" id="s1-lname" placeholder="שם משפחתך"></div>
+        <div class="f-group" style="margin:0;"><label>שם פרטי *</label><input type="text" id="s1-fname" placeholder="שמך"></div>
+        <div class="f-group" style="margin:0;"><label>שם משפחה *</label><input type="text" id="s1-lname" placeholder="שם משפחתך"></div>
       </div>
-      <div class="f-group">
-        <label>כתובת מייל</label>
-        <input type="email" id="s1-email" placeholder="your@email.com" dir="ltr">
-      </div>
-      <div class="f-group">
-        <label>שמות לתפילה ליד ציון הרשב"י</label>
-        <textarea id="s1-names" placeholder="הכנס את השמות שברצונך שנתפלל עבורם..."></textarea>
-      </div>
-      <button class="modal-btn modal-btn-primary" onclick="goStep2()">המשך — בחר כוונות תפילה ←</button>
+      <div class="f-group"><label>כתובת מייל *</label><input type="email" id="s1-email" placeholder="your@email.com" dir="ltr"></div>
+      <div class="f-group"><label>טלפון / ווצאפ (לא חובה)</label><input type="tel" id="s1-phone" placeholder="+972..." dir="ltr"></div>
+      <button class="modal-btn modal-btn-primary" onclick="goStep2()">המשך ←</button>
       <p class="modal-note">חינם לגמרי. הפרטים שלך נשמרים בסודיות. אישור ישלח במייל.</p>
     </div>
   </div>
 </div>
 
-<!-- STEP 2: כוונות -->
+<!-- STEP 2: שמות לתפילה -->
 <div class="overlay" id="overlay-step2">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-step">שלב 2 מתוך 3</span>
+      <span class="modal-step">שלב 2 מתוך 4 — שמות לתפילה</span>
+      <div class="modal-title">עבור מי נתפלל?</div>
+      <button class="modal-close" onclick="closeAll()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-progress">
+        <div class="prog-step done"></div><div class="prog-step active"></div><div class="prog-step"></div><div class="prog-step"></div>
+      </div>
+      <div id="names-list">
+        <div class="name-entry" id="name-entry-0">
+          <div style="font-size:0.7rem;letter-spacing:0.08em;color:var(--gold-light);margin-bottom:0.6rem;font-weight:500;">אדם 1</div>
+          <div class="f-row" style="margin-bottom:0.6rem;">
+            <div class="f-group" style="margin:0;"><label>שם בעברית</label><input type="text" class="heb-name" placeholder="שם בן/בת שם האם"></div>
+            <div class="f-group" style="margin:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder="שם האם בעברית"></div>
+          </div>
+          <div class="f-row" style="margin-bottom:0.6rem;">
+            <div class="f-group" style="margin:0;">
+              <label>מין</label>
+              <select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.85rem;outline:none;appearance:none;direction:rtl;">
+                <option value="">בחר</option>
+                <option>זכר</option>
+                <option>נקבה</option>
+              </select>
+            </div>
+            <div class="f-group" style="margin:0;">
+              <label>סוג תפילה</label>
+              <select class="prayer-type-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.85rem;outline:none;appearance:none;direction:rtl;">
+                <option>תפילה לחי</option>
+                <option>תפילה לנשמת נפטר</option>
+                <option>תפילה לחולה</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.5rem 1rem;cursor:pointer;width:100%;margin-bottom:0.75rem;font-family:'Heebo',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ הוסף אדם נוסף</button>
+      <button class="modal-btn modal-btn-primary" onclick="goStep3()">המשך ← בחר תפילות</button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: בקשות תפילה -->
+<div class="overlay" id="overlay-step3">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-step">שלב 3 מתוך 4 — בקשות תפילה</span>
       <div class="modal-title">על מה נתפלל?</div>
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
+        <div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step active"></div><div class="prog-step"></div>
       </div>
       <div class="f-group">
         <label>בחר הכל שרלוונטי</label>
         <div class="check-grid" id="intentions">
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הגנה ושמירה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>ילדים ופריון</div>
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>רפואה שלמה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שידוך</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פרנסה</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שמחה ואושר</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שידוך הגון</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הצלחה</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פרנסה טובה</div>
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שלום בית</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>ילדים בריאים</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>חזרה בתשובה</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>נחת מהילדים</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הצלחה בלימודים</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>בהירות בחיים</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>בריאות הגוף והנפש</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הצלחה בניתוח</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>מציאת עבודה</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הריון ולידה בריאה</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הגנה ושמירה</div>
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>חי רוטל</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>תפילה כללית</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פדיון נפש</div>
         </div>
       </div>
       <div class="f-group">
-        <label>טלפון / ווצאפ (לא חובה)</label>
-        <input type="tel" id="s2-phone" placeholder="+972..." dir="ltr">
+        <label>תפילה אישית (לא חובה)</label>
+        <textarea id="s3-personal" placeholder="הוסף בקשה אישית..." style="min-height:70px;resize:vertical;direction:rtl;"></textarea>
       </div>
-      <button class="modal-btn modal-btn-primary" onclick="goStep3()">שלח את תפילתי ←</button>
-      <button class="modal-btn-skip" onclick="goStep3()">המשך ללא בחירה</button>
+      <button class="modal-btn modal-btn-primary" onclick="goStep4()">המשך ← תרומה</button>
+      <button class="modal-btn-skip" onclick="goStep4()">דלג — עבור לתרומה</button>
     </div>
   </div>
 </div>
 
-<!-- STEP 3: הצלחה + תרומה -->
-<div class="overlay" id="overlay-step3">
+<!-- STEP 4: תרומה -->
+<div class="overlay" id="overlay-step4">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-step">שלב 3 מתוך 3</span>
-      <div class="modal-title">תפילתך התקבלה</div>
+      <span class="modal-step">שלב 4 מתוך 4 — תרומה</span>
+      <div class="modal-title">חזק את תפילתך</div>
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
+        <div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step active"></div>
       </div>
 
-      <div class="success-screen">
-        <div class="success-icon">✦</div>
-        <h3>שמך בדרך למירון</h3>
-        <p>אישור יישלח אליך במייל. שמותיכם יועברו אישית אל ציון הרשב"י הקדוש ביום ל"ג בעומר.</p>
-
-        <div class="donation-highlight">
-          <p>"הרשב"י הבטיח שמחה וטוב לכל מי שיתרום לשמחת יומו — ויהי זכותו למגן וברכה לכל השנה!"</p>
-        </div>
-
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:1.25rem;line-height:1.7;font-weight:300;">האם תרצה לחזק את תפילתך עם תרומה? כל תרומה תומכת בפעילות חי רוטל, לימוד הזוהר, ושליחויות מירון.</p>
-
-        <!-- מטרת התרומה -->
-        <div style="margin-bottom:0.85rem;">
-          <label style="display:block;font-size:0.68rem;letter-spacing:0.08em;color:rgba(255,255,255,0.4);margin-bottom:0.35rem;font-family:'Heebo',sans-serif;">מטרת התרומה</label>
-          <select id="don-purpose" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.65rem 0.9rem;font-family:'Heebo',sans-serif;font-size:0.88rem;font-weight:300;outline:none;appearance:none;cursor:pointer;direction:rtl;">
-            <option value="חי רוטל — שמן למדורה">חי רוטל — שמן למדורה</option>
-            <option value="לימוד זוהר הקדוש">לימוד זוהר הקדוש</option>
-            <option value="קוויטל על הציון">קוויטל על ציון הרשב"י</option>
-            <option value="חלאקה — תגלחת ראשונה">חלאקה — תגלחת ראשונה</option>
-            <option value="תרומה כללית ל״ג בעומר">תרומה כללית ל"ג בעומר</option>
-          </select>
-        </div>
-
-        <!-- סכום תרומה -->
-        <div class="amt-grid" id="don-amts" style="margin-bottom:0.5rem;">
-          <div class="amt" onclick="pickAmt(this,'don-amts')">₪50</div>
-          <div class="amt on" onclick="pickAmt(this,'don-amts')">₪100</div>
-          <div class="amt" onclick="pickAmt(this,'don-amts')">₪180</div>
-          <div class="amt" onclick="pickAmt(this,'don-amts')">₪360</div>
-          <div class="amt" id="amt-other-he" onclick="pickOtherHe()" style="grid-column:span 2;">סכום אחר</div>
-        </div>
-
-        <!-- שדה סכום חופשי -->
-        <div id="other-wrap-he" style="display:none;margin-bottom:0.85rem;">
-          <input type="number" id="other-amt-he" min="1" placeholder="הכנס סכום בשקלים" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.65rem 0.9rem;font-family:'Heebo',sans-serif;font-size:1rem;outline:none;direction:ltr;text-align:center;">
-        </div>
-
-        <button class="success-donate-cta" onclick="submitDonation()">תרום וחזק את תפילתי ←</button>
-        <button class="modal-btn-skip" onclick="goThankyou()">לא תודה — קח אותי לאישור</button>
+      <div class="donation-highlight" style="margin-bottom:1.25rem;">
+        <p>"הרשב"י הבטיח שמחה וטוב לכל מי שיתרום לשמחת יומו — ויהי זכותו למגן וברכה לכל השנה!"</p>
       </div>
+
+      <div class="f-group">
+        <label>האם תרצה לכלול תרומה?</label>
+        <div style="display:flex;gap:1.5rem;margin-bottom:1rem;flex-direction:row-reverse;justify-content:flex-end;">
+          <label class="don-radio-row"><input type="radio" name="don-yn" value="yes" onchange="toggleDonation(true)" style="accent-color:var(--gold-light);width:16px;height:16px;"> כן, ברצוני לתרום</label>
+          <label class="don-radio-row"><input type="radio" name="don-yn" value="no" onchange="toggleDonation(false)" style="accent-color:var(--gold-light);width:16px;height:16px;"> בצער, לא כרגע</label>
+        </div>
+      </div>
+
+      <div id="donation-details" style="display:none;">
+        <div class="f-group">
+          <label>בחר סוג תרומה</label>
+          <div id="don-choices" style="display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.75rem;">
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה - ₪65" onchange="syncDonAmt('₪65')"> תפילה — ₪65</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה ונר - ₪130" onchange="syncDonAmt('₪130')"> תפילה ונר — ₪130</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="משנה ונר ביארצייט - ₪260" onchange="syncDonAmt('₪260')"> משנה ונר ביארצייט — ₪260</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="קדיש 30 יום - ₪360" onchange="syncDonAmt('₪360')"> קדיש 30 יום — ₪360</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="40 יום תפילה רצופה - ₪650" onchange="syncDonAmt('₪650')"> 40 יום תפילה רצופה — ₪650</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="פדיון נפש - ₪650" onchange="syncDonAmt('₪650')"> פדיון נפש — ₪650</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="מימון שתי משפחות - ₪1300" onchange="syncDonAmt('₪1300')"> מימון שתי משפחות — ₪1,300</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="מימון שלוש משפחות - ₪1800" onchange="syncDonAmt('₪1800')"> מימון שלוש משפחות — ₪1,800</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="מימון ארבע משפחות - ₪2500" onchange="syncDonAmt('₪2500')"> מימון ארבע משפחות — ₪2,500</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="עמוד יהלום של חסד - ₪3600" onchange="syncDonAmt('₪3600')"> עמוד יהלום של חסד — ₪3,600</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="סכום אחר" onchange="showOtherAmt()"> סכום אחר</label>
+          </div>
+          <div id="other-amt-wrap" style="display:none;margin-bottom:0.75rem;">
+            <input type="number" id="other-amt-he" min="1" placeholder="הכנס סכום בשקלים" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.65rem 0.9rem;font-family:'Heebo',sans-serif;font-size:1rem;outline:none;direction:ltr;text-align:center;">
+          </div>
+        </div>
+
+        <div class="f-group">
+          <label>אמצעי תשלום</label>
+          <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-direction:row-reverse;justify-content:flex-end;">
+            <label class="don-radio-row"><input type="radio" name="pay-method" value="כרטיס אשראי" checked style="accent-color:var(--gold-light);"> כרטיס אשראי</label>
+            <label class="don-radio-row"><input type="radio" name="pay-method" value="PayPal" style="accent-color:var(--gold-light);"> PayPal</label>
+          </div>
+        </div>
+      </div>
+
+      <button class="success-donate-cta" onclick="submitFinal()">← שלח את תפילתי</button>
+      <button class="modal-btn-skip" onclick="submitPrayerOnly()">שלח ללא תרומה</button>
     </div>
   </div>
 </div>
+
 
 <!-- WhatsApp float -->
 <a class="wa-float" href="https://wa.me/9720000000" target="_blank" title="צרו קשר בווצאפ">
@@ -617,7 +665,52 @@ body {
 </a>
 
 <script>
-const state = { fname:'', lname:'', email:'', names:'', phone:'', intentions:[], donationAmt:'₪100' };
+const state = {
+  fname:'', lname:'', email:'', phone:'',
+  names_entries:[],
+  intentions:[],
+  personal_prayer:'',
+  donation_included:false,
+  donation_choice:'',
+  donationAmt:'',
+  payment_method:'כרטיס אשראי',
+  paymentMethod:'כרטיס אשראי'
+};
+var nameCount = 1;
+
+function addName() {
+  var list = document.getElementById('names-list');
+  var idx = nameCount++;
+  var div = document.createElement('div');
+  div.className = 'name-entry';
+  div.style.marginTop = '1rem';
+  div.style.paddingTop = '1rem';
+  div.style.borderTop = '1px solid rgba(255,255,255,0.08)';
+  div.innerHTML = '<div style="font-size:0.7rem;letter-spacing:0.08em;color:var(--gold-light);margin-bottom:0.6rem;font-weight:500;">אדם '+(idx+1)+'</div>' +
+    '<div class="f-row" style="margin-bottom:0.6rem;">' +
+    '<div class="f-group" style="margin:0;"><label>שם בעברית</label><input type="text" class="heb-name" placeholder="שם בן/בת שם האם"></div>' +
+    '<div class="f-group" style="margin:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder="שם האם בעברית"></div>' +
+    '</div>';
+  list.appendChild(div);
+}
+
+function toggleDonation(show) {
+  document.getElementById('donation-details').style.display = show ? 'block' : 'none';
+  state.donation_included = show;
+}
+
+function syncDonAmt(amt) {
+  state.donationAmt = amt;
+  document.getElementById('other-amt-wrap').style.display = 'none';
+  var sel = document.querySelector('input[name="don-choice"]:checked');
+  state.donation_choice = sel ? sel.value : '';
+}
+
+function showOtherAmt() {
+  document.getElementById('other-amt-wrap').style.display = 'block';
+  document.getElementById('other-amt-he').focus();
+  state.donation_choice = 'סכום אחר';
+}
 
 function openStep1() {
   document.getElementById('overlay-step1').classList.add('open');
@@ -630,29 +723,69 @@ document.querySelectorAll('.overlay').forEach(o => {
   o.addEventListener('click', function(e) { if (e.target === this) closeAll(); });
 });
 
+function goStep3() {
+  var entries = [];
+  document.querySelectorAll('.name-entry').forEach(function(entry) {
+    var hn = entry.querySelector('.heb-name');
+    var mn = entry.querySelector('.mom-name');
+    var gs = entry.querySelector('.gender-sel');
+    var pt = entry.querySelector('.prayer-type-sel');
+    if (hn && hn.value.trim()) {
+      entries.push({ heb_name:hn.value.trim(), mothers_name:mn?mn.value.trim():'', gender:gs?gs.value:'', prayer_type:pt?pt.value:'' });
+    }
+  });
+  state.names_entries = entries;
+  document.getElementById('overlay-step2').classList.remove('open');
+  document.getElementById('overlay-step3').classList.add('open');
+}
+
+function goStep4() {
+  state.intentions = [];
+  document.querySelectorAll('#intentions .ck.on').forEach(function(el) {
+    state.intentions.push(el.textContent.trim());
+  });
+  state.personal_prayer = document.getElementById('s3-personal') ? document.getElementById('s3-personal').value.trim() : '';
+  document.getElementById('overlay-step3').classList.remove('open');
+  document.getElementById('overlay-step4').classList.add('open');
+  fbq('track', 'CompleteRegistration');
+}
+
+function submitPrayerOnly() {
+  state.donation_included = false;
+  submitPrayer();
+  closeAll();
+  goThankyou();
+}
+
+function submitFinal() {
+  var pm = document.querySelector('input[name="pay-method"]:checked');
+  state.payment_method = pm ? pm.value : 'כרטיס אשראי';
+  state.paymentMethod = state.payment_method;
+  if (state.donation_included) {
+    var otherChk = document.querySelector('input[name="don-choice"][value="סכום אחר"]:checked');
+    if (otherChk) {
+      var ov = document.getElementById('other-amt-he').value;
+      state.donationAmt = '₪' + (ov || '0');
+    }
+    submitDonation();
+  } else {
+    submitPrayer();
+    goThankyou();
+  }
+}
+
 function goStep2() {
-  const fname = document.getElementById('s1-fname').value.trim();
-  const email = document.getElementById('s1-email').value.trim();
-  const names = document.getElementById('s1-names').value.trim();
+  var fname = document.getElementById('s1-fname').value.trim();
+  var email = document.getElementById('s1-email').value.trim();
   if (!fname) { shakeField('s1-fname'); return; }
   if (!email || !email.includes('@')) { shakeField('s1-email'); return; }
   state.fname = fname;
   state.lname = document.getElementById('s1-lname').value.trim();
   state.email = email;
-  state.names = names;
+  state.phone = document.getElementById('s1-phone').value.trim();
   fbq('track', 'Lead');
   document.getElementById('overlay-step1').classList.remove('open');
   document.getElementById('overlay-step2').classList.add('open');
-}
-
-function goStep3() {
-  state.phone = document.getElementById('s2-phone').value.trim();
-  state.intentions = [];
-  document.querySelectorAll('#intentions .ck.on').forEach(el => state.intentions.push(el.textContent.trim()));
-  submitPrayer();
-  document.getElementById('overlay-step2').classList.remove('open');
-  document.getElementById('overlay-step3').classList.add('open');
-  fbq('track', 'CompleteRegistration');
 }
 
 function submitPrayer() {
@@ -669,9 +802,10 @@ function submitPrayer() {
       full_name: (state.fname + ' ' + state.lname).trim(),
       email: state.email,
       phone: state.phone,
-      names_to_pray_for: state.names,
+      names_to_pray_for: JSON.stringify(state.names_entries),
       prayer_intentions: state.intentions.join(', '),
-      donation_included: false,
+      personal_prayer: state.personal_prayer,
+      donation_included: state.donation_included,
       source_page: window.location.href,
       user_agent: navigator.userAgent
     })
@@ -680,11 +814,7 @@ function submitPrayer() {
 
 function submitDonation() {
   const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
-  const selAmt = document.getElementById('don-amts').querySelector('.amt.on');
-  const isOther = selAmt && selAmt.id === 'amt-other-he';
-  const otherVal = isOther ? document.getElementById('other-amt-he').value : '';
-  state.donationAmt = isOther ? ('₪' + (otherVal || '0')) : (selAmt ? selAmt.textContent : '₪100');
-  const purpose = document.getElementById('don-purpose') ? document.getElementById('don-purpose').value : 'כללי';
+  var purpose = state.donation_choice;
   fetch(WEBHOOK, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -697,8 +827,10 @@ function submitDonation() {
       full_name: (state.fname + ' ' + state.lname).trim(),
       email: state.email,
       phone: state.phone,
-      names_to_pray_for: state.names,
+      names_to_pray_for: JSON.stringify(state.names_entries),
       prayer_intentions: state.intentions.join(', '),
+      personal_prayer: state.personal_prayer,
+      donation_choice: state.donation_choice,
       donation_amount: state.donationAmt,
       donation_currency: 'ILS',
       donation_purpose: purpose,
@@ -725,7 +857,7 @@ function shakeField(id) {
 }
 
 (function(){
-  var deadline = new Date('2025-05-04T21:00:00Z').getTime();
+  var deadline = new Date('2026-05-04T21:00:00Z').getTime();
   function pad(n){return n<10?'0'+n:''+n;}
   function tick(){
     var diff = deadline - Date.now();
@@ -742,6 +874,20 @@ function shakeField(id) {
   tick();
   setInterval(tick,1000);
 })();
+
+function goThankyou() {
+  closeAll();
+  window.location.href = 'thankyou-hebrew.html?email=' + encodeURIComponent(state.email) + '&names=' + encodeURIComponent(state.names);
+}
+
+function pickOtherHe() {
+  var grid = document.getElementById('don-amts');
+  grid.querySelectorAll('.amt').forEach(function(a){ a.classList.remove('on'); });
+  document.getElementById('amt-other-he').classList.add('on');
+  document.getElementById('other-wrap-he').style.display = 'block';
+  document.getElementById('other-amt-he').focus();
+}
+
 </script>
 </body>
 </html>
