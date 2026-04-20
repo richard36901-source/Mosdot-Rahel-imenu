@@ -74,27 +74,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="don">
     <p class="don-q">"הרשב"י הבטיח שמחה וטוב לכל מי שיתרום לשמחת יומו הקדוש — ויהי זכותו למגן וברכה לכל השנה!"</p>
     <p class="don-txt">האם תרצה לחזק את תפילתך עם תרומה? כל תרומה תומכת בפעילות חי רוטל, לימוד הזוהר ושליחויות מירון.</p>
-    <!-- מטרת התרומה -->
-    <div style="margin-bottom:0.75rem;">
-      <label style="display:block;font-size:0.65rem;letter-spacing:0.08em;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;font-family:'Heebo',sans-serif;">מטרת התרומה</label>
-      <select id="don-purpose" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.85rem;font-weight:300;outline:none;appearance:none;cursor:pointer;direction:rtl;">
-        <option>חי רוטל — שמן למדורה</option>
-        <option>לימוד זוהר הקדוש</option>
-        <option>קוויטל על ציון הרשב"י</option>
-        <option>חלאקה — תגלחת ראשונה</option>
-        <option>תרומה כללית ל"ג בעומר</option>
-      </select>
-    </div>
-    <div class="amts" id="amts">
-      <div class="amt" onclick="pick(this)">₪50</div>
-      <div class="amt on" onclick="pick(this)">₪100</div>
-      <div class="amt" onclick="pick(this)">₪180</div>
-      <div class="amt" onclick="pick(this)">₪360</div>
-      <div class="amt" id="amt-other" onclick="pickOther()" style="grid-column:span 2;">סכום אחר</div>
-    </div>
-    <div id="other-wrap" style="display:none;margin-bottom:0.75rem;">
-      <input type="number" id="other-val" min="1" placeholder="הכנס סכום בשקלים" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:1rem;outline:none;direction:ltr;text-align:center;">
-    </div>
     <button class="don-btn" onclick="donate()">← תרום וחזק את תפילתי</button>
   </div>
 
@@ -113,20 +92,26 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <script>
 const LP_URL='YOUR_HEBREW_LANDING_PAGE_URL';
 const WEBHOOK='YOUR_MAKE_WEBHOOK_URL_HERE';
-function pick(el){document.getElementById('amts').querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));el.classList.add('on');document.getElementById('other-wrap').style.display='none';}
-function pickOther(){document.getElementById('amts').querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));document.getElementById('amt-other').classList.add('on');document.getElementById('other-wrap').style.display='block';document.getElementById('other-val').focus();}
+function setAmt(a){window._tyAmt=a;}
+function showOther(){document.getElementById('ty-other-wrap').style.display='block';document.getElementById('ty-other-val').focus();window._tyAmt=null;}
 function donate(){
-  const sel=document.getElementById('amts').querySelector('.amt.on');
-  const isOther=sel&&sel.id==='amt-other';
-  const amt=isOther?('₪'+(document.getElementById('other-val').value||'0')):(sel?sel.textContent:'₪100');
-  const purpose=document.getElementById('don-purpose')?document.getElementById('don-purpose').value:'כללי';
+  var sel=document.querySelector('input[name="ty-choice"]:checked');
+  var isOther=sel&&sel.value==='סכום אחר';
+  var amt=isOther?('₪'+(document.getElementById('ty-other-val').value||'0')):(window._tyAmt||'₪260');
+  var purpose=sel?sel.value:'כללי';
   fbq('track','AddToCart',{value:parseFloat(amt.replace(/[^0-9.]/g,'')),currency:'ILS'});
   alert('מעביר לתשלום עבור '+amt+' — יש להחליף בקישור Stripe/PayPal');
 }
 function shareWA(e){
   e.preventDefault();
-  const msg=encodeURIComponent('מסרתי שמות לתפילה על ציון הרשב"י לל"ג בעומר — חינם!\n\n'+LP_URL);
-  window.open('https://wa.me/?text='+msg,'_blank');
+  const msg=encodeURIComponent(
+    '🕯️ מסרתי שמות לתפילה על ציון הרשב\"י ביום ל\"ג בעומר!\n\n' +
+    'גם אתם יכולים לשלוח שמות חינם — הם יועברו אישית למירון ביום הקדוש:\n\n' +
+    LP_URL
+  );
+  const waUrl='https://wa.me/?text='+msg;
+  if(/Mobi|Android/i.test(navigator.userAgent)){window.location.href=waUrl;}
+  else{window.open(waUrl,'_blank');}
   fbq('track','Share');
 }
 </script>

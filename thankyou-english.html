@@ -78,23 +78,18 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="don">
     <p class="don-q">"The Holy Rashbi pledged happiness and joy to all who contribute to the rejoicing of his holy day — may His merit protect you all year."</p>
     <p class="don-txt">Strengthen your prayer with a donation. Every contribution supports Chai Rotel, Zohar study, and the sacred mission at Meron.</p>
-    <!-- Donation purpose -->
-    <div style="margin-bottom:0.75rem;">
-      <label style="display:block;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;">Donation purpose</label>
-      <select id="don-purpose" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;outline:none;appearance:none;cursor:pointer;">
-        <option>Chai Rotel — Oil for the bonfire</option>
-        <option>Zohar study program</option>
-        <option>Kvitlach delivered to the Tzion</option>
-        <option>Chalaka (first haircut) ceremony</option>
-        <option>General Lag BaOmer support</option>
-      </select>
-    </div>
-    <div class="amts" id="amts">
-      <div class="amt" onclick="pick(this)">$36</div>
-      <div class="amt on" onclick="pick(this)">$72</div>
-      <div class="amt" onclick="pick(this)">$180</div>
-      <div class="amt" onclick="pick(this)">$360</div>
-      <div class="amt" id="amt-other" onclick="pickOther()" style="grid-column:span 2;">Other amount</div>
+    <div style="display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.85rem;text-align:left;">
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Prayer - $18" onchange="setAmt('$18',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Prayer — $18</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Prayer &amp; Candle - $36" onchange="setAmt('$36',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Prayer &amp; Candle — $36</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Mishnayot &amp; Candle on Yahrtzeit - $72" onchange="setAmt('$72',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Mishnayot &amp; Candle on Yahrtzeit — $72</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="30 Day Kaddish - $100" onchange="setAmt('$100',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> 30 Day Kaddish at Kever Rachel — $100</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="40 Days Prayer - $180" onchange="setAmt('$180',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> 40 Consecutive Days Prayer — $180</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Pidyon Nefesh - $180" onchange="setAmt('$180',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Pidyon Nefesh — $180</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Sponsor Two Families - $360" onchange="setAmt('$360',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Sponsor Two Families — $360</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Sponsor Three Families - $500" onchange="setAmt('$500',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Sponsor Three Families — $500</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Sponsor Four Families - $700" onchange="setAmt('$700',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Sponsor Four Families — $700</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Diamond Pillar of Chesed - $1000" onchange="setAmt('$1000',this.value)" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Diamond Pillar of Chesed — $1,000</label>
+      <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.3rem 0;font-weight:300;"><input type="radio" name="ty-choice" value="Other" onchange="showOther()" style="accent-color:#D4A017;width:15px;height:15px;flex-shrink:0;"> Other amount</label>
     </div>
     <div id="other-wrap" style="display:none;margin-bottom:0.75rem;">
       <input type="number" id="other-val" min="1" placeholder="Enter amount in $" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.6rem 0.8rem;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;text-align:center;">
@@ -117,21 +112,37 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <script>
 const LP_URL='YOUR_ENGLISH_LANDING_PAGE_URL';
 const WEBHOOK='YOUR_MAKE_WEBHOOK_URL_HERE';
-function pick(el){document.getElementById('amts').querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));el.classList.add('on');document.getElementById('other-wrap').style.display='none';}
-function pickOther(){document.getElementById('amts').querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));document.getElementById('amt-other').classList.add('on');document.getElementById('other-wrap').style.display='block';document.getElementById('other-val').focus();}
+var currentAmt = '';
+var currentChoice = '';
+function setAmt(amt, choice) {
+  currentAmt = amt;
+  currentChoice = choice;
+  document.getElementById('other-wrap').style.display = 'none';
+}
+function showOther() {
+  currentChoice = 'Other';
+  document.getElementById('other-wrap').style.display = 'block';
+  document.getElementById('other-val').focus();
+}
 function donate(){
-  const sel=document.getElementById('amts').querySelector('.amt.on');
-  const isOther=sel&&sel.id==='amt-other';
-  const amt=isOther?('$'+(document.getElementById('other-val').value||'0')):(sel?sel.textContent:'$72');
-  const purpose=document.getElementById('don-purpose')?document.getElementById('don-purpose').value:'General';
+  var isOther = currentChoice === 'Other';
+  var amt = isOther ? ('$' + (document.getElementById('other-val').value || '0')) : currentAmt;
+  var purpose = currentChoice;
+  if (!amt || amt === '$') { alert('Please select a donation amount'); return; }
   fbq('track','AddToCart',{value:parseFloat(amt.replace(/[^0-9.]/g,'')),currency:'USD'});
   // Replace with Stripe payment link: window.location.href = 'https://buy.stripe.com/...'
   alert('Redirecting to payment for '+amt+' — replace this with your Stripe/PayPal link');
 }
 function shareWA(e){
   e.preventDefault();
-  const msg=encodeURIComponent('I just sent my prayer to the holy Rashbi for Lag BaOmer — it\'s free!\n\n'+LP_URL);
-  window.open('https://wa.me/?text='+msg,'_blank');
+  const msg=encodeURIComponent(
+    '🕯️ I just sent my prayer to the holy Tzion of Rabbi Shimon Bar Yochai for Lag BaOmer!\n\n' +
+    'You can send your names for free too — they\'ll be carried personally to Meron on the holy day:\n\n' +
+    LP_URL
+  );
+  const waUrl='https://wa.me/?text='+msg;
+  if(/Mobi|Android/i.test(navigator.userAgent)){window.location.href=waUrl;}
+  else{window.open(waUrl,'_blank');}
   fbq('track','Share');
 }
 </script>

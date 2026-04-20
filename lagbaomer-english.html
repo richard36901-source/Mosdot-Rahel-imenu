@@ -629,8 +629,8 @@ body {
         <div class="name-entry" id="name-entry-0">
           <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.6rem;">Person 1</div>
           <div class="f-row" style="margin-bottom:0.6rem;">
-            <div class="f-group" style="margin:0;"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder="Name ben/bat Mother's name"></div>
-            <div class="f-group" style="margin:0;"><label>Mother's Name</label><input type="text" class="mom-name" placeholder="Mother's Hebrew name"></div>
+            <div class="f-group" style="margin:0;"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder="Name ben bat Mothers name"></div>
+            <div class="f-group" style="margin:0;"><label>Mother's Name</label><input type="text" class="mom-name" placeholder="Mother Hebrew name"></div>
           </div>
           <div class="f-row" style="margin-bottom:0.6rem;">
             <div class="f-group" style="margin:0;">
@@ -777,8 +777,27 @@ body {
 </a>
 
 <script>
+(function(){
+  var deadline = new Date('2026-05-04T21:00:00Z').getTime();
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var diff = deadline - Date.now();
+    if(diff<=0){diff=0;}
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    var ed=document.getElementById('cd-d');if(ed)ed.textContent=pad(d);
+    var eh=document.getElementById('cd-h');if(eh)eh.textContent=pad(h);
+    var em=document.getElementById('cd-m');if(em)em.textContent=pad(m);
+    var es=document.getElementById('cd-s');if(es)es.textContent=pad(s);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+
 // ── STATE ──
-const state = {
+var state = {
   fname: '', lname: '', email: '', phone: '',
   names_entries: [],   // array of {heb_name, mothers_name, gender, prayer_type}
   intentions: [],
@@ -804,8 +823,8 @@ function addName() {
   div.style.borderTop = '1px solid rgba(255,255,255,0.08)';
   div.innerHTML = '<div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.6rem;">Person ' + (idx+1) + '</div>' +
     '<div class="f-row" style="margin-bottom:0.6rem;">' +
-    '<div class="f-group" style="margin:0;"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder="Name ben/bat Mother's name"></div>' +
-    '<div class="f-group" style="margin:0;"><label>Mother's Name</label><input type="text" class="mom-name" placeholder="Mother's Hebrew name"></div>' +
+    '<div class="f-group" style="margin:0;"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder="Name ben bat Mothers name"></div>' +
+    '<div class="f-group" style="margin:0;"><label>Mother&#39;s Name</label><input type="text" class="mom-name" placeholder="Mother Hebrew name"></div>' +
     '</div>';
   list.appendChild(div);
 }
@@ -997,48 +1016,24 @@ function shakeField(id) {
 }
 
 // add fieldShake keyframe dynamically
-const style = document.createElement('style');
-style.textContent = `
-@keyframes fieldShake {
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-6px)}
-  40%{transform:translateX(6px)}
-  60%{transform:translateX(-4px)}
-  80%{transform:translateX(4px)}
-}`;
+var style = document.createElement('style');
+style.textContent = '@keyframes fieldShake {' +
+  '0%,100%{transform:translateX(0)}' +
+  '20%{transform:translateX(-6px)}' +
+  '40%{transform:translateX(6px)}' +
+  '60%{transform:translateX(-4px)}' +
+  '80%{transform:translateX(4px)}' +
+'}';
 document.head.appendChild(style);
 
-(function(){
-  var deadline = new Date('2026-05-04T21:00:00Z').getTime();
-  function pad(n){return n<10?'0'+n:''+n;}
-  function tick(){
-    var diff = deadline - Date.now();
-    if(diff<=0){diff=0;}
-    var d=Math.floor(diff/86400000);
-    var h=Math.floor((diff%86400000)/3600000);
-    var m=Math.floor((diff%3600000)/60000);
-    var s=Math.floor((diff%60000)/1000);
-    var ed=document.getElementById('cd-d');if(ed)ed.textContent=pad(d);
-    var eh=document.getElementById('cd-h');if(eh)eh.textContent=pad(h);
-    var em=document.getElementById('cd-m');if(em)em.textContent=pad(m);
-    var es=document.getElementById('cd-s');if(es)es.textContent=pad(s);
-  }
-  tick();
-  setInterval(tick,1000);
-})();
 
 function goThankyou() {
   closeAll();
-  window.location.href = 'thankyou-english.html?email=' + encodeURIComponent(state.email) + '&names=' + encodeURIComponent(state.names);
+  var namesStr = state.names_entries.map(function(n){return n.heb_name;}).join(', ');
+  window.location.href = 'thankyou-english.html?email=' + encodeURIComponent(state.email) + '&names=' + encodeURIComponent(namesStr);
 }
 
-function pickOther(lang) {
-  var grid = document.getElementById('don-amts');
-  grid.querySelectorAll('.amt').forEach(function(a){ a.classList.remove('on'); });
-  document.getElementById('amt-other-' + lang).classList.add('on');
-  document.getElementById('other-wrap-' + lang).style.display = 'block';
-  document.getElementById('other-amt-' + lang).focus();
-}
+// pickOther replaced by syncDonAmt/showOtherAmt
 
 </script>
 </body>
