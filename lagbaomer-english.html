@@ -3,913 +3,877 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lag B'Omer in Meron | Tzidkat Rashbi</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Send Your Prayer to the Rashbi — Lag B'Omer in Meron</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '929347383251605');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=929347383251605&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --gold: #A07828;
-  --gold-light: #C9A84C;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
   --ink: #111;
-  --mid: #555;
-  --muted: #888;
-  --border: #e0ddd8;
-  --bg: #f9f7f3;
-  --white: #ffffff;
+  --bg: #0a0805;
+  --cream: #faf6ee;
+  --border: rgba(184,134,11,0.25);
+  --mid: #666;
 }
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg);
-  color: var(--ink);
-  line-height: 1.6;
-  font-size: 16px;
+  color: #eee;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* ── HEADER ── */
-.header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 60px;
+/* ── HERO PAGE ── */
+.hero-page {
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem 4rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(184,134,11,0.12) 0%, transparent 70%),
+    #0a0805;
 }
-.header-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-}
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-.header-nav a {
-  font-size: 0.82rem;
-  color: var(--mid);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.header-nav a:hover { color: var(--ink); }
-.header-cta {
-  background: var(--ink);
-  color: var(--white) !important;
-  padding: 0.45rem 1.1rem;
-  font-size: 0.78rem !important;
-  font-weight: 500;
-  transition: background 0.15s !important;
-}
-.header-cta:hover { background: #333 !important; }
 
-/* ── HERO ── */
-.hero {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-}
-.hero-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 5rem 2rem 4rem;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 5rem;
-  align-items: center;
-}
-.hero-kicker {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.hero-kicker::before {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 1.5px;
-  background: var(--gold);
-}
-.hero h1 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 600;
-  line-height: 1.15;
-  color: var(--ink);
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.01em;
-}
-.hero-desc {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
-  color: var(--mid);
-  line-height: 1.75;
+.logo-wrap {
   margin-bottom: 2.5rem;
+  animation: fadeDown 0.6s ease forwards;
+}
+.logo-wrap img {
+  height: 56px;
+  width: auto;
+  filter: brightness(1.1);
+}
+
+.campaign-img-wrap {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 2.5rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  animation: fadeIn 0.7s ease 0.2s both;
+  flex-shrink: 0;
+}
+.campaign-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-kicker {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  animation: fadeDown 0.6s ease 0.1s both;
+}
+
+.hero-h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.9rem, 6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 1rem;
+  animation: fadeDown 0.6s ease 0.2s both;
+}
+
+.hero-sub {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.65);
   max-width: 480px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+  animation: fadeDown 0.6s ease 0.3s both;
 }
-.hero-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+
+/* THE MAIN CTA — SHAKES TO ATTRACT ATTENTION */
+.cta-wrap {
+  animation: fadeDown 0.6s ease 0.4s both;
 }
-.btn {
+
+.shake-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.82rem;
-  font-weight: 500;
-  padding: 0.75rem 1.6rem;
-  text-decoration: none;
-  cursor: pointer;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1.1rem 2.8rem;
   border: none;
-  transition: all 0.15s;
-  letter-spacing: 0.01em;
-}
-.btn-primary { background: var(--ink); color: var(--white); }
-.btn-primary:hover { background: #333; }
-.btn-secondary { background: transparent; color: var(--ink); border: 1px solid #ccc; }
-.btn-secondary:hover { border-color: var(--ink); background: #f3f1ed; }
-
-/* Hero right — stat block */
-.hero-stat-block {
-  border: 1px solid var(--border);
-  background: var(--bg);
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.hero-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
-}
-.hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
-.stat-num {
-  font-family: 'EB Garamond', serif;
-  font-size: 2.6rem;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 0.78rem;
-  color: var(--muted);
-  font-weight: 400;
+  cursor: pointer;
   letter-spacing: 0.02em;
+  transition: transform 0.15s, box-shadow 0.15s;
+  animation: shakePulse 3s ease 2s infinite;
+  position: relative;
+  overflow: hidden;
+}
+.shake-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.2s;
+}
+.shake-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(184,134,11,0.4);
+  animation: none;
+}
+.shake-btn:hover::after { background: rgba(255,255,255,0.08); }
+
+.btn-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+.shake-btn:hover .btn-arrow { transform: translateX(4px); }
+
+.trust-line {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  animation: fadeIn 0.6s ease 0.6s both;
 }
 
-/* ── TICKER STRIP ── */
-.strip {
-  background: var(--ink);
-  color: var(--white);
-  padding: 0.65rem 2rem;
+/* scrolling proof strip */
+.proof-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  background: rgba(184,134,11,0.08);
+  border-top: 1px solid var(--border);
+  padding: 0.6rem 0;
+  overflow: hidden;
+}
+.proof-track {
+  display: flex;
+  gap: 4rem;
+  animation: scrollLeft 20s linear infinite;
+  white-space: nowrap;
+}
+.proof-track span {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.proof-track .dot {
+  color: var(--gold);
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+/* ── MODAL OVERLAY ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 500;
-  overflow: hidden;
+  z-index: 1000;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  backdrop-filter: blur(3px);
 }
-.strip-item { opacity: 0.75; white-space: nowrap; }
-.strip-dot { width: 3px; height: 3px; background: var(--gold-light); border-radius: 50%; opacity: 0.6; }
-
-/* ── MAIN LAYOUT ── */
-.content-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.overlay.open {
+  opacity: 1;
+  pointer-events: all;
 }
 
-/* ── SECTION ── */
-.section {
-  padding: 4.5rem 0;
+.modal {
+  background: #141008;
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.25s ease;
+}
+.overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header {
+  padding: 1.75rem 2rem 1.25rem;
   border-bottom: 1px solid var(--border);
+  position: relative;
 }
-.section:last-child { border-bottom: none; }
-
-.section-tag {
-  font-size: 0.68rem;
+.modal-step {
+  font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.section-tag::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 1.5px;
-  background: var(--gold);
-}
-
-.section h2 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.2;
-  margin-bottom: 2rem;
-  letter-spacing: -0.01em;
-}
-
-/* ── ABOUT ── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-.about-body p {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.15rem;
-  color: #333;
-  line-height: 1.8;
-  margin-bottom: 1.1rem;
-}
-.pull-quote {
-  border-left: 2px solid var(--gold);
-  padding: 1.2rem 1.5rem;
-  margin: 0;
-  background: var(--white);
-}
-.pull-quote p {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.15rem;
-  font-style: italic;
-  color: #222;
-  line-height: 1.75;
-  margin: 0;
-}
-.pull-quote cite {
-  display: block;
-  font-style: normal;
-  font-size: 0.72rem;
-  font-family: 'DM Sans', sans-serif;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 0.8rem;
-}
-.about-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--border);
-  background: var(--white);
-  margin-top: 0;
-}
-.aside-stat {
-  padding: 1.5rem 1.75rem;
-  border-bottom: 1px solid var(--border);
-}
-.aside-stat:last-child { border-bottom: none; }
-.aside-num {
-  font-family: 'EB Garamond', serif;
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--ink);
-  display: block;
-  line-height: 1;
-  margin-bottom: 0.2rem;
-}
-.aside-label {
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-/* ── BLESSINGS ── */
-.blessings-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
-  margin-top: 2rem;
-  background: var(--border);
-}
-.blessing {
-  background: var(--white);
-  padding: 1.4rem 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-size: 0.9rem;
-  color: #333;
-  transition: background 0.15s;
-}
-.blessing:hover { background: #f3f1ed; }
-.blessing-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* ── MIRACLES ── */
-.miracles-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  background: var(--border);
-  margin-top: 2rem;
-}
-.miracle-card {
-  background: var(--white);
-  padding: 2rem;
-  transition: background 0.15s;
-}
-.miracle-card:hover { background: #f9f7f3; }
-.miracle-num {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.miracle-card h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 0.7rem;
-  letter-spacing: 0.02em;
-}
-.miracle-card p {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.05rem;
-  color: var(--mid);
-  line-height: 1.75;
-}
-
-/* ── FORM ── */
-.form-outer {
-  background: var(--white);
-  border: 1px solid var(--border);
-  margin-top: 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr 380px;
-}
-.form-sidebar {
-  background: var(--ink);
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.form-sidebar h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.4;
-  margin-bottom: 1.5rem;
-}
-.form-sidebar p {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-.sidebar-points {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.sidebar-points li {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
-  display: flex;
-  gap: 0.6rem;
-  align-items: flex-start;
-}
-.sidebar-points li::before {
-  content: '—';
   color: var(--gold-light);
-  flex-shrink: 0;
+  margin-bottom: 0.4rem;
+  display: block;
 }
-.form-main {
-  padding: 2.5rem;
+.modal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
 }
-.form-tabs {
-  display: flex;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 2rem;
-  gap: 0;
-}
-.tab-btn {
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  padding: 0.65rem 1.1rem;
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
   background: none;
   border: none;
+  color: rgba(255,255,255,0.35);
+  font-size: 1.3rem;
   cursor: pointer;
-  color: var(--muted);
-  position: relative;
+  line-height: 1;
+  padding: 0.2rem;
   transition: color 0.15s;
 }
-.tab-btn.active { color: var(--ink); }
-.tab-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; left: 0; right: 0;
-  height: 2px;
-  background: var(--ink);
-}
-.form-panel { display: none; }
-.form-panel.active { display: block; }
+.modal-close:hover { color: #fff; }
 
-.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
-.f-group { margin-bottom: 0.75rem; }
+.modal-body { padding: 1.75rem 2rem; }
+
+/* progress bar inside modal */
+.modal-progress {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+.prog-step {
+  height: 3px;
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+.prog-step.done { background: var(--gold); }
+.prog-step.active { background: var(--gold-light); }
+
+/* form fields */
+.f-group { margin-bottom: 1rem; }
 .f-group label {
   display: block;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.3rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.35rem;
 }
 .f-group input,
-.f-group select,
-.f-group textarea {
+.f-group textarea,
+.f-group select {
   width: 100%;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--ink);
-  padding: 0.6rem 0.85rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 0.7rem 0.9rem;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  font-weight: 300;
   outline: none;
   transition: border-color 0.15s;
-  border-radius: 0;
-  appearance: none;
 }
 .f-group input:focus,
-.f-group select:focus,
-.f-group textarea:focus {
-  border-color: var(--ink);
-  background: var(--white);
+.f-group textarea:focus,
+.f-group select:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.08);
 }
 .f-group textarea { min-height: 80px; resize: vertical; }
+.f-group select option { background: #141008; }
 
-.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; margin-bottom: 0.75rem; }
-.check-opt {
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+/* checkbox options */
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; }
+.ck {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.45rem 0.65rem;
-  border: 1px solid var(--border);
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid rgba(255,255,255,0.1);
   cursor: pointer;
   font-size: 0.82rem;
-  color: #444;
-  transition: all 0.12s;
+  color: rgba(255,255,255,0.55);
+  transition: all 0.15s;
   user-select: none;
 }
-.check-opt:hover { border-color: #aaa; }
-.check-opt.on { border-color: var(--ink); color: var(--ink); background: #f0ede8; }
-.check-sq {
-  width: 11px; height: 11px;
-  border: 1px solid currentColor;
-  flex-shrink: 0;
-  position: relative;
-}
-.check-opt.on .check-sq::after {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: var(--ink);
-}
+.ck:hover { border-color: rgba(184,134,11,0.4); color: rgba(255,255,255,0.8); }
+.ck.on { border-color: var(--gold); color: #fff; background: rgba(184,134,11,0.1); }
+.ck-box { width: 11px; height: 11px; border: 1px solid currentColor; flex-shrink: 0; position: relative; }
+.ck.on .ck-box::after { content: ''; position: absolute; inset: 2px; background: var(--gold); }
 
-.amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.35rem; margin-bottom: 0.75rem; }
+/* amount grid */
+.amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.35rem; }
 .amt {
-  padding: 0.55rem 0.4rem;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: #333;
+  padding: 0.6rem 0.3rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.6);
   cursor: pointer;
   font-family: 'EB Garamond', serif;
   font-size: 1rem;
   text-align: center;
-  transition: all 0.12s;
+  transition: all 0.15s;
 }
-.amt:hover { border-color: #aaa; }
-.amt.on { border-color: var(--ink); color: var(--ink); background: #f0ede8; }
+.amt:hover { border-color: var(--gold); color: #fff; }
+.amt.on { border-color: var(--gold); color: var(--gold-light); background: rgba(184,134,11,0.1); }
 
-.submit {
+/* modal buttons */
+.modal-btn {
   width: 100%;
-  padding: 0.85rem;
-  background: var(--ink);
-  color: var(--white);
+  padding: 0.9rem;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.92rem;
+  font-weight: 700;
   border: none;
   cursor: pointer;
-  letter-spacing: 0.04em;
-  transition: background 0.15s;
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
   margin-top: 0.5rem;
 }
-.submit:hover { background: #333; }
-.f-note {
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin-top: 0.6rem;
+.modal-btn-primary {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+}
+.modal-btn-primary:hover { filter: brightness(1.1); }
+.modal-btn-skip {
+  background: transparent;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.78rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin-top: 0.25rem;
+  text-decoration: underline;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+.modal-btn-skip:hover { color: rgba(255,255,255,0.55); }
+
+.modal-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  margin-top: 0.75rem;
   line-height: 1.5;
 }
 
-/* ── FOOTER ── */
-footer {
-  background: #0f0f0f;
-  color: #666;
-  padding: 3rem 2rem;
-  margin-top: 0;
+/* donation step special */
+.donation-highlight {
+  background: rgba(184,134,11,0.08);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
 }
-.footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid #222;
-  margin-bottom: 2rem;
-}
-.footer-col h4 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #bbb;
-  margin-bottom: 1rem;
-}
-.footer-col p, .footer-col a {
-  font-size: 0.82rem;
-  line-height: 1.9;
-  color: #555;
-  text-decoration: none;
-  display: block;
-}
-.footer-col a:hover { color: var(--gold-light); }
-.footer-bottom {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.72rem;
-  color: #333;
-}
-.footer-logo-text {
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.1em;
-  color: #444;
+.donation-highlight p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-stat-block { flex-direction: row; gap: 0; }
-  .hero-stat { padding-bottom: 0; border-bottom: none; border-right: 1px solid var(--border); padding-right: 2rem; }
-  .hero-stat:last-child { border-right: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .blessings-grid { grid-template-columns: repeat(2,1fr); }
-  .miracles-grid { grid-template-columns: 1fr; }
-  .form-outer { grid-template-columns: 1fr; }
-  .form-sidebar { order: 2; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+/* success screen */
+.success-screen {
+  text-align: center;
+  padding: 1rem 0;
 }
-@media (max-width: 600px) {
-  .header-nav { display: none; }
-  .hero-inner { padding: 3rem 1.5rem 2.5rem; }
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.5rem;
+  animation: popIn 0.4s ease;
+}
+.success-screen h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+.success-screen p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.success-donate-cta {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  padding: 0.9rem 2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: filter 0.15s;
+  animation: shakePulse 2.5s ease 1s infinite;
+}
+.success-donate-cta:hover { filter: brightness(1.1); animation: none; }
+
+/* floating whatsapp button */
+.wa-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 52px;
+  height: 52px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 500;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  animation: floatBob 3s ease infinite;
+  text-decoration: none;
+}
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* KEYFRAMES */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes shakePulse {
+  0%, 85%, 100% { transform: translateX(0) scale(1); box-shadow: 0 4px 20px rgba(184,134,11,0.3); }
+  87% { transform: translateX(-4px) scale(1.01); }
+  89% { transform: translateX(4px) scale(1.01); }
+  91% { transform: translateX(-3px); }
+  93% { transform: translateX(3px); }
+  95% { transform: translateX(0) scale(1.02); box-shadow: 0 6px 28px rgba(184,134,11,0.5); }
+}
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes popIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .campaign-img-wrap { width: 230px; height: 230px; }
   .f-row { grid-template-columns: 1fr; }
   .amt-grid { grid-template-columns: repeat(2,1fr); }
-  .hero-stat-block { flex-direction: column; }
-  .hero-stat { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-  .strip { gap: 1.5rem; }
+  .modal-body { padding: 1.25rem 1.25rem; }
+  .modal-header { padding: 1.25rem 1.25rem 1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <a href="https://www.rashbi.org" style="display:flex;align-items:center;">
-      <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi" style="height:38px;width:auto;display:block;">
-    </a>
-    <nav class="header-nav">
-      <a href="https://www.rashbi.org/lagbaomer">Lag BaOmer</a>
-      <a href="https://www.rashbi.org/lagbaomer-chairotel">Chai Rotel</a>
-      <a href="https://www.rashbi.org/prayer-miracles">Miracles</a>
-      <a href="#form" class="header-cta">Send a Prayer</a>
-    </nav>
-  </div>
-</header>
+<!-- ── HERO PAGE ── -->
+<div class="hero-page">
 
-<!-- STRIP -->
-<div class="strip">
-  <span class="strip-item">Lag B'Omer 2025</span>
-  <span class="strip-dot"></span>
-  <span class="strip-item">Meron · The Holy Tzion</span>
-  <span class="strip-dot"></span>
-  <span class="strip-item">Rabbi Shimon Bar Yochai</span>
-  <span class="strip-dot"></span>
-  <span class="strip-item">Prayers Carried to the Rashbi</span>
+  <div class="logo-wrap">
+    <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi">
+  </div>
+
+  <div class="campaign-img-wrap">
+    <img src="hero-campaign.jpeg" alt="Lag B'Omer in Meron">
+  </div>
+
+  <div class="hero-kicker">Lag B'Omer · Meron · Hilula of the Rashbi</div>
+
+  <h1 class="hero-h1">Your Miracle<br>Starts Here</h1>
+
+  <p class="hero-sub">Send your name to the holy Tzion of Rabbi Shimon Bar Yochai on the most sacred day of the year — completely free.</p>
+
+  <div class="cta-wrap">
+    <button class="shake-btn" onclick="openStep1()">
+      Send My Name for Free <span class="btn-arrow">→</span>
+    </button>
+    <p class="trust-line">✦ No payment required &nbsp;·&nbsp; Takes 30 seconds &nbsp;·&nbsp; Confirmation by email</p>
+  </div>
+
+
+  <!-- COUNTDOWN -->
+  <div style="margin-top:1.5rem;text-align:center;opacity:0;animation:fadeIn 0.8s ease 0.8s forwards;">
+    <p style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;">Prayer list closes in</p>
+    <div style="display:inline-flex;gap:0.4rem;align-items:flex-end;">
+      <div style="text-align:center;min-width:42px;"><div id="cd-d" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.1em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">days</div></div>
+      <div style="font-size:1.5rem;color:#B8860B;padding-bottom:10px;">:</div>
+      <div style="text-align:center;min-width:42px;"><div id="cd-h" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.1em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">hrs</div></div>
+      <div style="font-size:1.5rem;color:#B8860B;padding-bottom:10px;">:</div>
+      <div style="text-align:center;min-width:42px;"><div id="cd-m" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.1em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">min</div></div>
+      <div style="font-size:1.5rem;color:#B8860B;padding-bottom:10px;">:</div>
+      <div style="text-align:center;min-width:42px;"><div id="cd-s" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.1em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">sec</div></div>
+    </div>
+  </div>
+
+  <!-- scrolling strip -->
+  <div class="proof-strip">
+    <div class="proof-track">
+      <span>500,000+ pilgrims gather at Meron</span>
+      <span class="dot">✦</span>
+      <span>Prayers for Protection · Children · Healing · Marriage · Livelihood</span>
+      <span class="dot">✦</span>
+      <span>Kupat Tzidkat Rashbi · Meron, Israel</span>
+      <span class="dot">✦</span>
+      <span>33rd Day of the Omer · Holy Tzion of the Rashbi</span>
+      <span class="dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>500,000+ pilgrims gather at Meron</span>
+      <span class="dot">✦</span>
+      <span>Prayers for Protection · Children · Healing · Marriage · Livelihood</span>
+      <span class="dot">✦</span>
+      <span>Kupat Tzidkat Rashbi · Meron, Israel</span>
+      <span class="dot">✦</span>
+      <span>33rd Day of the Omer · Holy Tzion of the Rashbi</span>
+      <span class="dot">✦</span>
+    </div>
+  </div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-kicker">Hilula of the Rashbi · 33rd Day of the Omer</div>
-      <h1>Send Your Prayer<br>to the Rashbi<br>in Meron</h1>
-      <p class="hero-desc">Hundreds of thousands gather at the Tzion on this holy day. Your names and prayers are carried personally to the holy resting place of Rabbi Shimon Bar Yochai.</p>
-      <div class="hero-actions">
-        <a href="#form" class="btn btn-primary">Send a Prayer →</a>
-        <a href="#form" class="btn btn-secondary">Make a Donation</a>
-      </div>
+<!-- ── STEP 1 MODAL: Name + Email ── -->
+<div class="overlay" id="overlay-step1">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-step">Step 1 of 3</span>
+      <div class="modal-title">Who are we praying for?</div>
+      <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
-    <div style="display:flex;flex-direction:column;gap:0;">
-      <div style="overflow:hidden;border:1px solid var(--border);border-bottom:none;">
-        <img src="hero-campaign.jpeg" alt="Lag BaOmer in Meron — send your prayer to the Rashbi" style="width:100%;display:block;object-fit:cover;max-height:380px;">
+    <div class="modal-body">
+      <div class="modal-progress">
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
       </div>
-      <div class="hero-stat-block" style="flex-direction:row;gap:0;border-top:none;">
-        <div class="hero-stat" style="flex:1;padding-bottom:0;border-bottom:none;border-right:1px solid var(--border);padding-right:1.25rem;margin-right:1.25rem;">
-          <span class="stat-num">500K+</span>
-          <span class="stat-label">Pilgrims at Meron</span>
-        </div>
-        <div class="hero-stat" style="flex:1;padding-bottom:0;border-bottom:none;border-right:1px solid var(--border);padding-right:1.25rem;margin-right:1.25rem;">
-          <span class="stat-num">2,000</span>
-          <span class="stat-label">Years of prayer</span>
-        </div>
-        <div class="hero-stat" style="flex:1;padding-bottom:0;border-bottom:none;">
-          <span class="stat-num">Free</span>
-          <span class="stat-label">To send your name</span>
-        </div>
+      <div class="f-row" style="margin-bottom:1rem;">
+        <div class="f-group" style="margin:0;"><label>Your First Name</label><input type="text" id="s1-fname" placeholder="First name"></div>
+        <div class="f-group" style="margin:0;"><label>Last Name</label><input type="text" id="s1-lname" placeholder="Last name"></div>
       </div>
+      <div class="f-group">
+        <label>Email Address</label>
+        <input type="email" id="s1-email" placeholder="your@email.com">
+      </div>
+      <div class="f-group">
+        <label>Names to Pray For at the Tzion</label>
+        <textarea id="s1-names" placeholder="Enter the names you'd like us to carry to the Rashbi on Lag BaOmer…"></textarea>
+      </div>
+      <button class="modal-btn modal-btn-primary" onclick="goStep2()">Continue — Choose Intentions →</button>
+      <p class="modal-note">Free. Your details are private. Confirmation sent by email.</p>
     </div>
   </div>
-</section>
-
-<!-- CONTENT -->
-<div class="content-wrap">
-
-  <!-- ABOUT -->
-  <div class="section">
-    <div class="about-grid">
-      <div class="about-body">
-        <div class="section-tag">The Holy Day</div>
-        <h2>Lag BaOmer in Meron</h2>
-        <p>Lag BaOmer marks the Hilula — the anniversary of the passing of the Holy Tannah, Rebbe Shimon Bar Yochai. It is the most powerful day of the year for prayer and divine blessing.</p>
-        <p>Hundreds of thousands of Jews make the journey to the northern Galilean town of Meron to pour out their hearts in prayer at the holy Tzion of the Rashbi.</p>
-        <p>Tzidkat Rashbi brings thousands of kvitlach and prayer requests from across the globe to the holy Tzion. Tzidkat Rashbi also sponsors special learning programs for study of Rashbi's Holy Zohar throughout the year.</p>
-      </div>
-      <div class="about-aside">
-        <div class="aside-stat">
-          <blockquote class="pull-quote" style="border:none;padding:0;background:transparent;">
-            <p>"The Holy Rashbi pledged happiness and joy to all who would contribute to the happiness of his day — and may His merit be a blessing for you the whole year."</p>
-            <cite>Tzidkat Rashbi · Meron, Israel</cite>
-          </blockquote>
-        </div>
-        <div class="aside-stat">
-          <span class="aside-num">∞</span>
-          <span class="aside-label">Miracles witnessed at the holy Tzion</span>
-        </div>
-        <div class="aside-stat">
-          <span class="aside-num">Free</span>
-          <span class="aside-label">Prayer submission — no donation required</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BLESSINGS -->
-  <div class="section">
-    <div class="section-tag">Prayers answered for every need</div>
-    <h2>What We Pray For at the Tzion</h2>
-    <p style="font-family:'EB Garamond',serif;font-size:1.1rem;color:var(--mid);max-width:600px;line-height:1.75;margin-bottom:0;">Protection, Children, Refuot, Shidducim, Parnassah, Shalom Bayit, Salvation — all prayers are brought to the holy Tzion of the Rashbi on the day of Lag BaOmer.</p>
-    <div class="blessings-grid">
-      <div class="blessing"><div class="blessing-dot"></div>Protection &amp; Safety</div>
-      <div class="blessing"><div class="blessing-dot"></div>Children &amp; Fertility</div>
-      <div class="blessing"><div class="blessing-dot"></div>Refuah — Healing</div>
-      <div class="blessing"><div class="blessing-dot"></div>Shidduch — Marriage</div>
-      <div class="blessing"><div class="blessing-dot"></div>Parnassah — Livelihood</div>
-      <div class="blessing"><div class="blessing-dot"></div>Shalom Bayit</div>
-      <div class="blessing"><div class="blessing-dot"></div>Salvation &amp; Rescue</div>
-      <div class="blessing"><div class="blessing-dot"></div>Chai Rotel</div>
-    </div>
-  </div>
-
-  <!-- MIRACLES -->
-  <div class="section">
-    <div class="section-tag">Stories of salvation</div>
-    <h2>Witnessed Miracles</h2>
-    <div class="miracles-grid">
-      <div class="miracle-card">
-        <span class="miracle-num">01</span>
-        <h3>A Shidduch Found</h3>
-        <p>A father prayed for his daughter at the Tzion on Lag BaOmer. Within the year she found her match. The Rashbi's merit brought salvation to their home.</p>
-      </div>
-      <div class="miracle-card">
-        <span class="miracle-num">02</span>
-        <h3>A Son Recovered</h3>
-        <p>Parents begged for healing for their sick child at the holy resting place. Their son made a full and complete recovery — a miracle witnessed by all.</p>
-      </div>
-      <div class="miracle-card">
-        <span class="miracle-num">03</span>
-        <h3>Parnassah Restored</h3>
-        <p>A man on the verge of despair, unable to provide for his family, prayed at the Rashbi. Shortly after he was offered management of a successful company.</p>
-      </div>
-      <div class="miracle-card">
-        <span class="miracle-num">04</span>
-        <h3>Children Granted</h3>
-        <p>Couples who had longed for children came to Meron with heartfelt prayer. Time and again their prayers were answered through the merit of Reb Shimon.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- FORM -->
-  <div class="section" id="form">
-    <div class="section-tag">Take part now</div>
-    <h2>Send Your Prayer &amp; Donation</h2>
-    <div class="form-outer">
-      <!-- Sidebar -->
-      <div class="form-sidebar">
-        <div>
-          <h3>Your names will be carried to the holy Tzion of the Rashbi in Meron</h3>
-          <p>On the sacred day of Lag BaOmer, hundreds of thousands gather at Meron. Tzidkat Rashbi personally delivers every kvitlach to the Tzion.</p>
-          <ul class="sidebar-points">
-            <li>Prayer submission is completely free</li>
-            <li>All names delivered personally on Lag BaOmer</li>
-            <li>Confirmation sent by email</li>
-            <li>Donation is optional but appreciated</li>
-            <li>Secure payment via Stripe or PayPal</li>
-          </ul>
-        </div>
-        <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);">
-          <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin:0;line-height:1.6;">Questions? Contact us at <a href="mailto:office@rashbi.org" style="color:rgba(255,255,255,0.5);text-decoration:none;">office@rashbi.org</a> or call <a href="tel:7189715901" style="color:rgba(255,255,255,0.5);text-decoration:none;">718-971-5901</a></p>
-        </div>
-      </div>
-      <!-- Form -->
-      <div class="form-main">
-        <div class="form-tabs">
-          <button class="tab-btn active" onclick="switchTab('prayer',this)">Send a Prayer</button>
-          <button class="tab-btn" onclick="switchTab('donation',this)">Make a Donation</button>
-        </div>
-
-        <div class="form-panel active" id="panel-prayer">
-          <div class="f-row">
-            <div class="f-group"><label>First Name</label><input type="text" placeholder="First name"></div>
-            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
-          </div>
-          <div class="f-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-          <div class="f-group">
-            <label>Names to Pray For</label>
-            <textarea placeholder="Names you'd like us to pray for at the holy Tzion…"></textarea>
-          </div>
-          <div class="f-group">
-            <label>Prayer Intentions</label>
-            <div class="check-grid">
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Protection</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Children</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Refuah</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Shidduch</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Parnassah</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Shalom Bayit</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>Chai Rotel</div>
-              <div class="check-opt" onclick="this.classList.toggle('on')"><div class="check-sq"></div>General</div>
-            </div>
-          </div>
-          <div class="f-group">
-            <label>Include a Donation? (optional)</label>
-            <div class="amt-grid" id="pa">
-              <div class="amt" onclick="pick(this,'pa')">$36</div>
-              <div class="amt" onclick="pick(this,'pa')">$72</div>
-              <div class="amt" onclick="pick(this,'pa')">$180</div>
-              <div class="amt" onclick="pick(this,'pa')">Other</div>
-            </div>
-          </div>
-          <button class="submit">Send My Prayer to the Rashbi</button>
-          <p class="f-note">Your details are kept private. Confirmation sent by email. No charge unless a donation amount is selected.</p>
-        </div>
-
-        <div class="form-panel" id="panel-donation">
-          <div class="f-row">
-            <div class="f-group"><label>First Name</label><input type="text" placeholder="First name"></div>
-            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
-          </div>
-          <div class="f-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-          <div class="f-group">
-            <label>Donation Purpose</label>
-            <select>
-              <option>General Lag BaOmer Support</option>
-              <option>Chai Rotel Festivities</option>
-              <option>Kvitlach to the Tzion</option>
-              <option>Zohar Study Program</option>
-              <option>Chalaka Ceremony</option>
-            </select>
-          </div>
-          <div class="f-group">
-            <label>Amount</label>
-            <div class="amt-grid" id="da">
-              <div class="amt" onclick="pick(this,'da')">$36</div>
-              <div class="amt" onclick="pick(this,'da')">$72</div>
-              <div class="amt on" onclick="pick(this,'da')">$180</div>
-              <div class="amt" onclick="pick(this,'da')">$360</div>
-            </div>
-          </div>
-          <div class="f-group"><label>Names to Include (optional)</label><input type="text" placeholder="Names you wish to include"></div>
-          <button class="submit">Donate &amp; Send Names to Meron</button>
-          <p class="f-note">Secure payment via Stripe or PayPal. Receipt and confirmation sent by email.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h4>Kupat Tzidkat Rashbi</h4>
-      <p>In Memory of Rebbe Shimon Bar Yochai</p>
-      <p>Tzfat – Meron, Israel</p>
-      <p>Under the Auspices of Berel Freed</p>
+<!-- ── STEP 2 MODAL: Prayer intentions ── -->
+<div class="overlay" id="overlay-step2">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-step">Step 2 of 3</span>
+      <div class="modal-title">What shall we pray for?</div>
+      <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="tel:7189715901">US: 718-971-5901</a>
-      <a href="tel:02031501539">UK: 02031501539</a>
-      <a href="mailto:office@rashbi.org">office@rashbi.org</a>
-      <p>91 Taz Street, Safed Israel</p>
-    </div>
-    <div class="footer-col">
-      <h4>Programs</h4>
-      <a href="https://www.rashbi.org/lagbaomer-chairotel">Chai Rotel</a>
-      <a href="https://www.rashbi.org/prayer-service">Prayer Service</a>
-      <a href="https://www.rashbi.org/lagbaomer-chalaka">Chalaka Ceremony</a>
-      <a href="https://www.rashbi.org/lagbomer-miracles">Miracles</a>
+    <div class="modal-body">
+      <div class="modal-progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+      </div>
+      <div class="f-group">
+        <label>Select all that apply</label>
+        <div class="check-grid" id="intentions">
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Protection</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Children</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Healing (Refuah)</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Shidduch</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Parnassah</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Shalom Bayit</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Chai Rotel</div>
+          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>General Prayer</div>
+        </div>
+      </div>
+      <div class="f-group">
+        <label>Phone / WhatsApp (optional)</label>
+        <input type="tel" id="s2-phone" placeholder="+1 or +972...">
+      </div>
+      <button class="modal-btn modal-btn-primary" onclick="goStep3()">Send My Prayer →</button>
+      <button class="modal-btn-skip" onclick="goStep3()">Skip — send without selecting</button>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-logo-text">Tzidkat Rashbi</span>
-    <span>© 2025 Kupat Tzidkat Rashbi. All rights reserved.</span>
+</div>
+
+<!-- ── STEP 3 MODAL: Success + Donation offer ── -->
+<div class="overlay" id="overlay-step3">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-step">Step 3 of 3</span>
+      <div class="modal-title">Your prayer has been received</div>
+      <button class="modal-close" onclick="closeAll()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+      </div>
+
+      <div class="success-screen">
+        <div class="success-icon">✦</div>
+        <h3>Your name is on its way to Meron</h3>
+        <p>A confirmation will be sent to your email. Your names will be carried personally to the holy Tzion of the Rashbi on the day of Lag BaOmer.</p>
+
+        <div class="donation-highlight">
+          <p>"The Holy Rashbi pledged happiness and joy to all who contribute to the rejoicing of his day — may His merit protect you all year."</p>
+        </div>
+
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:1.25rem;line-height:1.6;">Would you like to strengthen your prayer with a donation to Tzidkat Rashbi? Every contribution supports the Chai Rotel festivities, Zohar study, and the mission at Meron.</p>
+
+        <!-- DONATION PURPOSE -->
+        <div style="margin-bottom:0.85rem;">
+          <label style="display:block;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.35rem;">Donation purpose</label>
+          <select id="don-purpose" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.65rem 0.9rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;outline:none;appearance:none;cursor:pointer;">
+            <option value="Chai Rotel Festivities">Chai Rotel — Oil for the bonfire</option>
+            <option value="Zohar Study Program">Zohar study program</option>
+            <option value="Kvitlach to the Tzion">Kvitlach delivered to the Tzion</option>
+            <option value="Chalaka Ceremony">Chalaka (first haircut) ceremony</option>
+            <option value="General Lag BaOmer Support">General Lag BaOmer support</option>
+          </select>
+        </div>
+
+        <!-- AMOUNT GRID -->
+        <div class="amt-grid" id="don-amts" style="margin-bottom:0.5rem;">
+          <div class="amt" onclick="pickAmt(this,'don-amts')">$36</div>
+          <div class="amt on" onclick="pickAmt(this,'don-amts')">$72</div>
+          <div class="amt" onclick="pickAmt(this,'don-amts')">$180</div>
+          <div class="amt" onclick="pickAmt(this,'don-amts')">$360</div>
+          <div class="amt" id="amt-other-en" onclick="pickOther('en')" style="grid-column:span 2;">Other amount</div>
+        </div>
+
+        <!-- OTHER AMOUNT INPUT (hidden by default) -->
+        <div id="other-wrap-en" style="display:none;margin-bottom:0.85rem;">
+          <input type="number" id="other-amt-en" min="1" placeholder="Enter amount in $" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.65rem 0.9rem;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;">
+        </div>
+
+        <button class="success-donate-cta" onclick="submitDonation()">Donate &amp; Complete My Prayer →</button>
+        <button class="modal-btn-skip" onclick="goThankyou()">No thank you — take me to confirmation</button>
+      </div>
+    </div>
   </div>
-</footer>
+</div>
+
+<!-- WhatsApp float -->
+<a class="wa-float" href="https://wa.me/9720000000" target="_blank" title="Contact us on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
 <script>
-function switchTab(tab,el){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('panel-'+tab).classList.add('active');
+// ── STATE ──
+const state = {
+  fname: '', lname: '', email: '', names: '', phone: '',
+  intentions: [], donationAmt: '$72'
+};
+
+function openStep1() {
+  document.getElementById('overlay-step1').classList.add('open');
+  fbq('track', 'InitiateCheckout');
 }
-function pick(el,id){
-  document.getElementById(id).querySelectorAll('.amt').forEach(a=>a.classList.remove('on'));
-  el.classList.add('on');
+
+function closeAll() {
+  document.querySelectorAll('.overlay').forEach(o => o.classList.remove('open'));
 }
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+
+// Close on backdrop click
+document.querySelectorAll('.overlay').forEach(o => {
+  o.addEventListener('click', function(e) {
+    if (e.target === this) closeAll();
   });
 });
+
+function goStep2() {
+  const fname = document.getElementById('s1-fname').value.trim();
+  const email = document.getElementById('s1-email').value.trim();
+  const names = document.getElementById('s1-names').value.trim();
+
+  if (!fname) { shakeField('s1-fname'); return; }
+  if (!email || !email.includes('@')) { shakeField('s1-email'); return; }
+
+  state.fname = fname;
+  state.lname = document.getElementById('s1-lname').value.trim();
+  state.email = email;
+  state.names = names;
+
+  fbq('track', 'Lead');
+
+  document.getElementById('overlay-step1').classList.remove('open');
+  document.getElementById('overlay-step2').classList.add('open');
+}
+
+function goStep3() {
+  state.phone = document.getElementById('s2-phone').value.trim();
+  state.intentions = [];
+  document.querySelectorAll('#intentions .ck.on').forEach(el => {
+    state.intentions.push(el.textContent.trim());
+  });
+
+  // Submit to Make webhook
+  submitPrayer();
+
+  document.getElementById('overlay-step2').classList.remove('open');
+  document.getElementById('overlay-step3').classList.add('open');
+
+  fbq('track', 'CompleteRegistration');
+}
+
+function submitPrayer() {
+  const WEBHOOK = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+  fetch(WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: 'prayer',
+      language: 'english',
+      first_name: state.fname,
+      last_name: state.lname,
+      email: state.email,
+      phone: state.phone,
+      names: state.names,
+      intentions: state.intentions
+    })
+  }).catch(() => {}); // silent fail, don't block UX
+}
+
+function pickOther(lang) {
+  const grid = document.getElementById('don-amts');
+  grid.querySelectorAll('.amt').forEach(a => a.classList.remove('on'));
+  document.getElementById('amt-other-' + lang).classList.add('on');
+  document.getElementById('other-wrap-' + lang).style.display = 'block';
+  document.getElementById('other-amt-' + lang).focus();
+}
+
+function submitDonation() {
+  const WEBHOOK = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+  const selAmt = document.getElementById('don-amts').querySelector('.amt.on');
+  const isOther = selAmt && selAmt.id === 'amt-other-en';
+  const otherVal = isOther ? document.getElementById('other-amt-en').value : '';
+  state.donationAmt = isOther ? ('$' + (otherVal || '0')) : (selAmt ? selAmt.textContent : '$72');
+  const purpose = document.getElementById('don-purpose') ? document.getElementById('don-purpose').value : 'General';
+
+  fetch(WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: 'donation',
+      language: 'english',
+      first_name: state.fname,
+      last_name: state.lname,
+      email: state.email,
+      phone: state.phone,
+      names: state.names,
+      intentions: state.intentions,
+      donation_amount: state.donationAmt
+    })
+  }).catch(() => {});
+
+  fbq('track', 'AddToCart', { value: parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')), currency: 'USD' });
+
+  // In production: redirect to Stripe/PayPal payment link
+  alert('Redirecting to payment... (connect Stripe/PayPal here)');
+}
+
+function pickAmt(el, id) {
+  document.getElementById(id).querySelectorAll('.amt').forEach(a => a.classList.remove('on'));
+  el.classList.add('on');
+}
+
+function shakeField(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#e55';
+  el.style.animation = 'none';
+  el.offsetHeight; // reflow
+  el.style.animation = 'fieldShake 0.4s ease';
+  el.focus();
+  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 800);
+}
+
+// add fieldShake keyframe dynamically
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fieldShake {
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}`;
+document.head.appendChild(style);
+
+(function(){
+  var deadline = new Date('2025-05-04T21:00:00Z').getTime();
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var diff = deadline - Date.now();
+    if(diff<=0){diff=0;}
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    var ed=document.getElementById('cd-d');if(ed)ed.textContent=pad(d);
+    var eh=document.getElementById('cd-h');if(eh)eh.textContent=pad(h);
+    var em=document.getElementById('cd-m');if(em)em.textContent=pad(m);
+    var es=document.getElementById('cd-s');if(es)es.textContent=pad(s);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
 </script>
 </body>
 </html>
