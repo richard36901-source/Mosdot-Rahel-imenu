@@ -656,21 +656,30 @@ function goStep3() {
 }
 
 function submitPrayer() {
-  const WEBHOOK = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+  const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
   fetch(WEBHOOK, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      type: 'prayer', language: 'hebrew',
-      first_name: state.fname, last_name: state.lname,
-      email: state.email, phone: state.phone,
-      names: state.names, intentions: state.intentions
+      type: 'prayer',
+      language: 'hebrew',
+      timestamp: new Date().toISOString(),
+      first_name: state.fname,
+      last_name: state.lname,
+      full_name: (state.fname + ' ' + state.lname).trim(),
+      email: state.email,
+      phone: state.phone,
+      names_to_pray_for: state.names,
+      prayer_intentions: state.intentions.join(', '),
+      donation_included: false,
+      source_page: window.location.href,
+      user_agent: navigator.userAgent
     })
   }).catch(() => {});
 }
 
 function submitDonation() {
-  const WEBHOOK = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+  const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
   const selAmt = document.getElementById('don-amts').querySelector('.amt.on');
   const isOther = selAmt && selAmt.id === 'amt-other-he';
   const otherVal = isOther ? document.getElementById('other-amt-he').value : '';
@@ -680,11 +689,22 @@ function submitDonation() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      type: 'donation', language: 'hebrew',
-      first_name: state.fname, last_name: state.lname,
-      email: state.email, phone: state.phone,
-      names: state.names, intentions: state.intentions,
-      donation_amount: state.donationAmt
+      type: 'donation',
+      language: 'hebrew',
+      timestamp: new Date().toISOString(),
+      first_name: state.fname,
+      last_name: state.lname,
+      full_name: (state.fname + ' ' + state.lname).trim(),
+      email: state.email,
+      phone: state.phone,
+      names_to_pray_for: state.names,
+      prayer_intentions: state.intentions.join(', '),
+      donation_amount: state.donationAmt,
+      donation_currency: 'ILS',
+      donation_purpose: purpose,
+      payment_method: state.paymentMethod || 'pending',
+      source_page: window.location.href,
+      user_agent: navigator.userAgent
     })
   }).catch(() => {});
   fbq('track', 'AddToCart', { value: parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')), currency: 'ILS' });
