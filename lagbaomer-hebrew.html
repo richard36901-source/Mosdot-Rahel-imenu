@@ -31,7 +31,6 @@ html { scroll-behavior: smooth; }
 :root {
   --gold: #B8860B;
   --gold-light: #D4A017;
-  --ink: #111;
   --bg: #0a0805;
   --border: rgba(184,134,11,0.25);
 }
@@ -43,70 +42,112 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   direction: rtl;
+  width: 100%;
 }
 
-/* HERO */
+/* ── HERO ── */
 .hero-page {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+/* LOGO — full width bar */
+.logo-bar {
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.5rem;
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  animation: fadeDown 0.5s ease forwards;
+}
+.logo-bar img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  filter: brightness(1.15);
+  object-fit: contain;
+}
+
+/* HERO IMAGE — full width, atmospheric */
+.hero-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  opacity: 0.38;
+}
+.hero-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(10,8,5,0.55) 0%, rgba(10,8,5,0.15) 35%, rgba(10,8,5,0.6) 75%, rgba(10,8,5,0.95) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,134,11,0.08) 0%, transparent 70%);
+}
+
+/* CONTENT over image */
+.hero-content {
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem 1.5rem 4rem;
-  position: relative;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(184,134,11,0.12) 0%, transparent 70%),
-    #0a0805;
+  flex: 1;
+  padding: 2rem 1.5rem 5rem;
+  min-height: calc(100vh - 70px);
 }
-
-.logo-wrap {
-  margin-bottom: 2.5rem;
-  animation: fadeDown 0.6s ease forwards;
-}
-.logo-wrap img { height: 56px; width: auto; filter: brightness(1.1); }
-
-.campaign-img-wrap {
-  width: 280px; height: 280px;
-  margin: 0 auto 2.5rem;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  animation: fadeIn 0.7s ease 0.2s both;
-}
-.campaign-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .hero-kicker {
-  font-family: 'Heebo', sans-serif;
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--gold-light);
-  margin-bottom: 1rem;
-  animation: fadeDown 0.6s ease 0.1s both;
+  margin-bottom: 1.1rem;
+  animation: fadeDown 0.6s ease 0.15s both;
   font-weight: 500;
 }
 
 .hero-h1 {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  font-size: clamp(2rem, 7vw, 4.2rem);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #fff;
-  margin-bottom: 1rem;
-  animation: fadeDown 0.6s ease 0.2s both;
+  margin-bottom: 1.1rem;
+  animation: fadeDown 0.6s ease 0.25s both;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.7);
+  max-width: 820px;
 }
 
 .hero-sub {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-size: clamp(1.1rem, 2.8vw, 1.45rem);
   font-weight: 400;
-  color: rgba(255,255,255,0.65);
-  max-width: 480px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.8;
-  animation: fadeDown 0.6s ease 0.3s both;
+  color: rgba(255,255,255,0.82);
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+  animation: fadeDown 0.6s ease 0.35s both;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.6);
 }
 
-.cta-wrap { animation: fadeDown 0.6s ease 0.4s both; }
+/* CTA */
+.cta-wrap { animation: fadeDown 0.6s ease 0.45s both; }
 
 .shake-btn {
   display: inline-flex;
@@ -115,48 +156,103 @@ body {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: #000;
   font-family: 'Heebo', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  padding: 1.1rem 2.8rem;
+  padding: 1.15rem 3rem;
   border: none;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
   animation: shakePulse 3s ease 2s infinite;
   direction: rtl;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 24px rgba(184,134,11,0.4);
 }
 .shake-btn:hover {
   transform: scale(1.04);
-  box-shadow: 0 8px 30px rgba(184,134,11,0.4);
+  box-shadow: 0 8px 36px rgba(184,134,11,0.55);
   animation: none;
 }
 
 .trust-line {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.38);
   animation: fadeIn 0.6s ease 0.6s both;
   font-weight: 300;
 }
 
+/* TIMER below CTA */
+.countdown-wrap {
+  margin-top: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.8s forwards;
+}
+.countdown-label {
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-family: 'Heebo', sans-serif;
+}
+.countdown-digits {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: flex-end;
+  direction: ltr;
+}
+.cd-unit { text-align: center; min-width: 42px; }
+.cd-num {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  color: #D4A017;
+  line-height: 1;
+}
+.cd-lbl {
+  font-size: 0.52rem;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.25);
+  margin-top: 2px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+}
+.cd-sep {
+  font-size: 1.5rem;
+  color: #B8860B;
+  padding-bottom: 10px;
+  line-height: 1;
+}
+
+/* PROOF STRIP */
 .proof-strip {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(184,134,11,0.08);
+  bottom: 0;
+  left: 0; right: 0;
+  background: rgba(0,0,0,0.65);
   border-top: 1px solid var(--border);
-  padding: 0.6rem 0;
+  padding: 0.65rem 0;
   overflow: hidden;
   direction: ltr;
+  z-index: 10;
 }
 .proof-track {
   display: flex;
   gap: 4rem;
-  animation: scrollLeft 22s linear infinite;
+  animation: scrollLeft 28s linear infinite;
   white-space: nowrap;
 }
-.proof-track span { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; flex-shrink: 0; }
+.proof-track span {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 400;
+}
 .proof-track .dot { color: var(--gold); font-size: 0.5rem; vertical-align: middle; }
 
-/* OVERLAY */
+/* ── OVERLAYS / MODALS ── */
 .overlay {
   position: fixed;
   inset: 0;
@@ -177,7 +273,7 @@ body {
   background: #141008;
   border: 1px solid var(--border);
   width: 100%;
-  max-width: 480px;
+  max-width: 490px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
@@ -201,7 +297,7 @@ body {
 }
 .modal-title {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.3;
@@ -265,37 +361,22 @@ body {
   padding: 0.5rem 0.65rem;
   border: 1px solid rgba(255,255,255,0.1);
   cursor: pointer;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
   transition: all 0.15s;
   user-select: none;
   font-weight: 300;
 }
-.ck:hover { border-color: rgba(184,134,11,0.4); color: rgba(255,255,255,0.8); }
+.ck:hover { border-color: rgba(184,134,11,0.4); color: rgba(255,255,255,0.85); }
 .ck.on { border-color: var(--gold); color: #fff; background: rgba(184,134,11,0.1); }
 .ck-box { width: 11px; height: 11px; border: 1px solid currentColor; flex-shrink: 0; position: relative; }
 .ck.on .ck-box::after { content: ''; position: absolute; inset: 2px; background: var(--gold); }
-
-.amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.35rem; }
-.amt {
-  padding: 0.6rem 0.3rem;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: transparent;
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1rem;
-  text-align: center;
-  transition: all 0.15s;
-}
-.amt:hover { border-color: var(--gold); color: #fff; }
-.amt.on { border-color: var(--gold); color: var(--gold-light); background: rgba(184,134,11,0.1); }
 
 .modal-btn {
   width: 100%;
   padding: 0.9rem;
   font-family: 'Heebo', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -304,73 +385,92 @@ body {
 }
 .modal-btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #000; }
 .modal-btn-primary:hover { filter: brightness(1.1); }
-.modal-btn-skip {
-  background: transparent;
-  color: rgba(255,255,255,0.3);
-  font-size: 0.78rem;
-  font-weight: 400;
-  padding: 0.6rem;
-  margin-top: 0.25rem;
-  text-decoration: underline;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  font-family: 'Heebo', sans-serif;
-}
-.modal-btn-skip:hover { color: rgba(255,255,255,0.55); }
 .modal-note { font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; margin-top: 0.75rem; line-height: 1.5; font-weight: 300; }
 
-.donation-highlight {
-  background: rgba(184,134,11,0.08);
+/* Step 4 donation */
+.don-header-box {
+  background: rgba(184,134,11,0.07);
   border: 1px solid var(--border);
-  padding: 1.25rem;
+  border-right: 3px solid var(--gold);
+  padding: 1.25rem 1.4rem;
   margin-bottom: 1.25rem;
-  text-align: center;
 }
-.donation-highlight p {
+.don-header-box h3 {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.7;
-}
-
-.success-screen { text-align: center; padding: 0.5rem 0; }
-.success-icon {
-  width: 64px; height: 64px;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 1.5rem;
-  animation: popIn 0.4s ease;
-}
-.success-screen h3 {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
 }
-.success-screen p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 1.25rem; font-weight: 300; }
+.don-header-box p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.don-radio-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  cursor: pointer;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 0.4rem;
+  transition: all 0.15s;
+  font-weight: 300;
+  line-height: 1.4;
+}
+.don-radio-row:hover { border-color: rgba(184,134,11,0.4); color: #fff; }
+.don-radio-row input {
+  accent-color: var(--gold-light);
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  direction: ltr;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
 
 .success-donate-cta {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: #000;
-  padding: 0.9rem 2rem;
+  padding: 0.95rem 2rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   border: none;
   cursor: pointer;
   width: 100%;
   transition: filter 0.15s;
   font-family: 'Heebo', sans-serif;
   animation: shakePulse 2.5s ease 1s infinite;
+  margin-top: 0.75rem;
 }
 .success-donate-cta:hover { filter: brightness(1.1); animation: none; }
 
+.skip-prayer {
+  display: block;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+  font-weight: 300;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.15s;
+}
+.skip-prayer:hover { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.65); }
+
+/* WA float */
 .wa-float {
   position: fixed;
   bottom: 1.5rem;
@@ -389,6 +489,7 @@ body {
 }
 .wa-float svg { width: 28px; height: 28px; fill: #fff; }
 
+/* KEYFRAMES */
 @keyframes fadeDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 @keyframes shakePulse {
@@ -401,21 +502,15 @@ body {
 }
 @keyframes scrollLeft { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @keyframes floatBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-@keyframes popIn { from{transform:scale(0.6);opacity:0} to{transform:scale(1);opacity:1} }
 @keyframes fieldShake {
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-6px)}
-  40%{transform:translateX(6px)}
-  60%{transform:translateX(-4px)}
-  80%{transform:translateX(4px)}
+  0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
 }
 
-@media (max-width: 480px) {
-  .campaign-img-wrap { width: 230px; height: 230px; }
+@media (max-width: 600px) {
   .f-row { grid-template-columns: 1fr; }
-  .amt-grid { grid-template-columns: repeat(2,1fr); }
   .modal-body { padding: 1.25rem; }
   .modal-header { padding: 1.25rem 1.25rem 1rem; }
+  .don-radio-row { font-size: 0.88rem; }
 }
 </style>
 </head>
@@ -423,65 +518,67 @@ body {
 
 <div class="hero-page">
 
-  <div class="logo-wrap">
+  <!-- Full-width background image -->
+  <div class="hero-image-wrap">
+    <img src="hero-campaign.jpeg" alt="מירון ל״ג בעומר">
+  </div>
+
+  <!-- Logo bar — stretched full width -->
+  <div class="logo-bar">
     <img src="logo-banner.jpeg" alt="קופת צדקת רשב״י">
   </div>
 
-  <div class="campaign-img-wrap">
-    <img src="hero-campaign.jpeg" alt="הנס שלך מתחיל כאן">
-  </div>
+  <!-- Hero content -->
+  <div class="hero-content">
+    <div class="hero-kicker">ל"ג בעומר · מירון · הילולא דרשב"י</div>
 
-  <div class="hero-kicker">ל"ג בעומר · מירון · הילולא דרשב"י</div>
+    <h1 class="hero-h1">השנה שמך יוזכר<br>בציון הרשב"י<br>ברגעים הכי קדושים</h1>
 
-  <h1 class="hero-h1">הנס שלך<br>מתחיל כאן</h1>
+    <p class="hero-sub">מסור עכשיו את שמותיך ואת שמות בני משפחתך<br>לישועה ולברכה — בחינם לגמרי</p>
 
-  <p class="hero-sub">מסור את שמך לציון הרשב"י ביום הקדוש ביותר של השנה — חינם לגמרי.</p>
+    <div class="cta-wrap">
+      <button class="shake-btn" onclick="openStep1()">
+        ✦ למסירת שמות
+      </button>
+      <p class="trust-line">ללא תשלום &nbsp;·&nbsp; 30 שניות &nbsp;·&nbsp; אישור במייל</p>
+    </div>
 
-  <div class="cta-wrap">
-    <button class="shake-btn" onclick="openStep1()">
-      ← מסור את שמי חינם
-    </button>
-    <p class="trust-line">✦ ללא תשלום &nbsp;·&nbsp; לוקח 30 שניות &nbsp;·&nbsp; אישור במייל</p>
-  </div>
-
-
-  <!-- COUNTDOWN -->
-  <div style="margin-top:1.5rem;text-align:center;opacity:0;animation:fadeIn 0.8s ease 0.8s forwards;">
-    <p style="font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;font-family:Heebo,sans-serif;font-weight:300;">הרשימה נסגרת בעוד</p>
-    <div style="display:inline-flex;gap:0.4rem;align-items:flex-end;direction:ltr;">
-      <div style="text-align:center;min-width:42px;"><div id="cd-d" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.08em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">ימים</div></div>
-      <div style="font-size:1.5rem;color:#B8860B;padding-bottom:10px;">:</div>
-      <div style="text-align:center;min-width:42px;"><div id="cd-h" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.08em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">שעות</div></div>
-      <div style="font-size:1.5rem;color:#B8860B;padding-bottom:10px;">:</div>
-      <div style="text-align:center;min-width:42px;"><div id="cd-m" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.08em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">דקות</div></div>
-      <div style="font-size:1.5rem;color:#B8860B;padding-bottom:10px;">:</div>
-      <div style="text-align:center;min-width:42px;"><div id="cd-s" style="font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1;">00</div><div style="font-size:0.55rem;letter-spacing:.08em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px;">שניות</div></div>
+    <!-- Countdown below button -->
+    <div class="countdown-wrap">
+      <p class="countdown-label">הרשימה נסגרת בעוד</p>
+      <div class="countdown-digits">
+        <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-lbl">ימים</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
+      </div>
     </div>
   </div>
 
+  <!-- Proof strip — new texts -->
   <div class="proof-strip">
     <div class="proof-track">
-      <span>500,000+ עולים למירון בכל שנה</span>
+      <span>זכות הצדקה והתפילה ביום הקדוש: מסרו שם והבטיחו לעצמכם ישועה מעל הטבע!</span>
       <span class="dot">✦</span>
-      <span>תפילות להגנה · ילדים · רפואה · שידוך · פרנסה</span>
+      <span>ההכנות בעיצומן | מסרו כעת את שמותיכם להזכרה בשיא היום הקדוש</span>
       <span class="dot">✦</span>
-      <span>קופת צדקת רשב"י · מירון, ישראל</span>
+      <span>אלפי תורמים כבר לקחו חלק במיזם 'סעודת הרשב"י' – הזכות שלך מחכה כאן...</span>
       <span class="dot">✦</span>
-      <span>יום ל"ג לעומר · ציון הרשב"י הקדוש</span>
+      <!-- duplicate for seamless loop -->
+      <span>זכות הצדקה והתפילה ביום הקדוש: מסרו שם והבטיחו לעצמכם ישועה מעל הטבע!</span>
       <span class="dot">✦</span>
-      <span>500,000+ עולים למירון בכל שנה</span>
+      <span>ההכנות בעיצומן | מסרו כעת את שמותיכם להזכרה בשיא היום הקדוש</span>
       <span class="dot">✦</span>
-      <span>תפילות להגנה · ילדים · רפואה · שידוך · פרנסה</span>
-      <span class="dot">✦</span>
-      <span>קופת צדקת רשב"י · מירון, ישראל</span>
-      <span class="dot">✦</span>
-      <span>יום ל"ג לעומר · ציון הרשב"י הקדוש</span>
+      <span>אלפי תורמים כבר לקחו חלק במיזם 'סעודת הרשב"י' – הזכות שלך מחכה כאן...</span>
       <span class="dot">✦</span>
     </div>
   </div>
 </div>
 
-<!-- STEP 1: פרטים אישיים -->
+<!-- ══ STEP 1: פרטים אישיים ══ -->
 <div class="overlay" id="overlay-step1">
   <div class="modal">
     <div class="modal-header">
@@ -505,7 +602,7 @@ body {
   </div>
 </div>
 
-<!-- STEP 2: שמות לתפילה -->
+<!-- ══ STEP 2: שמות לתפילה ══ -->
 <div class="overlay" id="overlay-step2">
   <div class="modal">
     <div class="modal-header">
@@ -524,33 +621,23 @@ body {
             <div class="f-group" style="margin:0;"><label>שם בעברית</label><input type="text" class="heb-name" placeholder="שם בן/בת שם האם"></div>
             <div class="f-group" style="margin:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder="שם האם בעברית"></div>
           </div>
-          <div class="f-row" style="margin-bottom:0.6rem;">
-            <div class="f-group" style="margin:0;">
-              <label>מין</label>
-              <select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.85rem;outline:none;appearance:none;direction:rtl;">
-                <option value="">בחר</option>
-                <option>זכר</option>
-                <option>נקבה</option>
-              </select>
-            </div>
-            <div class="f-group" style="margin:0;">
-              <label>סוג תפילה</label>
-              <select class="prayer-type-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.85rem;outline:none;appearance:none;direction:rtl;">
-                <option>תפילה לחי</option>
-                <option>תפילה לנשמת נפטר</option>
-                <option>תפילה לחולה</option>
-              </select>
-            </div>
+          <div class="f-group" style="margin-bottom:0;">
+            <label>מין</label>
+            <select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;">
+              <option value="">בחר</option>
+              <option>זכר</option>
+              <option>נקבה</option>
+            </select>
           </div>
         </div>
       </div>
-      <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.5rem 1rem;cursor:pointer;width:100%;margin-bottom:0.75rem;font-family:'Heebo',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ הוסף אדם נוסף</button>
+      <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.55rem 1rem;cursor:pointer;width:100%;margin:0.85rem 0 0.75rem;font-family:'Heebo',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ הוסף אדם נוסף</button>
       <button class="modal-btn modal-btn-primary" onclick="goStep3()">המשך ← בחר תפילות</button>
     </div>
   </div>
 </div>
 
-<!-- STEP 3: בקשות תפילה -->
+<!-- ══ STEP 3: בקשות תפילה ══ -->
 <div class="overlay" id="overlay-step3">
   <div class="modal">
     <div class="modal-header">
@@ -563,7 +650,6 @@ body {
         <div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step active"></div><div class="prog-step"></div>
       </div>
       <div class="f-group">
-        <label>בחר הכל שרלוונטי</label>
         <div class="check-grid" id="intentions">
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>רפואה שלמה</div>
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שמחה ואושר</div>
@@ -585,22 +671,21 @@ body {
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פדיון נפש</div>
         </div>
       </div>
-      <div class="f-group">
+      <div class="f-group" style="margin-top:0.85rem;">
         <label>תפילה אישית (לא חובה)</label>
         <textarea id="s3-personal" placeholder="הוסף בקשה אישית..." style="min-height:70px;resize:vertical;direction:rtl;"></textarea>
       </div>
-      <button class="modal-btn modal-btn-primary" onclick="goStep4()">המשך ← תרומה</button>
-      <button class="modal-btn-skip" onclick="goStep4()">דלג — עבור לתרומה</button>
+      <button class="modal-btn modal-btn-primary" onclick="goStep4()">המשך ←</button>
     </div>
   </div>
 </div>
 
-<!-- STEP 4: תרומה -->
+<!-- ══ STEP 4: תרומה ══ -->
 <div class="overlay" id="overlay-step4">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-step">שלב 4 מתוך 4 — תרומה</span>
-      <div class="modal-title">חזק את תפילתך</div>
+      <span class="modal-step">שלב 4 מתוך 4 — חיזוק התפילה</span>
+      <div class="modal-title">הבטח לעצמך את ברכת הרשב"י</div>
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
@@ -608,22 +693,28 @@ body {
         <div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step active"></div>
       </div>
 
-      <div class="donation-highlight" style="margin-bottom:1.25rem;">
-        <p>"הרשב"י הבטיח שמחה וטוב לכל מי שיתרום לשמחת יומו — ויהי זכותו למגן וברכה לכל השנה!"</p>
+      <div class="don-header-box">
+        <h3>"כדאי הוא רבי שמעון לסמוך עליו בשעת הדוחק"</h3>
+        <p>התפילה כבר מוכנה למסירה, אך חכמינו לימדו ש'צדקה תציל ממוות' ומבטלת גזירות קשות.</p>
+        <p style="margin-top:0.6rem;">ביום הקדוש הזה, אלפי עניים ועולי רגל ייהנו מסעודת הרשב"י בזכותך. כמו"כ תזכה לממן את מרכזי לימוד הזוה"ר של צדקת רשב"י לאורך כל השנה.</p>
       </div>
 
       <div class="f-group">
-        <label>האם תרצה לכלול תרומה?</label>
-        <div style="display:flex;gap:1.5rem;margin-bottom:1rem;flex-direction:row-reverse;justify-content:flex-end;">
-          <label class="don-radio-row"><input type="radio" name="don-yn" value="yes" onchange="toggleDonation(true)" style="accent-color:var(--gold-light);width:16px;height:16px;"> כן, ברצוני לתרום</label>
-          <label class="don-radio-row"><input type="radio" name="don-yn" value="no" onchange="toggleDonation(false)" style="accent-color:var(--gold-light);width:16px;height:16px;"> בצער, לא כרגע</label>
-        </div>
+        <label style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.65rem;display:block;">האם תרצה להוסיף כוח לתפילה שלך עם זכות הצדקה?</label>
+        <label class="don-radio-row" style="border-color:rgba(184,134,11,0.3);">
+          <input type="radio" name="don-yn" value="yes" onchange="toggleDonation(true)">
+          <span><strong style="color:#fff;">כן! אני רוצה להוסיף את זכות הצדקה</strong></span>
+        </label>
+        <label class="don-radio-row">
+          <input type="radio" name="don-yn" value="no" onchange="toggleDonation(false)">
+          <span>אמסור את השם ללא תרומה כרגע</span>
+        </label>
       </div>
 
-      <div id="donation-details" style="display:none;">
+      <div id="donation-details" style="display:none;margin-top:0.5rem;">
         <div class="f-group">
           <label>בחר סוג תרומה</label>
-          <div id="don-choices" style="display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.75rem;">
+          <div id="don-choices" style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem;">
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה - ₪65" onchange="syncDonAmt('₪65')"> תפילה — ₪65</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה ונר - ₪130" onchange="syncDonAmt('₪130')"> תפילה ונר — ₪130</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="משנה ונר ביארצייט - ₪260" onchange="syncDonAmt('₪260')"> משנה ונר ביארצייט — ₪260</label>
@@ -644,18 +735,17 @@ body {
         <div class="f-group">
           <label>אמצעי תשלום</label>
           <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-direction:row-reverse;justify-content:flex-end;">
-            <label class="don-radio-row"><input type="radio" name="pay-method" value="כרטיס אשראי" checked style="accent-color:var(--gold-light);"> כרטיס אשראי</label>
-            <label class="don-radio-row"><input type="radio" name="pay-method" value="PayPal" style="accent-color:var(--gold-light);"> PayPal</label>
+            <label class="don-radio-row" style="border:none;padding:0.2rem 0;"><input type="radio" name="pay-method" value="כרטיס אשראי" checked style="accent-color:var(--gold-light);direction:ltr;background:transparent;border:none;padding:0;"> כרטיס אשראי</label>
+            <label class="don-radio-row" style="border:none;padding:0.2rem 0;"><input type="radio" name="pay-method" value="PayPal" style="accent-color:var(--gold-light);direction:ltr;background:transparent;border:none;padding:0;"> PayPal</label>
           </div>
         </div>
       </div>
 
       <button class="success-donate-cta" onclick="submitFinal()">← שלח את תפילתי</button>
-      <button class="modal-btn-skip" onclick="submitPrayerOnly()">שלח ללא תרומה</button>
+      <button class="skip-prayer" onclick="submitPrayerOnly()">אמסור את השם ללא תרומה</button>
     </div>
   </div>
 </div>
-
 
 <!-- WhatsApp float -->
 <a class="wa-float" href="https://wa.me/9720000000" target="_blank" title="צרו קשר בווצאפ">
@@ -665,7 +755,22 @@ body {
 </a>
 
 <script>
-const state = {
+// ── COUNTDOWN ──
+(function(){
+  var deadline = new Date('2026-05-04T21:00:00Z').getTime();
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var diff = Math.max(0, deadline - Date.now());
+    document.getElementById('cd-d').textContent = pad(Math.floor(diff/86400000));
+    document.getElementById('cd-h').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-m').textContent = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-s').textContent = pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+// ── STATE ──
+var state = {
   fname:'', lname:'', email:'', phone:'',
   names_entries:[],
   intentions:[],
@@ -673,8 +778,7 @@ const state = {
   donation_included:false,
   donation_choice:'',
   donationAmt:'',
-  payment_method:'כרטיס אשראי',
-  paymentMethod:'כרטיס אשראי'
+  payment_method:'כרטיס אשראי'
 };
 var nameCount = 1;
 
@@ -683,14 +787,13 @@ function addName() {
   var idx = nameCount++;
   var div = document.createElement('div');
   div.className = 'name-entry';
-  div.style.marginTop = '1rem';
-  div.style.paddingTop = '1rem';
-  div.style.borderTop = '1px solid rgba(255,255,255,0.08)';
+  div.style.cssText = 'margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);';
   div.innerHTML = '<div style="font-size:0.7rem;letter-spacing:0.08em;color:var(--gold-light);margin-bottom:0.6rem;font-weight:500;">אדם '+(idx+1)+'</div>' +
     '<div class="f-row" style="margin-bottom:0.6rem;">' +
     '<div class="f-group" style="margin:0;"><label>שם בעברית</label><input type="text" class="heb-name" placeholder="שם בן/בת שם האם"></div>' +
     '<div class="f-group" style="margin:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder="שם האם בעברית"></div>' +
-    '</div>';
+    '</div>' +
+    '<div class="f-group" style="margin:0;"><label>מין</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:Heebo,sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;"><option value="">בחר</option><option>זכר</option><option>נקבה</option></select></div>';
   list.appendChild(div);
 }
 
@@ -717,37 +820,53 @@ function openStep1() {
   fbq('track', 'InitiateCheckout');
 }
 function closeAll() {
-  document.querySelectorAll('.overlay').forEach(o => o.classList.remove('open'));
+  document.querySelectorAll('.overlay').forEach(function(o){ o.classList.remove('open'); });
 }
-document.querySelectorAll('.overlay').forEach(o => {
-  o.addEventListener('click', function(e) { if (e.target === this) closeAll(); });
+document.querySelectorAll('.overlay').forEach(function(o){
+  o.addEventListener('click', function(e){ if(e.target===this) closeAll(); });
 });
 
+function goStep2() {
+  var fname = document.getElementById('s1-fname').value.trim();
+  var email = document.getElementById('s1-email').value.trim();
+  if(!fname){ shakeField('s1-fname'); return; }
+  if(!email || !email.includes('@')){ shakeField('s1-email'); return; }
+  state.fname = fname;
+  state.lname = document.getElementById('s1-lname').value.trim();
+  state.email = email;
+  state.phone = document.getElementById('s1-phone').value.trim();
+  fbq('track','Lead');
+  document.getElementById('overlay-step1').classList.remove('open');
+  document.getElementById('overlay-step2').classList.add('open');
+}
+
 function goStep3() {
-  var entries = [];
-  document.querySelectorAll('.name-entry').forEach(function(entry) {
+  state.names_entries = [];
+  document.querySelectorAll('.name-entry').forEach(function(entry){
     var hn = entry.querySelector('.heb-name');
     var mn = entry.querySelector('.mom-name');
     var gs = entry.querySelector('.gender-sel');
-    var pt = entry.querySelector('.prayer-type-sel');
-    if (hn && hn.value.trim()) {
-      entries.push({ heb_name:hn.value.trim(), mothers_name:mn?mn.value.trim():'', gender:gs?gs.value:'', prayer_type:pt?pt.value:'' });
+    if(hn && hn.value.trim()){
+      state.names_entries.push({
+        heb_name: hn.value.trim(),
+        mothers_name: mn ? mn.value.trim() : '',
+        gender: gs ? gs.value : ''
+      });
     }
   });
-  state.names_entries = entries;
   document.getElementById('overlay-step2').classList.remove('open');
   document.getElementById('overlay-step3').classList.add('open');
 }
 
 function goStep4() {
   state.intentions = [];
-  document.querySelectorAll('#intentions .ck.on').forEach(function(el) {
+  document.querySelectorAll('#intentions .ck.on').forEach(function(el){
     state.intentions.push(el.textContent.trim());
   });
-  state.personal_prayer = document.getElementById('s3-personal') ? document.getElementById('s3-personal').value.trim() : '';
+  state.personal_prayer = document.getElementById('s3-personal').value.trim();
   document.getElementById('overlay-step3').classList.remove('open');
   document.getElementById('overlay-step4').classList.add('open');
-  fbq('track', 'CompleteRegistration');
+  fbq('track','CompleteRegistration');
 }
 
 function submitPrayerOnly() {
@@ -760,12 +879,10 @@ function submitPrayerOnly() {
 function submitFinal() {
   var pm = document.querySelector('input[name="pay-method"]:checked');
   state.payment_method = pm ? pm.value : 'כרטיס אשראי';
-  state.paymentMethod = state.payment_method;
-  if (state.donation_included) {
+  if(state.donation_included){
     var otherChk = document.querySelector('input[name="don-choice"][value="סכום אחר"]:checked');
-    if (otherChk) {
-      var ov = document.getElementById('other-amt-he').value;
-      state.donationAmt = '₪' + (ov || '0');
+    if(otherChk){
+      state.donationAmt = '₪' + (document.getElementById('other-amt-he').value || '0');
     }
     submitDonation();
   } else {
@@ -774,34 +891,17 @@ function submitFinal() {
   }
 }
 
-function goStep2() {
-  var fname = document.getElementById('s1-fname').value.trim();
-  var email = document.getElementById('s1-email').value.trim();
-  if (!fname) { shakeField('s1-fname'); return; }
-  if (!email || !email.includes('@')) { shakeField('s1-email'); return; }
-  state.fname = fname;
-  state.lname = document.getElementById('s1-lname').value.trim();
-  state.email = email;
-  state.phone = document.getElementById('s1-phone').value.trim();
-  fbq('track', 'Lead');
-  document.getElementById('overlay-step1').classList.remove('open');
-  document.getElementById('overlay-step2').classList.add('open');
-}
-
 function submitPrayer() {
   const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
   fetch(WEBHOOK, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
     body: JSON.stringify({
-      type: 'prayer',
-      language: 'hebrew',
+      type:'prayer', language:'hebrew',
       timestamp: new Date().toISOString(),
-      first_name: state.fname,
-      last_name: state.lname,
-      full_name: (state.fname + ' ' + state.lname).trim(),
-      email: state.email,
-      phone: state.phone,
+      first_name: state.fname, last_name: state.lname,
+      full_name: (state.fname+' '+state.lname).trim(),
+      email: state.email, phone: state.phone,
       names_to_pray_for: JSON.stringify(state.names_entries),
       prayer_intentions: state.intentions.join(', '),
       personal_prayer: state.personal_prayer,
@@ -809,85 +909,48 @@ function submitPrayer() {
       source_page: window.location.href,
       user_agent: navigator.userAgent
     })
-  }).catch(() => {});
+  }).catch(function(){});
 }
 
 function submitDonation() {
   const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
-  var purpose = state.donation_choice;
   fetch(WEBHOOK, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
     body: JSON.stringify({
-      type: 'donation',
-      language: 'hebrew',
+      type:'donation', language:'hebrew',
       timestamp: new Date().toISOString(),
-      first_name: state.fname,
-      last_name: state.lname,
-      full_name: (state.fname + ' ' + state.lname).trim(),
-      email: state.email,
-      phone: state.phone,
+      first_name: state.fname, last_name: state.lname,
+      full_name: (state.fname+' '+state.lname).trim(),
+      email: state.email, phone: state.phone,
       names_to_pray_for: JSON.stringify(state.names_entries),
       prayer_intentions: state.intentions.join(', '),
       personal_prayer: state.personal_prayer,
       donation_choice: state.donation_choice,
       donation_amount: state.donationAmt,
-      donation_currency: 'ILS',
-      donation_purpose: purpose,
-      payment_method: state.paymentMethod || 'pending',
+      donation_currency:'ILS',
+      payment_method: state.payment_method,
       source_page: window.location.href,
       user_agent: navigator.userAgent
     })
-  }).catch(() => {});
-  fbq('track', 'AddToCart', { value: parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')), currency: 'ILS' });
+  }).catch(function(){});
+  fbq('track','AddToCart',{value:parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')),currency:'ILS'});
   alert('מעביר לתשלום... (יש לחבר Stripe/PayPal כאן)');
 }
 
-function pickAmt(el, id) {
-  document.getElementById(id).querySelectorAll('.amt').forEach(a => a.classList.remove('on'));
-  el.classList.add('on');
+function goThankyou() {
+  closeAll();
+  window.location.href = 'thankyou-hebrew.html?email=' + encodeURIComponent(state.email) +
+    '&names=' + encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '));
 }
 
 function shakeField(id) {
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   el.style.borderColor = '#e55';
   el.style.animation = 'fieldShake 0.4s ease';
   el.focus();
-  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 800);
+  setTimeout(function(){ el.style.borderColor=''; el.style.animation=''; }, 800);
 }
-
-(function(){
-  var deadline = new Date('2026-05-04T21:00:00Z').getTime();
-  function pad(n){return n<10?'0'+n:''+n;}
-  function tick(){
-    var diff = deadline - Date.now();
-    if(diff<=0){diff=0;}
-    var d=Math.floor(diff/86400000);
-    var h=Math.floor((diff%86400000)/3600000);
-    var m=Math.floor((diff%3600000)/60000);
-    var s=Math.floor((diff%60000)/1000);
-    var ed=document.getElementById('cd-d');if(ed)ed.textContent=pad(d);
-    var eh=document.getElementById('cd-h');if(eh)eh.textContent=pad(h);
-    var em=document.getElementById('cd-m');if(em)em.textContent=pad(m);
-    var es=document.getElementById('cd-s');if(es)es.textContent=pad(s);
-  }
-  tick();
-  setInterval(tick,1000);
-})();
-
-function goThankyou() {
-  closeAll();
-  window.location.href = 'thankyou-hebrew.html?email=' + encodeURIComponent(state.email) + '&names=' + encodeURIComponent(state.names);
-}
-
-function pickOtherHe() {
-  var grid = document.getElementById('don-amts');
-  grid.querySelectorAll('.amt').forEach(function(a){ a.classList.remove('on'); });
-  document.getElementById('amt-other-he').classList.add('on');
-  document.getElementById('other-wrap-he').style.display = 'block';
-  document.getElementById('other-amt-he').focus();
-}
-
 </script>
 </body>
 </html>
