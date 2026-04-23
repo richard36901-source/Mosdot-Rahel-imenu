@@ -405,19 +405,86 @@ function goStep4() {
 function submitFinal() {
   var pm = document.querySelector('input[name="pay-method"]:checked');
   state.payment_method = pm ? pm.value : 'Credit Card';
+
+  // Always fire prayer webhook regardless of donation choice
+  submitPrayer();
+
   if(state.donation_included){
     var otherChk = document.querySelector('input[name="don-choice"][value="Other"]:checked');
     if(otherChk) state.donationAmt = '$' + (document.getElementById('other-amt-en').value || '0');
     submitDonation();
   } else {
-    submitPrayer(); goThankyou();
+    goThankyou();
   }
+}
+
+function buildPayload(type) {
+  // Build individual name fields for up to 10 people
+  var nameFields = {};
+  var entries = state.names_entries.slice(0, 10);
+  for (var i = 0; i < 10; i++) {
+    var prefix = 'person_' + (i + 1) + '_';
+    if (i < entries.length) {
+      nameFields[prefix + 'hebrew_name']   = entries[i].heb_name || '';
+      nameFields[prefix + 'mothers_name']  = entries[i].mothers_name || '';
+      nameFields[prefix + 'gender']        = entries[i].gender || '';
+    } else {
+      nameFields[prefix + 'hebrew_name']   = '';
+      nameFields[prefix + 'mothers_name']  = '';
+      nameFields[prefix + 'gender']        = '';
+    }
+  }
+
+  var base = {
+    // Meta
+    type:                   type,
+    language:               'english',
+    timestamp:              new Date().toISOString(),
+    date:                   new Date().toLocaleDateString('en-GB'),
+    time:                   new Date().toLocaleTimeString('en-GB'),
+
+    // Sender details
+    first_name:             state.fname,
+    last_name:              state.lname,
+    full_name:              (state.fname + ' ' + state.lname).trim(),
+    email:                  state.email,
+    phone:                  state.phone,
+
+    // Names summary
+    total_names_submitted:  entries.length,
+    names_summary:          entries.map(function(n){ return n.heb_name; }).join(', '),
+
+    // Prayer intentions
+    prayer_intentions:      state.intentions.join(', '),
+    total_intentions:       state.intentions.length,
+    personal_prayer:        state.personal_prayer,
+
+    // Donation
+    donation_included:      state.donation_included,
+    donation_choice:        state.donation_choice || '',
+    donation_amount:        state.donationAmt || '',
+    donation_currency:      'USD',
+    payment_method:         state.payment_method || '',
+
+    // Source
+    source_page:            window.location.href,
+    referrer:               document.referrer || '',
+    user_agent:             navigator.userAgent,
+    screen_width:           window.screen.width,
+    screen_height:          window.screen.height,
+    language_browser:       navigator.language || ''
+  };
+
+  // Merge name fields
+  Object.assign(base, nameFields);
+  return base;
 }
 
 function submitPrayer() {
   fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ type:'prayer', language:'english', timestamp: new Date().toISOString(), first_name: state.fname, last_name: state.lname, full_name: (state.fname+' '+state.lname).trim(), email: state.email, phone: state.phone, names_to_pray_for: JSON.stringify(state.names_entries), prayer_intentions: state.intentions.join(', '), personal_prayer: state.personal_prayer, donation_included: state.donation_included, source_page: window.location.href, user_agent: navigator.userAgent })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(buildPayload('prayer'))
   }).catch(function(){});
 }
 
@@ -433,10 +500,10 @@ var STRIPE_LINKS = {
 };
 
 function submitDonation() {
-  // Fire webhook first (silent)
   fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ type:'donation', language:'english', timestamp: new Date().toISOString(), first_name: state.fname, last_name: state.lname, full_name: (state.fname+' '+state.lname).trim(), email: state.email, phone: state.phone, names_to_pray_for: JSON.stringify(state.names_entries), prayer_intentions: state.intentions.join(', '), personal_prayer: state.personal_prayer, donation_choice: state.donation_choice, donation_amount: state.donationAmt, donation_currency:'USD', payment_method: state.payment_method, source_page: window.location.href, user_agent: navigator.userAgent })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(buildPayload('donation'))
   }).catch(function(){});
 
   fbq('track','AddToCart',{value:parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')),currency:'USD'});
@@ -445,12 +512,11 @@ function submitDonation() {
     var stripeUrl = STRIPE_LINKS[state.donationAmt];
     if (stripeUrl) {
       window.open(stripeUrl, '_blank');
+      goThankyou();
     } else {
-      // Other amount — no fixed link, open first link as fallback
       alert('Please contact us for custom donation amounts.');
     }
   } else {
-    // PayPal — coming soon
     alert('PayPal links coming soon.');
   }
 }
