@@ -122,7 +122,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 <!-- Footer logo -->
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center;margin-top:1.5rem;">
-  <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu" style="height:60px;width:auto;object-fit:contain;filter:sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9);">
+  <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu" style="height:60px;width:auto;object-fit:contain;mix-blend-mode:multiply;">
   <p style="font-size:0.72rem;color:rgba(255,255,255,0.25);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;">Mosdot Rachel Imenu · Kupat Tzidkat Rashbi · Meron, Israel<br>All rights reserved © 2026</p>
 </footer>
 
@@ -148,16 +148,28 @@ function showOther() {
   currentAmt = null;
 }
 
+var STRIPE_LINKS = {
+  '$18':  'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00',
+  '$36':  'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01',
+  '$72':  'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02',
+  '$100': 'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03',
+  '$180': 'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04',
+  '$260': 'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05',
+  '$360': 'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06',
+  '$500': 'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07'
+};
+
 function donate() {
   var isOther = !currentAmt;
   var amt = isOther ? ('$' + (document.getElementById('other-val').value || '0')) : currentAmt;
-  if (!amt || amt === '$' || amt === '$0') {
-    alert('Please select a donation amount');
-    return;
-  }
+  if (!amt || amt === '$' || amt === '$0') { alert('Please select a donation amount'); return; }
   fbq('track', 'AddToCart', { value: parseFloat(amt.replace(/[^0-9.]/g, '')), currency: 'USD' });
-  // Replace with your Stripe/PayPal payment link:
-  alert('Redirecting to payment for ' + amt + ' — replace this with your Stripe/PayPal link');
+  var stripeUrl = STRIPE_LINKS[amt];
+  if (stripeUrl) {
+    window.open(stripeUrl, '_blank');
+  } else {
+    alert('Please contact us for custom donation amounts.');
+  }
 }
 
 function shareWA(e) {
