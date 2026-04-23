@@ -725,12 +725,9 @@ body {
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך לימוד הזוהר - ₪100" onchange="syncDonAmt('₪100')"> תומך לימוד הזוהר — ₪100</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="נותן חסות ללימוד הזוהר - ₪180" onchange="syncDonAmt('₪180')"> נותן חסות ללימוד הזוהר — ₪180</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="חי רוטל 54 ליטר יין - ₪260" onchange="syncDonAmt('₪260')"> חי רוטל 54 ליטר יין — ₪260</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך זהב ל\"ג בעומר - ₪360" onchange="syncDonAmt('₪360')"> תומך זהב ל"ג בעומר — ₪360</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="נותן חסות יהלום ל\"ג בעומר - ₪500" onchange="syncDonAmt('₪500')"> נותן חסות יהלום ל"ג בעומר — ₪500</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="סכום אחר" onchange="showOtherAmt()"> סכום אחר</label>
-          </div>
-          <div id="other-amt-wrap" style="display:none;margin-bottom:0.75rem;">
-            <input type="number" id="other-amt-he" min="1" placeholder="הכנס סכום בשקלים" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.65rem 0.9rem;font-family:'Heebo',sans-serif;font-size:1rem;outline:none;direction:ltr;text-align:center;">
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך זהב ל&quot;ג בעומר - ₪360" onchange="syncDonAmt('₪360')"> תומך זהב ל"ג בעומר — ₪360</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="נותן חסות יהלום ל&quot;ג בעומר - ₪500" onchange="syncDonAmt('₪500')"> נותן חסות יהלום ל"ג בעומר — ₪500</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="סכום אחר" onchange="syncDonAmt('סכום אחר')"> סכום אחר</label>
           </div>
         </div>
 
@@ -770,7 +767,6 @@ body {
   tick(); setInterval(tick, 1000);
 })();
 
-// ── STATE ──
 var state = {
   fname:'', lname:'', email:'', phone:'',
   names_entries:[],
@@ -805,15 +801,8 @@ function toggleDonation(show) {
 
 function syncDonAmt(amt) {
   state.donationAmt = amt;
-  document.getElementById('other-amt-wrap').style.display = 'none';
   var sel = document.querySelector('input[name="don-choice"]:checked');
   state.donation_choice = sel ? sel.value : '';
-}
-
-function showOtherAmt() {
-  document.getElementById('other-amt-wrap').style.display = 'block';
-  document.getElementById('other-amt-he').focus();
-  state.donation_choice = 'סכום אחר';
 }
 
 function openStep1() {
@@ -870,25 +859,11 @@ function goStep4() {
   fbq('track','CompleteRegistration');
 }
 
-function submitPrayerOnly() {
-  state.donation_included = false;
-  submitPrayer();
-  closeAll();
-  goThankyou();
-}
-
 function submitFinal() {
   var pm = document.querySelector('input[name="pay-method"]:checked');
   state.payment_method = pm ? pm.value : 'כרטיס אשראי';
-
-  // Always fire prayer webhook
   submitPrayer();
-
   if(state.donation_included){
-    var otherChk = document.querySelector('input[name="don-choice"][value="סכום אחר"]:checked');
-    if(otherChk){
-      state.donationAmt = '₪' + (document.getElementById('other-amt-he').value || '0');
-    }
     submitDonation();
   } else {
     goThankyou();
@@ -910,57 +885,71 @@ function buildPayload(type) {
       nameFields[prefix + 'gender']       = '';
     }
   }
-
   var base = {
-    type:                   type,
-    language:               'hebrew',
-    timestamp:              new Date().toISOString(),
-    date:                   new Date().toLocaleDateString('he-IL'),
-    time:                   new Date().toLocaleTimeString('he-IL'),
-    first_name:             state.fname,
-    last_name:              state.lname,
-    full_name:              (state.fname + ' ' + state.lname).trim(),
-    email:                  state.email,
-    phone:                  state.phone,
-    total_names_submitted:  entries.length,
-    names_summary:          entries.map(function(n){ return n.heb_name; }).join(', '),
-    prayer_intentions:      state.intentions.join(', '),
-    total_intentions:       state.intentions.length,
-    personal_prayer:        state.personal_prayer,
-    donation_included:      state.donation_included,
-    donation_choice:        state.donation_choice || '',
-    donation_amount:        state.donationAmt || '',
-    donation_currency:      'ILS',
-    payment_method:         state.payment_method || '',
-    source_page:            window.location.href,
-    referrer:               document.referrer || '',
-    user_agent:             navigator.userAgent,
-    screen_width:           window.screen.width,
-    screen_height:          window.screen.height,
-    language_browser:       navigator.language || ''
+    type: type, language: 'hebrew',
+    timestamp: new Date().toISOString(),
+    date: new Date().toLocaleDateString('he-IL'),
+    time: new Date().toLocaleTimeString('he-IL'),
+    first_name: state.fname, last_name: state.lname,
+    full_name: (state.fname + ' ' + state.lname).trim(),
+    email: state.email, phone: state.phone,
+    total_names_submitted: entries.length,
+    names_summary: entries.map(function(n){ return n.heb_name; }).join(', '),
+    prayer_intentions: state.intentions.join(', '),
+    total_intentions: state.intentions.length,
+    personal_prayer: state.personal_prayer,
+    donation_included: state.donation_included,
+    donation_choice: state.donation_choice || '',
+    donation_amount: state.donationAmt || '',
+    donation_currency: 'ILS',
+    payment_method: state.payment_method || '',
+    source_page: window.location.href,
+    referrer: document.referrer || '',
+    user_agent: navigator.userAgent,
+    screen_width: window.screen.width,
+    screen_height: window.screen.height,
+    language_browser: navigator.language || ''
   };
-
   Object.assign(base, nameFields);
   return base;
 }
 
 function submitPrayer() {
   fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(buildPayload('prayer'))
   }).catch(function(){});
 }
 
+var STRIPE_LINKS_HE = {
+  '₪18':       'https://buy.stripe.com/7sY3cv4rwgEgg8G3xz6wE09',
+  '₪36':       'https://buy.stripe.com/4gMcN53nsfAc1dM8RT6wE0a',
+  '₪72':       'https://buy.stripe.com/5kQ6oH9LQbjW9Kic456wE0b',
+  '₪100':      'https://buy.stripe.com/00w14n7DIco0cWu6JL6wE0c',
+  '₪180':      'https://buy.stripe.com/9B63cv1fk5ZC9Ki3xz6wE0d',
+  '₪260':      'https://buy.stripe.com/8x2dR9cY2ew85u27NP6wE0e',
+  '₪360':      'https://buy.stripe.com/00wbJ1cY273G7Cad896wE0f',
+  '₪500':      'https://buy.stripe.com/6oU00j7DI0Fi1dM3xz6wE0g',
+  'סכום אחר': 'https://buy.stripe.com/eVqeVde261Jm7Caecd6wE0h'
+};
+
 function submitDonation() {
   fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(buildPayload('donation'))
   }).catch(function(){});
-  fbq('track','AddToCart',{value:parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')),currency:'ILS'});
-  // Hebrew Stripe/PayPal links — plug in when ready
-  alert('מעביר לתשלום... (יש לחבר Stripe/PayPal כאן)');
+  fbq('track','AddToCart',{value:parseFloat((state.donationAmt||'0').replace(/[^0-9.]/g,'')),currency:'ILS'});
+  if (state.payment_method === 'כרטיס אשראי') {
+    var stripeUrl = STRIPE_LINKS_HE[state.donationAmt];
+    if (stripeUrl) {
+      window.open(stripeUrl, '_blank');
+      goThankyou();
+    } else {
+      alert('אנא בחר סכום תרומה.');
+    }
+  } else {
+    alert('תשלום PayPal אינו זמין כרגע. אנא בחר כרטיס אשראי.');
+  }
 }
 
 function goThankyou() {
@@ -981,8 +970,7 @@ function shakeField(id) {
 function shareWA(e) {
   e.preventDefault();
   var msg = 'מסרתי שמות לתפילה על ציון הרשב"י לל"ג בעומר — חינם!\n' + window.location.href;
-  var encoded = encodeURIComponent(msg);
-  var waUrl = 'https://wa.me/?text=' + encoded;
+  var waUrl = 'https://wa.me/?text=' + encodeURIComponent(msg);
   if (/Mobi|Android/i.test(navigator.userAgent)) {
     window.location.href = waUrl;
   } else {
@@ -991,6 +979,7 @@ function shareWA(e) {
   fbq('track', 'Share');
 }
 </script>
+
 <!-- Footer with Mosdot Rachel Imenu logo -->
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center;">
   <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:60px;width:auto;object-fit:contain;mix-blend-mode:multiply;">
