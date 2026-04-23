@@ -880,6 +880,10 @@ function submitPrayerOnly() {
 function submitFinal() {
   var pm = document.querySelector('input[name="pay-method"]:checked');
   state.payment_method = pm ? pm.value : 'כרטיס אשראי';
+
+  // Always fire prayer webhook
+  submitPrayer();
+
   if(state.donation_included){
     var otherChk = document.querySelector('input[name="don-choice"][value="סכום אחר"]:checked');
     if(otherChk){
@@ -887,55 +891,75 @@ function submitFinal() {
     }
     submitDonation();
   } else {
-    submitPrayer();
     goThankyou();
   }
 }
 
+function buildPayload(type) {
+  var nameFields = {};
+  var entries = state.names_entries.slice(0, 10);
+  for (var i = 0; i < 10; i++) {
+    var prefix = 'person_' + (i + 1) + '_';
+    if (i < entries.length) {
+      nameFields[prefix + 'hebrew_name']  = entries[i].heb_name || '';
+      nameFields[prefix + 'mothers_name'] = entries[i].mothers_name || '';
+      nameFields[prefix + 'gender']       = entries[i].gender || '';
+    } else {
+      nameFields[prefix + 'hebrew_name']  = '';
+      nameFields[prefix + 'mothers_name'] = '';
+      nameFields[prefix + 'gender']       = '';
+    }
+  }
+
+  var base = {
+    type:                   type,
+    language:               'hebrew',
+    timestamp:              new Date().toISOString(),
+    date:                   new Date().toLocaleDateString('he-IL'),
+    time:                   new Date().toLocaleTimeString('he-IL'),
+    first_name:             state.fname,
+    last_name:              state.lname,
+    full_name:              (state.fname + ' ' + state.lname).trim(),
+    email:                  state.email,
+    phone:                  state.phone,
+    total_names_submitted:  entries.length,
+    names_summary:          entries.map(function(n){ return n.heb_name; }).join(', '),
+    prayer_intentions:      state.intentions.join(', '),
+    total_intentions:       state.intentions.length,
+    personal_prayer:        state.personal_prayer,
+    donation_included:      state.donation_included,
+    donation_choice:        state.donation_choice || '',
+    donation_amount:        state.donationAmt || '',
+    donation_currency:      'ILS',
+    payment_method:         state.payment_method || '',
+    source_page:            window.location.href,
+    referrer:               document.referrer || '',
+    user_agent:             navigator.userAgent,
+    screen_width:           window.screen.width,
+    screen_height:          window.screen.height,
+    language_browser:       navigator.language || ''
+  };
+
+  Object.assign(base, nameFields);
+  return base;
+}
+
 function submitPrayer() {
-  const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
-  fetch(WEBHOOK, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({
-      type:'prayer', language:'hebrew',
-      timestamp: new Date().toISOString(),
-      first_name: state.fname, last_name: state.lname,
-      full_name: (state.fname+' '+state.lname).trim(),
-      email: state.email, phone: state.phone,
-      names_to_pray_for: JSON.stringify(state.names_entries),
-      prayer_intentions: state.intentions.join(', '),
-      personal_prayer: state.personal_prayer,
-      donation_included: state.donation_included,
-      source_page: window.location.href,
-      user_agent: navigator.userAgent
-    })
+  fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(buildPayload('prayer'))
   }).catch(function(){});
 }
 
 function submitDonation() {
-  const WEBHOOK = 'https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd';
-  fetch(WEBHOOK, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({
-      type:'donation', language:'hebrew',
-      timestamp: new Date().toISOString(),
-      first_name: state.fname, last_name: state.lname,
-      full_name: (state.fname+' '+state.lname).trim(),
-      email: state.email, phone: state.phone,
-      names_to_pray_for: JSON.stringify(state.names_entries),
-      prayer_intentions: state.intentions.join(', '),
-      personal_prayer: state.personal_prayer,
-      donation_choice: state.donation_choice,
-      donation_amount: state.donationAmt,
-      donation_currency:'ILS',
-      payment_method: state.payment_method,
-      source_page: window.location.href,
-      user_agent: navigator.userAgent
-    })
+  fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(buildPayload('donation'))
   }).catch(function(){});
   fbq('track','AddToCart',{value:parseFloat(state.donationAmt.replace(/[^0-9.]/g,'')),currency:'ILS'});
+  // Hebrew Stripe/PayPal links — plug in when ready
   alert('מעביר לתשלום... (יש לחבר Stripe/PayPal כאן)');
 }
 
@@ -969,7 +993,7 @@ function shareWA(e) {
 </script>
 <!-- Footer with Mosdot Rachel Imenu logo -->
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center;">
-  <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:60px;width:auto;object-fit:contain;filter:sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9);">
+  <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:60px;width:auto;object-fit:contain;mix-blend-mode:multiply;">
   <p style="font-size:0.72rem;color:rgba(255,255,255,0.25);font-family:'Heebo',sans-serif;font-weight:300;line-height:1.6;">מוסדות רחל אמנו · קופת צדקת רשב"י · מירון, ישראל<br>כל הזכויות שמורות © 2026</p>
 </footer>
 
