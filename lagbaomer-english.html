@@ -410,7 +410,7 @@ function goStep2(){
   var email=document.getElementById('s1-email').value.trim();
   if(!fname){shakeField('s1-fname');return;}
   if(!email||!email.includes('@')){shakeField('s1-email');return;}
-  state.fname=fname;state.lname=document.getElementById('s1-lname').value.trim();state.email=email;state.phone=document.getElementById('s1-phone').value.trim();
+  state.fname=fname;state.lname=document.getElementById('s1-lname').value.trim();state.email=email;state.phone='';
   fbq('track','Lead');
   currentStep=2;
   document.getElementById('overlay-step1').classList.remove('open');document.getElementById('overlay-step2').classList.add('open');
