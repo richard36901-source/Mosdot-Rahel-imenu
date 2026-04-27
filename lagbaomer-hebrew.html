@@ -16,7 +16,7 @@ html{scroll-behavior:smooth}
 :root{--gold:#B8860B;--gold-light:#D4A017;--bg:#0a0805;--border:rgba(184,134,11,0.25)}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl;width:100%;font-size:17px}
 .hero-page{min-height:100vh;display:flex;flex-direction:column;align-items:stretch;position:relative;overflow:hidden}
-.logo-bar{width:100%;background:transparent;display:flex;align-items:center;justify-content:center;gap:2rem;padding:1.5rem 1.5rem 0;position:relative;z-index:10;animation:fadeDown 0.5s ease forwards}
+.logo-bar{width:100%;background:transparent;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1.5rem 1.5rem 0;position:relative;z-index:10;animation:fadeDown 0.5s ease forwards;direction:ltr}
 .logo-bar img{height:72px;width:auto;object-fit:contain}
 .hero-image-wrap{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0.38}
@@ -101,8 +101,8 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 <div class="hero-page">
   <div class="hero-image-wrap"><img src="hero-campaign.jpeg" alt="מירון ל״ג בעומר"></div>
   <div class="logo-bar">
-    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;"><img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:160px;width:auto;object-fit:contain;"></a>
-    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו">
+    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;"><img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:220px;width:auto;object-fit:contain;"></a>
+    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:90px;width:auto;object-fit:contain;">
   </div>
   <div class="hero-content">
     <div class="hero-kicker">ל"ג בעומר · מירון · תשפ״ו</div>
@@ -173,7 +173,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 <div class="overlay" id="overlay-step2">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-step">שלב 2 מתוך 4 — שמות לתפילה</span>
+      <span class="modal-step">שלב 2 מתוך 3 — שמות לתפילה</span>
       <div class="modal-title">עבור מי נתפלל?</div>
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
@@ -181,7 +181,6 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
       <div class="modal-progress">
         <div class="prog-step done" onclick="navToStep(1)"></div>
         <div class="prog-step active" onclick="navToStep(2)"></div>
-        <div class="prog-step"></div>
         <div class="prog-step"></div>
       </div>
       <div id="names-list">
@@ -214,62 +213,13 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>מציאת עבודה</div>
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הריון ולידה בריאה</div>
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הגנה ושמירה</div>
-              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>חי רוטל</div>
-              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פדיון נפש</div>
             </div>
           </div>
         </div>
       </div>
       <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.55rem 1rem;cursor:pointer;width:100%;margin:0.85rem 0 0.75rem;font-family:'Heebo',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ הוסף אדם נוסף</button>
-      <button class="modal-btn modal-btn-primary" onclick="goStep3()">המשך ← בחר תפילות</button>
+      <button class="modal-btn modal-btn-primary" onclick="goStep3()">המשך ←</button>
       <button class="modal-btn modal-btn-back" onclick="goBack(2)">→ חזרה</button>
-    </div>
-  </div>
-</div>
-
-<!-- שלב 3 -->
-<div class="overlay" id="overlay-step3">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="modal-step">שלב 3 מתוך 4 — בקשות תפילה</span>
-      <div class="modal-title">על מה נתפלל?</div>
-      <button class="modal-close" onclick="closeAll()">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-progress">
-        <div class="prog-step done" onclick="navToStep(1)"></div>
-        <div class="prog-step done" onclick="navToStep(2)"></div>
-        <div class="prog-step active" onclick="navToStep(3)"></div>
-        <div class="prog-step"></div>
-      </div>
-      <div class="f-group">
-        <div class="check-grid" id="intentions">
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>רפואה שלמה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שמחה ואושר</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שידוך הגון</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הצלחה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פרנסה טובה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שלום בית</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>ילדים בריאים</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>חזרה בתשובה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>נחת מהילדים</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הצלחה בלימודים</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>בהירות בחיים</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>בריאות הגוף והנפש</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הצלחה בניתוח</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>מציאת עבודה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הריון ולידה בריאה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>הגנה ושמירה</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>חי רוטל</div>
-          <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>פדיון נפש</div>
-        </div>
-      </div>
-      <div class="f-group" style="margin-top:0.85rem;">
-        <label>תפילה אישית (לא חובה)</label>
-        <textarea id="s3-personal" placeholder="הוסף בקשה אישית..." style="min-height:70px;resize:vertical;direction:rtl;"></textarea>
-      </div>
-      <button class="modal-btn modal-btn-primary" onclick="goStep4()">המשך ←</button>
-      <button class="modal-btn modal-btn-back" onclick="goBack(3)">→ חזרה</button>
     </div>
   </div>
 </div>
@@ -278,7 +228,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 <div class="overlay" id="overlay-step4">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-step">שלב 4 מתוך 4 — חיזוק התפילה</span>
+      <span class="modal-step">שלב 3 מתוך 3 — חיזוק התפילה</span>
       <div class="modal-title">הבטח לעצמך את ברכת הרשב"י</div>
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
@@ -286,8 +236,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
       <div class="modal-progress">
         <div class="prog-step done" onclick="navToStep(1)"></div>
         <div class="prog-step done" onclick="navToStep(2)"></div>
-        <div class="prog-step done" onclick="navToStep(3)"></div>
-        <div class="prog-step active" onclick="navToStep(4)"></div>
+        <div class="prog-step active" onclick="navToStep(3)"></div>
       </div>
       <div class="don-header-box">
         <h3>"כדאי הוא רבי שמעון לסמוך עליו בשעת הדחק"</h3>
@@ -335,7 +284,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
         </div>
       </div>
       <button class="success-donate-cta" onclick="submitFinal()">← שלח את תפילתי</button>
-      <button class="modal-btn modal-btn-back" onclick="goBack(4)">→ חזרה</button>
+      <button class="modal-btn modal-btn-back" onclick="goBack(3)">→ חזרה</button>
     </div>
   </div>
 </div>
@@ -356,7 +305,7 @@ var state={fname:'',lname:'',email:'',phone:'',names_entries:[],intentions:[],pe
 var nameCount=1;
 var currentStep=1;
 
-var HE_INTENTIONS=['רפואה שלמה','שמחה ואושר','שידוך הגון','הצלחה','פרנסה טובה','שלום בית','ילדים בריאים','חזרה בתשובה','נחת מהילדים','הצלחה בלימודים','בהירות בחיים','בריאות הגוף והנפש','הצלחה בניתוח','מציאת עבודה','הריון ולידה בריאה','הגנה ושמירה','חי רוטל','פדיון נפש'];
+var HE_INTENTIONS=['רפואה שלמה','שמחה ואושר','שידוך הגון','הצלחה','פרנסה טובה','שלום בית','ילדים בריאים','חזרה בתשובה','נחת מהילדים','הצלחה בלימודים','בהירות בחיים','בריאות הגוף והנפש','הצלחה בניתוח','מציאת עבודה','הריון ולידה בריאה','הגנה ושמירה'];
 
 function toggleNameIntentions(btn){
   var grid=btn.nextElementSibling;
@@ -390,8 +339,7 @@ function navToStep(n){
   closeAll();
   if(n===1)document.getElementById('overlay-step1').classList.add('open');
   else if(n===2)document.getElementById('overlay-step2').classList.add('open');
-  else if(n===3)document.getElementById('overlay-step3').classList.add('open');
-  else if(n===4)document.getElementById('overlay-step4').classList.add('open');
+  else if(n===3)document.getElementById('overlay-step4').classList.add('open');
 }
 
 function goBack(fromStep){navToStep(fromStep-1);}
@@ -422,17 +370,9 @@ function goStep3(){
     if(hn&&hn.value.trim())state.names_entries.push({heb_name:hn.value.trim(),mothers_name:mn?mn.value.trim():'',gender:gs?gs.value:'',intentions:nameIntentions});
   });
   currentStep=3;
-  document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step3').classList.add('open');
+  document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-function goStep4(){
-  state.intentions=[];
-  document.querySelectorAll('#intentions .ck.on').forEach(function(el){state.intentions.push(el.textContent.trim());});
-  state.personal_prayer=document.getElementById('s3-personal').value.trim();
-  currentStep=4;
-  document.getElementById('overlay-step3').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');
-  fbq('track','CompleteRegistration');
-}
 
 function submitFinal(){
   var pm=document.querySelector('input[name="pay-method"]:checked');
@@ -449,7 +389,7 @@ function buildPayload(type){
     if(i<entries.length){nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';nameFields[prefix+'gender']=entries[i].gender||'';nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';}
     else{nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';}
   }
-  var base={type:type,language:'hebrew',timestamp:new Date().toISOString(),date:new Date().toLocaleDateString('he-IL'),time:new Date().toLocaleTimeString('he-IL'),first_name:state.fname,last_name:state.lname,full_name:(state.fname+' '+state.lname).trim(),email:state.email,phone:state.phone,total_names_submitted:entries.length,names_summary:entries.map(function(n){return n.heb_name;}).join(', '),prayer_intentions:state.intentions.join(', '),total_intentions:state.intentions.length,personal_prayer:state.personal_prayer,donation_included:state.donation_included,donation_choice:state.donation_choice||'',donation_amount:state.donationAmt||'',donation_currency:'ILS',payment_method:state.payment_method||'',source_page:window.location.href,referrer:document.referrer||'',user_agent:navigator.userAgent,screen_width:window.screen.width,screen_height:window.screen.height,language_browser:navigator.language||''};
+  var base={type:type,language:'hebrew',timestamp:new Date().toISOString(),date:new Date().toLocaleDateString('he-IL'),time:new Date().toLocaleTimeString('he-IL'),first_name:state.fname,last_name:state.lname,full_name:(state.fname+' '+state.lname).trim(),email:state.email,phone:state.phone,total_names_submitted:entries.length,names_summary:entries.map(function(n){return n.heb_name;}).join(', '),donation_included:state.donation_included,donation_choice:state.donation_choice||'',donation_amount:state.donationAmt||'',donation_currency:'ILS',payment_method:state.payment_method||'',source_page:window.location.href,referrer:document.referrer||'',user_agent:navigator.userAgent,screen_width:window.screen.width,screen_height:window.screen.height,language_browser:navigator.language||''};
   Object.assign(base,nameFields);
   return base;
 }
