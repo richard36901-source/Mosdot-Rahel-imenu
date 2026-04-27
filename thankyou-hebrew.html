@@ -15,8 +15,8 @@ fbq('init','929347383251605');fbq('track','PageView');fbq('track','Purchase',{va
 :root{--gold:#B8860B;--gold-light:#D4A017;--bg:#0a0805;--border:rgba(184,134,11,0.25)}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl}
 .ty-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem 1.5rem 4rem;position:relative}
-.ty-logo-bar{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:0 0 1.5rem;width:100%}
-.ty-logo-bar img{height:52px;width:auto;object-fit:contain}
+.ty-logo-bar{display:flex;align-items:center;justify-content:center;gap:2rem;padding:0 0 1.5rem;width:100%}
+.ty-logo-bar img{height:72px;width:auto;object-fit:contain}
 .check-circle{width:72px;height:72px;border-radius:50%;background:rgba(184,134,11,0.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem;animation:popIn 0.5s ease 0.2s both}
 .ty-kicker{font-size:0.7rem;letter-spacing:0.12em;color:var(--gold-light);margin-bottom:0.75rem;text-align:center;animation:fadeIn 0.5s ease 0.4s both;font-weight:500}
 .ty-h1{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;color:#fff;text-align:center;line-height:1.2;margin-bottom:0.85rem;animation:fadeIn 0.5s ease 0.5s both;max-width:640px}
@@ -114,8 +114,8 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
     </div>
   </div>
 
-  <!-- LP_URL: Replace PLACEHOLDER_LP_URL_HE with the actual Hebrew landing page URL -->
-  <span class="back-btn" onclick="window.location.href='PLACEHOLDER_LP_URL_HE'">→ מסור שמות לאדם נוסף</span>
+  <!-- LP_URL: Replace https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html with the actual Hebrew landing page URL -->
+  <span class="back-btn" onclick="window.location.href='https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html'">→ מסור שמות לאדם נוסף</span>
 </div>
 
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.25rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;text-align:center;">
@@ -123,11 +123,11 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 </footer>
 
 <script>
-var LP_URL = 'PLACEHOLDER_LP_URL_HE'; // ← החלף בכתובת URL האמיתית של הדף בעברית
+var LP_URL = 'https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html'; // ← החלף בכתובת URL האמיתית של הדף בעברית
 
 var tyDonUrl = '';
 function setTyDon(amt, url){ tyDonUrl = url; document.getElementById('ty-donate-btn').textContent = 'לתרומה ' + amt + ' ←'; }
-function goTyDonate(){ if(tyDonUrl){ window.open(tyDonUrl,'_blank'); }else{ alert('אנא בחר סכום תרומה.'); } }
+function goTyDonate(){ if(!tyDonUrl){ alert('אנא בחר סכום תרומה.'); return; } window.open(tyDonUrl,'_blank','noopener'); }
 
 (function(){
   var params = new URLSearchParams(window.location.search);
