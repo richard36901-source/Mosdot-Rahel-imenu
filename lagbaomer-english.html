@@ -5,126 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Send Your Name to the Rashbi — Lag B'Omer in Meron</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-<!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '929347383251605');
-fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','929347383251605');fbq('track','PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=929347383251605&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=929347383251605&ev=PageView&noscript=1"/></noscript>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-:root { --gold: #B8860B; --gold-light: #D4A017; --bg: #0a0805; --border: rgba(184,134,11,0.25); }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; min-height: 100vh; overflow-x: hidden; width: 100%; font-size: 17px; }
-
-.hero-page { min-height: 100vh; display: flex; flex-direction: column; align-items: stretch; position: relative; overflow: hidden; }
-
-.logo-bar { width: 100%; background: transparent; display: flex; align-items: center; justify-content: center; padding: 1rem 1.5rem 0; position: relative; z-index: 10; animation: fadeDown 0.5s ease forwards; }
-.logo-bar img { width: 100%; max-width: 320px; height: auto; object-fit: contain; }
-
-.hero-image-wrap { position: absolute; inset: 0; z-index: 0; }
-.hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; opacity: 0.38; }
-.hero-image-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,5,0.55) 0%, rgba(10,8,5,0.15) 35%, rgba(10,8,5,0.6) 75%, rgba(10,8,5,0.95) 100%), radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,134,11,0.08) 0%, transparent 70%); }
-
-.hero-content { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; flex: 1; padding: 1rem 1.5rem 5rem; }
-
-.hero-kicker { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.1rem; animation: fadeDown 0.6s ease 0.15s both; }
-.hero-h1 { font-family: 'Cinzel', serif; font-size: clamp(1.9rem, 5.5vw, 3.6rem); font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1.1rem; animation: fadeDown 0.6s ease 0.25s both; text-shadow: 0 2px 30px rgba(0,0,0,0.7); max-width: 820px; }
-.hero-sub { font-family: 'EB Garamond', serif; font-size: clamp(1.1rem, 2.8vw, 1.4rem); font-style: italic; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 auto 3rem; line-height: 1.75; animation: fadeDown 0.6s ease 0.35s both; text-shadow: 0 1px 12px rgba(0,0,0,0.6); }
-
-.cta-wrap { animation: fadeDown 0.6s ease 0.45s both; margin-top: 1rem; }
-.shake-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #000; font-family: 'DM Sans', sans-serif; font-size: 1.2rem; font-weight: 700; padding: 1.15rem 3rem; border: none; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; animation: shakePulse 3s ease 2s infinite; letter-spacing: 0.02em; box-shadow: 0 4px 24px rgba(184,134,11,0.4); }
-.shake-btn:hover { transform: scale(1.04); box-shadow: 0 8px 36px rgba(184,134,11,0.55); animation: none; }
-.trust-line { margin-top: 0.85rem; font-size: 0.78rem; color: rgba(255,255,255,0.38); animation: fadeIn 0.6s ease 0.6s both; }
-
-.countdown-wrap { margin-top: 4rem; text-align: center; opacity: 0; animation: fadeIn 0.8s ease 0.8s forwards; padding-top: 1rem; border-top: 1px solid rgba(184,134,11,0.15); }
-.countdown-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
-.countdown-digits { display: inline-flex; gap: 0.4rem; align-items: flex-end; }
-.cd-unit { text-align: center; min-width: 42px; }
-.cd-num { font-family: Georgia, serif; font-size: 1.8rem; color: #D4A017; line-height: 1; }
-.cd-lbl { font-size: 0.52rem; letter-spacing: .1em; color: rgba(255,255,255,.25); text-transform: uppercase; margin-top: 2px; }
-.cd-sep { font-size: 1.5rem; color: #B8860B; padding-bottom: 10px; line-height: 1; }
-
-.proof-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.65); border-top: 1px solid var(--border); padding: 0.65rem 0; overflow: hidden; z-index: 10; }
-.proof-track { display: flex; gap: 4rem; animation: scrollLeft 28s linear infinite; white-space: nowrap; }
-.proof-track span { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; flex-shrink: 0; }
-.proof-track .dot { color: var(--gold); font-size: 0.5rem; vertical-align: middle; }
-
-.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.25s; backdrop-filter: blur(3px); }
-.overlay.open { opacity: 1; pointer-events: all; }
-.modal { background: #141008; border: 1px solid var(--border); width: 100%; max-width: 490px; max-height: 90vh; overflow-y: auto; position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.25s ease; }
-.overlay.open .modal { transform: translateY(0) scale(1); }
-.modal-header { padding: 1.75rem 2rem 1.25rem; border-bottom: 1px solid var(--border); position: relative; }
-.modal-step { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem; display: block; }
-.modal-title { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 600; color: #fff; line-height: 1.3; }
-.modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; color: rgba(255,255,255,0.35); font-size: 1.3rem; cursor: pointer; line-height: 1; transition: color 0.15s; }
-.modal-close:hover { color: #fff; }
-.modal-body { padding: 1.75rem 2rem; }
-.modal-progress { display: flex; gap: 0.3rem; margin-bottom: 1.5rem; }
-.prog-step { height: 3px; flex: 1; background: rgba(255,255,255,0.1); border-radius: 2px; transition: background 0.3s; }
-.prog-step.done { background: var(--gold); }
-.prog-step.active { background: var(--gold-light); }
-
-.f-group { margin-bottom: 1rem; }
-.f-group label { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.35rem; }
-.f-group input, .f-group textarea, .f-group select { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 0.75rem 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 300; outline: none; transition: border-color 0.15s; }
-.f-group input:focus, .f-group textarea:focus, .f-group select:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-.f-group textarea { min-height: 80px; resize: vertical; }
-.f-group select option { background: #141008; }
-.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-
-.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; }
-.ck { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.65rem; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-size: 1rem; color: rgba(255,255,255,0.6); transition: all 0.15s; user-select: none; }
-.ck:hover { border-color: rgba(184,134,11,0.4); color: rgba(255,255,255,0.85); }
-.ck.on { border-color: var(--gold); color: #fff; background: rgba(184,134,11,0.1); }
-.ck-box { width: 11px; height: 11px; border: 1px solid currentColor; flex-shrink: 0; position: relative; }
-.ck.on .ck-box::after { content: ''; position: absolute; inset: 2px; background: var(--gold); }
-
-.modal-btn { width: 100%; padding: 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; transition: all 0.15s; margin-top: 0.5rem; letter-spacing: 0.02em; }
-.modal-btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #000; }
-.modal-btn-primary:hover { filter: brightness(1.1); }
-.modal-note { font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
-
-.don-header-box { background: rgba(184,134,11,0.07); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.25rem 1.4rem; margin-bottom: 1.25rem; }
-.don-header-box h3 { font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.6rem; line-height: 1.4; }
-.don-header-box p { font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.75; font-weight: 300; }
-
-.don-radio-row { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 1rem; color: rgba(255,255,255,0.75); cursor: pointer; padding: 0.6rem 0.8rem; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.4rem; transition: all 0.15s; font-weight: 300; line-height: 1.4; }
-.don-radio-row:hover { border-color: rgba(184,134,11,0.4); color: #fff; }
-.don-radio-row input { accent-color: var(--gold-light); width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; background: transparent; border: none; padding: 0; }
-
-.success-donate-cta { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #000; padding: 0.95rem 2rem; font-weight: 700; font-size: 1.05rem; border: none; cursor: pointer; width: 100%; transition: filter 0.15s; font-family: 'DM Sans', sans-serif; animation: shakePulse 2.5s ease 1s infinite; margin-top: 0.75rem; letter-spacing: 0.02em; }
-.success-donate-cta:hover { filter: brightness(1.1); animation: none; }
-
-.wa-float { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 52px; height: 52px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 500; box-shadow: 0 4px 20px rgba(37,211,102,0.35); animation: floatBob 3s ease infinite; text-decoration: none; }
-.wa-float svg { width: 28px; height: 28px; fill: #fff; }
-
-@keyframes fadeDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-@keyframes shakePulse { 0%,85%,100%{transform:translateX(0) scale(1);box-shadow:0 4px 20px rgba(184,134,11,0.3)} 87%{transform:translateX(-4px) scale(1.01)} 89%{transform:translateX(4px) scale(1.01)} 91%{transform:translateX(-3px)} 93%{transform:translateX(3px)} 95%{transform:translateX(0) scale(1.02);box-shadow:0 6px 28px rgba(184,134,11,0.5)} }
-@keyframes scrollLeft { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-@keyframes floatBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-@keyframes fieldShake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
-
-@media (max-width: 600px) {
-  .f-row { grid-template-columns: 1fr; }
-  .modal-body { padding: 1.25rem; }
-  .modal-header { padding: 1.25rem 1.25rem 1rem; }
-  .don-radio-row { font-size: 0.9rem; }
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--gold:#B8860B;--gold-light:#D4A017;--bg:#0a0805;--border:rgba(184,134,11,0.25)}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;width:100%;font-size:17px}
+.hero-page{min-height:100vh;display:flex;flex-direction:column;align-items:stretch;position:relative;overflow:hidden}
+.logo-bar{width:100%;background:transparent;display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:1rem 1.5rem 0;position:relative;z-index:10;animation:fadeDown 0.5s ease forwards}
+.logo-bar img{height:56px;width:auto;object-fit:contain}
+.hero-image-wrap{position:absolute;inset:0;z-index:0}
+.hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0.38}
+.hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,5,0.55) 0%,rgba(10,8,5,0.15) 35%,rgba(10,8,5,0.6) 75%,rgba(10,8,5,0.95) 100%),radial-gradient(ellipse 80% 60% at 50% 40%,rgba(184,134,11,0.08) 0%,transparent 70%)}
+.hero-content{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1;padding:1rem 1.5rem 5rem}
+.hero-kicker{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.1rem;animation:fadeDown 0.6s ease 0.15s both}
+.hero-h1{font-family:'Cinzel',serif;font-size:clamp(1.9rem,5.5vw,3.6rem);font-weight:700;line-height:1.2;color:#fff;margin-bottom:1.1rem;animation:fadeDown 0.6s ease 0.25s both;text-shadow:0 2px 30px rgba(0,0,0,0.7);max-width:820px}
+.hero-sub{font-family:'EB Garamond',serif;font-size:clamp(1.1rem,2.8vw,1.4rem);font-style:italic;color:rgba(255,255,255,0.82);max-width:620px;margin:0 auto 3rem;line-height:1.75;animation:fadeDown 0.6s ease 0.35s both;text-shadow:0 1px 12px rgba(0,0,0,0.6)}
+.cta-wrap{animation:fadeDown 0.6s ease 0.45s both;margin-top:1rem}
+.shake-btn{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;font-family:'DM Sans',sans-serif;font-size:1.2rem;font-weight:700;padding:1.15rem 3rem;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;animation:shakePulse 3s ease 2s infinite;letter-spacing:0.02em;box-shadow:0 4px 24px rgba(184,134,11,0.4)}
+.shake-btn:hover{transform:scale(1.04);box-shadow:0 8px 36px rgba(184,134,11,0.55);animation:none}
+.trust-line{margin-top:0.85rem;font-size:0.78rem;color:rgba(255,255,255,0.38);animation:fadeIn 0.6s ease 0.6s both}
+.countdown-wrap{margin-top:4rem;text-align:center;opacity:0;animation:fadeIn 0.8s ease 0.8s forwards;padding-top:1rem;border-top:1px solid rgba(184,134,11,0.15)}
+.countdown-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem}
+.countdown-digits{display:inline-flex;gap:0.4rem;align-items:flex-end}
+.cd-unit{text-align:center;min-width:42px}
+.cd-num{font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1}
+.cd-lbl{font-size:0.52rem;letter-spacing:.1em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-top:2px}
+.cd-sep{font-size:1.5rem;color:#B8860B;padding-bottom:10px;line-height:1}
+.proof-strip{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.65);border-top:1px solid var(--border);padding:0.65rem 0;overflow:hidden;z-index:10}
+.proof-track{display:flex;gap:4rem;animation:scrollLeft 28s linear infinite;white-space:nowrap}
+.proof-track span{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;flex-shrink:0}
+.proof-track .dot{color:var(--gold);font-size:0.5rem;vertical-align:middle}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;backdrop-filter:blur(3px)}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:#141008;border:1px solid var(--border);width:100%;max-width:490px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px) scale(0.97);transition:transform 0.25s ease}
+.overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-header{padding:1.75rem 2rem 1.25rem;border-bottom:1px solid var(--border);position:relative}
+.modal-step{font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;display:block}
+.modal-title{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:600;color:#fff;line-height:1.3}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:rgba(255,255,255,0.35);font-size:1.3rem;cursor:pointer;line-height:1;transition:color 0.15s}
+.modal-close:hover{color:#fff}
+.modal-body{padding:1.75rem 2rem}
+.modal-progress{display:flex;gap:0.3rem;margin-bottom:1.5rem}
+.prog-step{height:3px;flex:1;background:rgba(255,255,255,0.1);border-radius:2px;transition:background 0.3s}
+.prog-step.done{background:var(--gold);cursor:pointer}
+.prog-step.active{background:var(--gold-light);cursor:pointer}
+.f-group{margin-bottom:1rem}
+.f-group label{display:block;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.35rem}
+.f-group input,.f-group textarea,.f-group select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.75rem 0.9rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:300;outline:none;transition:border-color 0.15s}
+.f-group input:focus,.f-group textarea:focus,.f-group select:focus{border-color:var(--gold);background:rgba(255,255,255,0.08)}
+.f-group textarea{min-height:80px;resize:vertical}
+.f-group select option{background:#141008}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.35rem}
+.ck{display:flex;align-items:center;gap:0.5rem;padding:0.55rem 0.65rem;border:1px solid rgba(255,255,255,0.1);cursor:pointer;font-size:1rem;color:rgba(255,255,255,0.6);transition:all 0.15s;user-select:none}
+.ck:hover{border-color:rgba(184,134,11,0.4);color:rgba(255,255,255,0.85)}
+.ck.on{border-color:var(--gold);color:#fff;background:rgba(184,134,11,0.1)}
+.ck-box{width:11px;height:11px;border:1px solid currentColor;flex-shrink:0;position:relative}
+.ck.on .ck-box::after{content:'';position:absolute;inset:2px;background:var(--gold)}
+.ck-sm{display:flex;align-items:center;gap:0.4rem;padding:0.35rem 0.5rem;border:1px solid rgba(255,255,255,0.1);cursor:pointer;font-size:0.82rem;color:rgba(255,255,255,0.6);transition:all 0.15s;user-select:none}
+.ck-sm:hover{border-color:rgba(184,134,11,0.4);color:rgba(255,255,255,0.85)}
+.ck-sm.on{border-color:var(--gold);color:#fff;background:rgba(184,134,11,0.1)}
+.ck-sm .ck-box{width:9px;height:9px}
+.intentions-toggle{font-size:0.72rem;color:var(--gold-light);cursor:pointer;margin-top:0.5rem;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;text-decoration:underline;display:block}
+.modal-btn{width:100%;padding:0.9rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;border:none;cursor:pointer;transition:all 0.15s;margin-top:0.5rem;letter-spacing:0.02em}
+.modal-btn-primary{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000}
+.modal-btn-primary:hover{filter:brightness(1.1)}
+.modal-btn-back{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);margin-top:0.4rem}
+.modal-btn-back:hover{border-color:rgba(255,255,255,0.4);color:rgba(255,255,255,0.85)}
+.modal-note{font-size:0.72rem;color:rgba(255,255,255,0.25);text-align:center;margin-top:0.75rem;line-height:1.5}
+.don-header-box{background:rgba(184,134,11,0.07);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.25rem 1.4rem;margin-bottom:1.25rem}
+.don-header-box h3{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:0.6rem;line-height:1.4}
+.don-header-box p{font-size:0.92rem;color:rgba(255,255,255,0.65);line-height:1.75;font-weight:300}
+.don-radio-row{display:flex;align-items:flex-start;gap:0.6rem;font-size:1rem;color:rgba(255,255,255,0.75);cursor:pointer;padding:0.6rem 0.8rem;border:1px solid rgba(255,255,255,0.08);margin-bottom:0.4rem;transition:all 0.15s;font-weight:300;line-height:1.4}
+.don-radio-row:hover{border-color:rgba(184,134,11,0.4);color:#fff}
+.don-radio-row input{accent-color:var(--gold-light);width:16px;height:16px;flex-shrink:0;margin-top:2px;background:transparent;border:none;padding:0}
+.success-donate-cta{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.95rem 2rem;font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;transition:filter 0.15s;font-family:'DM Sans',sans-serif;animation:shakePulse 2.5s ease 1s infinite;margin-top:0.75rem;letter-spacing:0.02em}
+.success-donate-cta:hover{filter:brightness(1.1);animation:none}
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 20px rgba(37,211,102,0.35);animation:floatBob 3s ease infinite;text-decoration:none}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shakePulse{0%,85%,100%{transform:translateX(0) scale(1);box-shadow:0 4px 20px rgba(184,134,11,0.3)}87%{transform:translateX(-4px) scale(1.01)}89%{transform:translateX(4px) scale(1.01)}91%{transform:translateX(-3px)}93%{transform:translateX(3px)}95%{transform:translateX(0) scale(1.02);box-shadow:0 6px 28px rgba(184,134,11,0.5)}}
+@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes fieldShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@media(max-width:600px){.f-row{grid-template-columns:1fr}.modal-body{padding:1.25rem}.modal-header{padding:1.25rem 1.25rem 1rem}.don-radio-row{font-size:0.9rem}}
 </style>
 </head>
 <body>
@@ -135,6 +105,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
   </div>
   <div class="logo-bar">
     <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi">
+    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu">
   </div>
   <div class="hero-content">
     <div class="hero-kicker">Lag B'Omer · Meron · Hilula of the Rashbi</div>
@@ -142,7 +113,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
     <p class="hero-sub">Submit your name and the names of your family<br>for prayer, salvation and blessing — completely free</p>
     <div class="cta-wrap">
       <button class="shake-btn" onclick="openStep1()">✦ Submit Your Names</button>
-      <p class="trust-line">No payment required &nbsp;·&nbsp; 30 seconds &nbsp;·&nbsp; Confirmation by email</p>
+      <p class="trust-line">Easy to fill out &nbsp;·&nbsp; No payment required &nbsp;·&nbsp; Confirmation by email</p>
     </div>
     <div class="countdown-wrap">
       <p class="countdown-label">Prayer list closes in</p>
@@ -159,17 +130,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
   </div>
   <div class="proof-strip">
     <div class="proof-track">
-      <span>The merit of charity &amp; prayer on the holy day: Submit your name and secure a miracle beyond nature!</span>
+      <span>The merit of charity &amp; prayer on the holy day: Submit your name and secure a miracle!</span>
       <span class="dot">✦</span>
       <span>Preparations are underway | Submit your names now to be remembered at the peak of the sacred day</span>
       <span class="dot">✦</span>
-      <span>Thousands of donors have already joined the 'Rashbi's Feast' — your merit is waiting here...</span>
+      <span>Achieve the merit of charity — join the sacred mission at Meron this Lag B'Omer</span>
       <span class="dot">✦</span>
-      <span>The merit of charity &amp; prayer on the holy day: Submit your name and secure a miracle beyond nature!</span>
+      <span>The merit of charity &amp; prayer on the holy day: Submit your name and secure a miracle!</span>
       <span class="dot">✦</span>
       <span>Preparations are underway | Submit your names now to be remembered at the peak of the sacred day</span>
       <span class="dot">✦</span>
-      <span>Thousands of donors have already joined the 'Rashbi's Feast' — your merit is waiting here...</span>
+      <span>Achieve the merit of charity — join the sacred mission at Meron this Lag B'Omer</span>
       <span class="dot">✦</span>
     </div>
   </div>
@@ -184,13 +155,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-progress"><div class="prog-step active"></div><div class="prog-step"></div><div class="prog-step"></div><div class="prog-step"></div></div>
+      <div class="modal-progress">
+        <div class="prog-step active" onclick="navToStep(1)"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+      </div>
       <div class="f-row" style="margin-bottom:1rem;">
         <div class="f-group" style="margin:0;"><label>First Name *</label><input type="text" id="s1-fname" placeholder="First name"></div>
         <div class="f-group" style="margin:0;"><label>Last Name *</label><input type="text" id="s1-lname" placeholder="Last name"></div>
       </div>
       <div class="f-group"><label>Email Address *</label><input type="email" id="s1-email" placeholder="your@email.com"></div>
-      <div class="f-group"><label>Phone / WhatsApp (optional)</label><input type="tel" id="s1-phone" placeholder="+1 or +972..."></div>
       <button class="modal-btn modal-btn-primary" onclick="goStep2()">Continue →</button>
       <p class="modal-note">Free. Your details are private. Confirmation sent by email.</p>
     </div>
@@ -206,24 +181,51 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-progress"><div class="prog-step done"></div><div class="prog-step active"></div><div class="prog-step"></div><div class="prog-step"></div></div>
+      <div class="modal-progress">
+        <div class="prog-step done" onclick="navToStep(1)"></div>
+        <div class="prog-step active" onclick="navToStep(2)"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+      </div>
       <div id="names-list">
         <div class="name-entry" id="name-entry-0">
           <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.6rem;">Person 1</div>
-          <div class="f-row" style="margin-bottom:0.6rem;">
-            <div class="f-group" style="margin:0;"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder="Name ben/bat Mother's name"></div>
-            <div class="f-group" style="margin:0;"><label>Mother's Name</label><input type="text" class="mom-name" placeholder="Mother's Hebrew name"></div>
-          </div>
-          <div class="f-group" style="margin-bottom:0;">
+          <div class="f-group"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder=""></div>
+          <div class="f-group">
             <label>Gender</label>
             <select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;appearance:none;">
-              <option value="">Select</option><option>Male</option><option>Female</option>
+              <option value="">Select</option><option value="Male">Ben (Male)</option><option value="Female">Bat (Female)</option>
             </select>
+          </div>
+          <div class="f-group" style="margin-bottom:0;"><label>Mother's Name</label><input type="text" class="mom-name" placeholder=""></div>
+          <button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">+ Add prayer intentions for this person</button>
+          <div class="name-intentions-grid" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
+            <div class="check-grid" style="gap:0.25rem;">
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Healthy Recovery</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Happiness</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Suitable Shidduch</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Success</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Good Income</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Shalom Bayit</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Healthy Children</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Return to Torah</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Nachat from Children</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Success in Studies</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Clarity in Life</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Physical &amp; Mental Health</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Success in Surgery</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Find Work</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Healthy Pregnancy &amp; Birth</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Protection &amp; Safety</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Chai Rotel</div>
+              <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Pidyon Nefesh</div>
+            </div>
           </div>
         </div>
       </div>
       <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.55rem 1rem;cursor:pointer;width:100%;margin:0.85rem 0 0.75rem;font-family:'DM Sans',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ Add Another Person</button>
       <button class="modal-btn modal-btn-primary" onclick="goStep3()">Continue → Select Prayers</button>
+      <button class="modal-btn modal-btn-back" onclick="goBack(2)">← Back</button>
     </div>
   </div>
 </div>
@@ -237,7 +239,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-progress"><div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step active"></div><div class="prog-step"></div></div>
+      <div class="modal-progress">
+        <div class="prog-step done" onclick="navToStep(1)"></div>
+        <div class="prog-step done" onclick="navToStep(2)"></div>
+        <div class="prog-step active" onclick="navToStep(3)"></div>
+        <div class="prog-step"></div>
+      </div>
       <div class="f-group">
         <div class="check-grid" id="intentions">
           <div class="ck" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Healthy Recovery</div>
@@ -265,6 +272,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
         <textarea id="s3-personal" placeholder="Add a personal prayer message…" style="min-height:70px;resize:vertical;"></textarea>
       </div>
       <button class="modal-btn modal-btn-primary" onclick="goStep4()">Continue →</button>
+      <button class="modal-btn modal-btn-back" onclick="goBack(3)">← Back</button>
     </div>
   </div>
 </div>
@@ -278,18 +286,22 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
       <button class="modal-close" onclick="closeAll()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-progress"><div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step done"></div><div class="prog-step active"></div></div>
-
+      <div class="modal-progress">
+        <div class="prog-step done" onclick="navToStep(1)"></div>
+        <div class="prog-step done" onclick="navToStep(2)"></div>
+        <div class="prog-step done" onclick="navToStep(3)"></div>
+        <div class="prog-step active" onclick="navToStep(4)"></div>
+      </div>
       <div class="don-header-box">
         <h3>"Rabbi Shimon is worthy to be relied upon in times of need"</h3>
-        <p>In the sacred moments of Lag B'Omer, you have the opportunity to take part in the great mission of <strong style="color:#fff;">Tzidkat Rashbi</strong>. Your donation is not only to feed thousands of pilgrims — it is the fuel that drives the organization throughout the entire year:</p>
+        <p>In the sacred moments of Lag B'Omer, you have the opportunity to take part in the great mission of <strong style="color:#fff;">Tzidkat Rashbi</strong> — throughout the entire year:</p>
         <ul style="margin-top:0.75rem;padding-left:0;display:flex;flex-direction:column;gap:0.4rem;list-style:none;">
+          <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">Support hundreds of poor families</strong> destitute in Tzfat, providing them their basic needs.</span></li>
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">Supporting hundreds of families</strong> of Torah scholars who need basic sustenance.</span></li>
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">The voice of Torah never stops</strong> — funding the study halls active daily at Kever Rachel and Amuka.</span></li>
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">Holy Zohar study programs</strong> throughout the Land of Israel.</span></li>
         </ul>
       </div>
-
       <div class="f-group">
         <label style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.65rem;display:block;text-transform:none;letter-spacing:0;">Would you like to add the merit of charity to your prayer?</label>
         <label class="don-radio-row" style="border-color:rgba(184,134,11,0.3);">
@@ -301,13 +313,13 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
           <span>I will submit my name without a donation at this time</span>
         </label>
       </div>
-
       <div id="donation-details" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
         <div class="f-group">
           <label>Select Donation</label>
           <div id="don-choices" style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem;">
             <label class="don-radio-row"><input type="radio" name="don-choice" value="Prayer - $18" onchange="syncDonAmt('$18')"> Prayer — $18</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="Prayer &amp; Candle - $36" onchange="syncDonAmt('$36')"> Prayer &amp; Candle — $36</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="Prayer + 3 Liters of Wine - $56" onchange="syncDonAmt('$56')"> Prayer + 3 Liters of Wine — $56</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="Add Oil to the Bonfire - $72" onchange="syncDonAmt('$72')"> Add Oil to the Bonfire — $72</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="Zohar Study Supporter - $100" onchange="syncDonAmt('$100')"> Zohar Study Supporter — $100</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="Zohar Study Sponsor - $180" onchange="syncDonAmt('$180')"> Zohar Study Sponsor — $180</label>
@@ -325,197 +337,155 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #eee; m
           </div>
         </div>
       </div>
-
       <button class="success-donate-cta" onclick="submitFinal()">Submit My Prayer →</button>
+      <button class="modal-btn modal-btn-back" onclick="goBack(4)">← Back</button>
     </div>
   </div>
 </div>
 
-<!-- WhatsApp float -->
 <a class="wa-float" href="#" onclick="shareWA(event)" title="Share with friends">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
 (function(){
-  var deadline = new Date('2026-05-04T21:00:00Z').getTime();
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
-  function tick(){
-    var diff = Math.max(0, deadline - Date.now());
-    document.getElementById('cd-d').textContent = pad(Math.floor(diff/86400000));
-    document.getElementById('cd-h').textContent = pad(Math.floor((diff%86400000)/3600000));
-    document.getElementById('cd-m').textContent = pad(Math.floor((diff%3600000)/60000));
-    document.getElementById('cd-s').textContent = pad(Math.floor((diff%60000)/1000));
-  }
-  tick(); setInterval(tick, 1000);
+  var deadline=new Date('2026-05-04T21:00:00Z').getTime();
+  function pad(n){return n<10?'0'+n:''+n}
+  function tick(){var diff=Math.max(0,deadline-Date.now());document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));document.getElementById('cd-h').textContent=pad(Math.floor((diff%86400000)/3600000));document.getElementById('cd-m').textContent=pad(Math.floor((diff%3600000)/60000));document.getElementById('cd-s').textContent=pad(Math.floor((diff%60000)/1000))}
+  tick();setInterval(tick,1000);
 })();
 
-var state = { fname:'', lname:'', email:'', phone:'', names_entries:[], intentions:[], personal_prayer:'', donation_included:false, donation_choice:'', donationAmt:'', payment_method:'Credit Card' };
-var nameCount = 1;
+var state={fname:'',lname:'',email:'',phone:'',names_entries:[],intentions:[],personal_prayer:'',donation_included:false,donation_choice:'',donationAmt:'',payment_method:'Credit Card'};
+var nameCount=1;
+var currentStep=1;
 
-function addName() {
-  var list = document.getElementById('names-list');
-  var idx = nameCount++;
-  var div = document.createElement('div');
-  div.className = 'name-entry';
-  div.style.cssText = 'margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);';
-  div.innerHTML = '<div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.6rem;">Person '+(idx+1)+'</div>' +
-    '<div class="f-row" style="margin-bottom:0.6rem;"><div class="f-group" style="margin:0;"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder="Name ben/bat Mother\'s name"></div><div class="f-group" style="margin:0;"><label>Mother\'s Name</label><input type="text" class="mom-name" placeholder="Mother\'s Hebrew name"></div></div>' +
-    '<div class="f-group" style="margin:0;"><label>Gender</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:DM Sans,sans-serif;font-size:0.88rem;outline:none;appearance:none;"><option value="">Select</option><option>Male</option><option>Female</option></select></div>';
+var EN_INTENTIONS=['Healthy Recovery','Happiness','Suitable Shidduch','Success','Good Income','Shalom Bayit','Healthy Children','Return to Torah','Nachat from Children','Success in Studies','Clarity in Life','Physical &amp; Mental Health','Success in Surgery','Find Work','Healthy Pregnancy &amp; Birth','Protection &amp; Safety','Chai Rotel','Pidyon Nefesh'];
+
+function toggleNameIntentions(btn){
+  var grid=btn.nextElementSibling;
+  var visible=grid.style.display!=='none';
+  grid.style.display=visible?'none':'block';
+  btn.textContent=visible?'+ Add prayer intentions for this person':'− Hide prayer intentions';
+}
+
+function createNameEntryInner(idx){
+  var intHtml=EN_INTENTIONS.map(function(i){return '<div class="ck-sm" onclick="this.classList.toggle(\'on\')"><div class="ck-box"></div>'+i+'</div>';}).join('');
+  return '<div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.6rem;">Person '+(idx+1)+'</div>'+
+    '<div class="f-group"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder=""></div>'+
+    '<div class="f-group"><label>Gender</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'DM Sans\',sans-serif;font-size:0.88rem;outline:none;appearance:none;"><option value="">Select</option><option value="Male">Ben (Male)</option><option value="Female">Bat (Female)</option></select></div>'+
+    '<div class="f-group" style="margin-bottom:0;"><label>Mother\'s Name</label><input type="text" class="mom-name" placeholder=""></div>'+
+    '<button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">+ Add prayer intentions for this person</button>'+
+    '<div class="name-intentions-grid" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;"><div class="check-grid" style="gap:0.25rem;">'+intHtml+'</div></div>';
+}
+
+function addName(){
+  var list=document.getElementById('names-list');
+  var idx=nameCount++;
+  var div=document.createElement('div');
+  div.className='name-entry';
+  div.style.cssText='margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);';
+  div.innerHTML=createNameEntryInner(idx);
   list.appendChild(div);
 }
 
-function toggleDonation(show) { document.getElementById('donation-details').style.display = show ? 'block' : 'none'; state.donation_included = show; }
-function syncDonAmt(amt) { state.donationAmt = amt; var sel = document.querySelector('input[name="don-choice"]:checked'); state.donation_choice = sel ? sel.value : ''; }
-function openStep1() { document.getElementById('overlay-step1').classList.add('open'); fbq('track','InitiateCheckout'); }
-function closeAll() { document.querySelectorAll('.overlay').forEach(function(o){ o.classList.remove('open'); }); }
-document.querySelectorAll('.overlay').forEach(function(o){ o.addEventListener('click', function(e){ if(e.target===this) closeAll(); }); });
+function navToStep(n){
+  if(n>currentStep)return;
+  closeAll();
+  if(n===1)document.getElementById('overlay-step1').classList.add('open');
+  else if(n===2)document.getElementById('overlay-step2').classList.add('open');
+  else if(n===3)document.getElementById('overlay-step3').classList.add('open');
+  else if(n===4)document.getElementById('overlay-step4').classList.add('open');
+}
 
-function goStep2() {
-  var fname = document.getElementById('s1-fname').value.trim();
-  var email = document.getElementById('s1-email').value.trim();
-  if(!fname){ shakeField('s1-fname'); return; }
-  if(!email || !email.includes('@')){ shakeField('s1-email'); return; }
-  state.fname = fname; state.lname = document.getElementById('s1-lname').value.trim(); state.email = email; state.phone = document.getElementById('s1-phone').value.trim();
+function goBack(fromStep){navToStep(fromStep-1);}
+
+function toggleDonation(show){document.getElementById('donation-details').style.display=show?'block':'none';state.donation_included=show;}
+function syncDonAmt(amt){state.donationAmt=amt;var sel=document.querySelector('input[name="don-choice"]:checked');state.donation_choice=sel?sel.value:'';}
+function openStep1(){document.getElementById('overlay-step1').classList.add('open');fbq('track','InitiateCheckout');}
+function closeAll(){document.querySelectorAll('.overlay').forEach(function(o){o.classList.remove('open');});}
+document.querySelectorAll('.overlay').forEach(function(o){o.addEventListener('click',function(e){if(e.target===this)closeAll();});});
+
+function goStep2(){
+  var fname=document.getElementById('s1-fname').value.trim();
+  var email=document.getElementById('s1-email').value.trim();
+  if(!fname){shakeField('s1-fname');return;}
+  if(!email||!email.includes('@')){shakeField('s1-email');return;}
+  state.fname=fname;state.lname=document.getElementById('s1-lname').value.trim();state.email=email;state.phone=document.getElementById('s1-phone').value.trim();
   fbq('track','Lead');
-  document.getElementById('overlay-step1').classList.remove('open'); document.getElementById('overlay-step2').classList.add('open');
+  currentStep=2;
+  document.getElementById('overlay-step1').classList.remove('open');document.getElementById('overlay-step2').classList.add('open');
 }
 
-function goStep3() {
-  state.names_entries = [];
+function goStep3(){
+  state.names_entries=[];
   document.querySelectorAll('.name-entry').forEach(function(entry){
-    var hn = entry.querySelector('.heb-name'); var mn = entry.querySelector('.mom-name'); var gs = entry.querySelector('.gender-sel');
-    if(hn && hn.value.trim()) state.names_entries.push({ heb_name: hn.value.trim(), mothers_name: mn ? mn.value.trim() : '', gender: gs ? gs.value : '' });
+    var hn=entry.querySelector('.heb-name');var mn=entry.querySelector('.mom-name');var gs=entry.querySelector('.gender-sel');
+    var nameIntentions=[];
+    entry.querySelectorAll('.ck-sm.on').forEach(function(el){nameIntentions.push(el.textContent.trim());});
+    if(hn&&hn.value.trim())state.names_entries.push({heb_name:hn.value.trim(),mothers_name:mn?mn.value.trim():'',gender:gs?gs.value:'',intentions:nameIntentions});
   });
-  document.getElementById('overlay-step2').classList.remove('open'); document.getElementById('overlay-step3').classList.add('open');
+  currentStep=3;
+  document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step3').classList.add('open');
 }
 
-function goStep4() {
-  state.intentions = [];
-  document.querySelectorAll('#intentions .ck.on').forEach(function(el){ state.intentions.push(el.textContent.trim()); });
-  state.personal_prayer = document.getElementById('s3-personal').value.trim();
-  document.getElementById('overlay-step3').classList.remove('open'); document.getElementById('overlay-step4').classList.add('open');
+function goStep4(){
+  state.intentions=[];
+  document.querySelectorAll('#intentions .ck.on').forEach(function(el){state.intentions.push(el.textContent.trim());});
+  state.personal_prayer=document.getElementById('s3-personal').value.trim();
+  currentStep=4;
+  document.getElementById('overlay-step3').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');
   fbq('track','CompleteRegistration');
 }
 
-function submitFinal() {
-  var pm = document.querySelector('input[name="pay-method"]:checked');
-  state.payment_method = pm ? pm.value : 'Credit Card';
+function submitFinal(){
+  var pm=document.querySelector('input[name="pay-method"]:checked');
+  state.payment_method=pm?pm.value:'Credit Card';
   submitPrayer();
-  if(state.donation_included){
-    submitDonation();
-  } else {
-    goThankyou();
-  }
+  if(state.donation_included){submitDonation();}else{goThankyou();}
 }
 
-function buildPayload(type) {
-  var nameFields = {};
-  var entries = state.names_entries.slice(0, 10);
-  for (var i = 0; i < 10; i++) {
-    var prefix = 'person_' + (i + 1) + '_';
-    if (i < entries.length) {
-      nameFields[prefix + 'hebrew_name']   = entries[i].heb_name || '';
-      nameFields[prefix + 'mothers_name']  = entries[i].mothers_name || '';
-      nameFields[prefix + 'gender']        = entries[i].gender || '';
-    } else {
-      nameFields[prefix + 'hebrew_name']   = '';
-      nameFields[prefix + 'mothers_name']  = '';
-      nameFields[prefix + 'gender']        = '';
-    }
+function buildPayload(type){
+  var nameFields={};
+  var entries=state.names_entries.slice(0,10);
+  for(var i=0;i<10;i++){
+    var prefix='person_'+(i+1)+'_';
+    if(i<entries.length){nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';nameFields[prefix+'gender']=entries[i].gender||'';nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';}
+    else{nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';}
   }
-  var base = {
-    type: type, language: 'english',
-    timestamp: new Date().toISOString(),
-    date: new Date().toLocaleDateString('en-GB'),
-    time: new Date().toLocaleTimeString('en-GB'),
-    first_name: state.fname, last_name: state.lname,
-    full_name: (state.fname + ' ' + state.lname).trim(),
-    email: state.email, phone: state.phone,
-    total_names_submitted: entries.length,
-    names_summary: entries.map(function(n){ return n.heb_name; }).join(', '),
-    prayer_intentions: state.intentions.join(', '),
-    total_intentions: state.intentions.length,
-    personal_prayer: state.personal_prayer,
-    donation_included: state.donation_included,
-    donation_choice: state.donation_choice || '',
-    donation_amount: state.donationAmt || '',
-    donation_currency: 'USD',
-    payment_method: state.payment_method || '',
-    source_page: window.location.href,
-    referrer: document.referrer || '',
-    user_agent: navigator.userAgent,
-    screen_width: window.screen.width,
-    screen_height: window.screen.height,
-    language_browser: navigator.language || ''
-  };
-  Object.assign(base, nameFields);
+  var base={type:type,language:'english',timestamp:new Date().toISOString(),date:new Date().toLocaleDateString('en-GB'),time:new Date().toLocaleTimeString('en-GB'),first_name:state.fname,last_name:state.lname,full_name:(state.fname+' '+state.lname).trim(),email:state.email,phone:state.phone,total_names_submitted:entries.length,names_summary:entries.map(function(n){return n.heb_name;}).join(', '),prayer_intentions:state.intentions.join(', '),total_intentions:state.intentions.length,personal_prayer:state.personal_prayer,donation_included:state.donation_included,donation_choice:state.donation_choice||'',donation_amount:state.donationAmt||'',donation_currency:'USD',payment_method:state.payment_method||'',source_page:window.location.href,referrer:document.referrer||'',user_agent:navigator.userAgent,screen_width:window.screen.width,screen_height:window.screen.height,language_browser:navigator.language||''};
+  Object.assign(base,nameFields);
   return base;
 }
 
-function submitPrayer() {
-  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(buildPayload('prayer'))
-  }).catch(function(){});
-}
+function submitPrayer(){fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('prayer'))}).catch(function(){});}
 
-var STRIPE_LINKS = {
-  '$18':   'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00',
-  '$36':   'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01',
-  '$72':   'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02',
-  '$100':  'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03',
-  '$180':  'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04',
-  '$260':  'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05',
-  '$360':  'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06',
-  '$500':  'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07',
-  'Other': 'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'
-};
+var STRIPE_LINKS={'$18':'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00','$36':'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01','$56':'https://buy.stripe.com/PLACEHOLDER_56_EN','$72':'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02','$100':'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03','$180':'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04','$260':'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05','$360':'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06','$500':'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07','Other':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'};
 
-function submitDonation() {
-  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(buildPayload('donation'))
-  }).catch(function(){});
+function submitDonation(){
+  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('donation'))}).catch(function(){});
   fbq('track','AddToCart',{value:parseFloat((state.donationAmt||'0').replace(/[^0-9.]/g,'')),currency:'USD'});
-  if (state.payment_method === 'Credit Card') {
-    var stripeUrl = STRIPE_LINKS[state.donationAmt];
-    if (stripeUrl) {
-      window.open(stripeUrl, '_blank');
-      goThankyou();
-    } else {
-      alert('Please select a donation amount.');
-    }
-  } else {
-    alert('PayPal payments are not available at this time. Please select Credit Card.');
-  }
+  if(state.payment_method==='Credit Card'){
+    var stripeUrl=STRIPE_LINKS[state.donationAmt];
+    if(stripeUrl){window.open(stripeUrl,'_blank');goThankyou();}else{alert('Please select a donation amount.');}
+  }else{alert('PayPal payments are not available at this time. Please select Credit Card.');}
 }
 
-function goThankyou() {
-  closeAll();
-  window.location.href = 'thankyou-english.html?email=' + encodeURIComponent(state.email) +
-    '&names=' + encodeURIComponent(state.names_entries.map(function(n){ return n.heb_name; }).join(', ')) +
-    '&donated=' + (state.donation_included ? '1' : '0');
-}
+function goThankyou(){closeAll();window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');}
 
-function shakeField(id) {
-  var el = document.getElementById(id); el.style.borderColor = '#e55'; el.style.animation = 'fieldShake 0.4s ease'; el.focus();
-  setTimeout(function(){ el.style.borderColor=''; el.style.animation=''; }, 800);
-}
+function shakeField(id){var el=document.getElementById(id);el.style.borderColor='#e55';el.style.animation='fieldShake 0.4s ease';el.focus();setTimeout(function(){el.style.borderColor='';el.style.animation='';},800);}
 
-function shareWA(e) {
+function shareWA(e){
   e.preventDefault();
-  var msg = 'I submitted names for prayer at the Rashbi\'s Tzion for Lag B\'Omer — for free!\n' + window.location.href;
-  var waUrl = 'https://wa.me/?text=' + encodeURIComponent(msg);
-  if (/Mobi|Android/i.test(navigator.userAgent)) { window.location.href = waUrl; } else { window.open(waUrl, '_blank'); }
+  var msg='I submitted names for prayer at the Rashbi\'s Tzion for Lag B\'Omer — for free!\n'+window.location.href;
+  var waUrl='https://wa.me/?text='+encodeURIComponent(msg);
+  if(/Mobi|Android/i.test(navigator.userAgent)){window.location.href=waUrl;}else{window.open(waUrl,'_blank');}
   fbq('track','Share');
 }
 </script>
 
-<!-- Footer -->
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center;">
   <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu" style="height:60px;width:auto;object-fit:contain;mix-blend-mode:multiply;">
-  <p style="font-size:0.72rem;color:rgba(255,255,255,0.25);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;">Mosdot Rachel Imenu · Kupat Tzidkat Rashbi · Meron, Israel<br>All rights reserved © 2026</p>
+  <p style="font-size:0.72rem;color:rgba(255,255,255,0.25);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;">Mosdot Rachel Imenu · Kupat Tzidkat Rashbi · Tzfat, Israel<br>All rights reserved © 2026</p>
 </footer>
 
 </body>

@@ -3,205 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>תפילתך התקבלה | קופת צדקת רשב"י</title>
+<title>תפילתך התקבלה — ל"ג בעומר אצל הרשב"י</title>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','929347383251605');fbq('track','PageView');fbq('track','Lead');
+fbq('init','929347383251605');fbq('track','PageView');fbq('track','Purchase',{value:0,currency:'ILS'});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=929347383251605&ev=PageView&noscript=1"/></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#B8860B;--gold-l:#D4A017;--bg:#0a0805;--bdr:rgba(184,134,11,0.25)}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;direction:rtl;overflow-x:hidden;position:relative}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 100%,rgba(184,134,11,.10) 0%,transparent 70%);pointer-events:none}
-.logo{margin-bottom:2rem;opacity:0;animation:fD .6s ease .1s forwards}
-.logo img{height:46px;width:auto;filter:brightness(1.1)}
-.box{max-width:500px;width:100%;text-align:center}
-
-.chk{width:68px;height:68px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;opacity:0;animation:pop .5s ease .3s forwards}
-.chk svg{width:30px;height:30px}
-.cp{stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s ease .8s forwards}
-
-.eyebrow{font-size:.7rem;letter-spacing:.1em;color:var(--gold-l);margin-bottom:.6rem;opacity:0;animation:fD .6s ease .4s forwards;display:block;font-weight:400}
-.h1{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1.8rem,6vw,2.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:.9rem;opacity:0;animation:fD .6s ease .5s forwards}
-.sub{font-family:'Frank Ruhl Libre',serif;font-size:1.05rem;font-weight:400;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:2rem;opacity:0;animation:fD .6s ease .6s forwards}
-.rule{display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem;opacity:0;animation:fI .6s ease .7s forwards}
-.rule-line{flex:1;height:1px;background:var(--bdr)}
-.rule-dot{color:var(--gold);font-size:.55rem}
-
-/* DONATION BOX */
-.don{border:1px solid var(--bdr);background:rgba(184,134,11,.06);padding:1.75rem;margin-bottom:1.25rem;opacity:0;animation:fU .6s ease .8s forwards}
-.don-q{font-family:'Frank Ruhl Libre',serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.7;margin-bottom:.75rem}
-.don-txt{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.1rem;font-weight:300}
-.don-options{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.85rem;text-align:right;}
-.don-radio-row{display:flex;align-items:center;gap:.6rem;flex-direction:row-reverse;justify-content:flex-end;font-size:.92rem;color:rgba(255,255,255,.7);cursor:pointer;padding:.45rem .6rem;border:1px solid rgba(255,255,255,.08);transition:all .15s;font-weight:300}
-.don-radio-row:hover{border-color:rgba(184,134,11,.4);color:#fff}
-.don-radio-row input{accent-color:var(--gold-l);width:15px;height:15px;flex-shrink:0;direction:ltr;background:transparent;border:none;padding:0;}
-.don-btn{width:100%;padding:.95rem;background:linear-gradient(135deg,var(--gold-l),var(--gold));color:#000;font-family:'Heebo',sans-serif;font-size:1.05rem;font-weight:700;border:none;cursor:pointer;transition:filter .15s;animation:shake 3s ease 2s infinite}
-.don-btn:hover{filter:brightness(1.1);animation:none}
-
-/* SHARE SECTION */
-.share-section{opacity:0;animation:fU .6s ease 1s forwards;margin-bottom:1.25rem}
-.share-divider{display:flex;align-items:center;gap:.75rem;margin-bottom:1.1rem}
-.share-divider-line{flex:1;height:1px;background:var(--bdr)}
-.share-headline{
-  font-family:'Frank Ruhl Libre',serif;
-  font-size:1.2rem;
-  font-weight:900;
-  color:var(--gold-l);
-  line-height:1.4;
-  margin-bottom:.5rem;
-  text-align:center;
-}
-.share-sub{font-size:.82rem;color:rgba(255,255,255,.35);margin-bottom:1rem;font-weight:300;text-align:center;}
-.wa-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:.65rem;
-  background:#25D366;
-  color:#fff;
-  font-family:'Heebo',sans-serif;
-  font-size:1rem;
-  font-weight:700;
-  padding:.95rem 1.5rem;
-  border:none;
-  cursor:pointer;
-  text-decoration:none;
-  transition:filter .15s;
-  width:100%;
-}
-.wa-btn:hover{filter:brightness(1.1)}
-.wa-btn svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
-
-.skip{display:block;font-size:.72rem;color:rgba(255,255,255,.18);text-decoration:underline;cursor:pointer;background:none;border:none;margin:.6rem auto 0;opacity:0;animation:fI .6s ease 1.2s forwards;font-family:'Heebo',sans-serif}
-.skip:hover{color:rgba(255,255,255,.4)}
-.foot{margin-top:2.5rem;font-size:.7rem;color:rgba(255,255,255,.18);text-align:center;line-height:1.8;opacity:0;animation:fI .6s ease 1.3s forwards;font-weight:300}
-.foot a{color:rgba(255,255,255,.28);text-decoration:none}
-
-@keyframes fD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fU{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fI{from{opacity:0}to{opacity:1}}
-@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes shake{0%,85%,100%{transform:scale(1);box-shadow:0 4px 20px rgba(184,134,11,.25)}87%{transform:translateX(-3px) scale(1.01)}89%{transform:translateX(3px) scale(1.01)}91%{transform:translateX(-2px)}93%{transform:translateX(2px)}95%{transform:scale(1.02);box-shadow:0 6px 28px rgba(184,134,11,.45)}}
+:root{--gold:#B8860B;--gold-light:#D4A017;--bg:#0a0805;--border:rgba(184,134,11,0.25)}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl}
+.ty-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem 1.5rem 4rem;position:relative}
+.ty-logo-bar{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:0 0 1.5rem;width:100%}
+.ty-logo-bar img{height:52px;width:auto;object-fit:contain}
+.check-circle{width:72px;height:72px;border-radius:50%;background:rgba(184,134,11,0.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem;animation:popIn 0.5s ease 0.2s both}
+.ty-kicker{font-size:0.7rem;letter-spacing:0.12em;color:var(--gold-light);margin-bottom:0.75rem;text-align:center;animation:fadeIn 0.5s ease 0.4s both;font-weight:500}
+.ty-h1{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;color:#fff;text-align:center;line-height:1.2;margin-bottom:0.85rem;animation:fadeIn 0.5s ease 0.5s both;max-width:640px}
+.ty-quote{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1rem,2.5vw,1.25rem);color:rgba(255,255,255,0.65);text-align:center;max-width:540px;line-height:1.75;margin-bottom:2rem;animation:fadeIn 0.5s ease 0.6s both}
+.ty-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:1.5rem 2rem;max-width:540px;width:100%;margin-bottom:1.25rem;animation:fadeIn 0.5s ease 0.7s both}
+.ty-card h3{font-size:0.85rem;font-weight:600;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:1rem;font-family:'Heebo',sans-serif}
+.ty-names{display:flex;flex-wrap:wrap;gap:0.5rem}
+.ty-name-tag{background:rgba(184,134,11,0.12);border:1px solid var(--border);padding:0.35rem 0.85rem;font-size:0.9rem;color:rgba(255,255,255,0.8);font-family:'Heebo',sans-serif;font-weight:300}
+.share-section{max-width:540px;width:100%;animation:fadeIn 0.5s ease 0.85s both;text-align:center}
+.share-section p{font-size:0.8rem;color:rgba(255,255,255,0.35);margin-bottom:0.85rem;letter-spacing:0.06em}
+.share-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.7rem 1.4rem;font-family:'Heebo',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;border:none;transition:all 0.15s;text-decoration:none}
+.share-btn-wa{background:#25D366;color:#fff}
+.share-btn-wa:hover{background:#1da851}
+.share-btn-email{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7)}
+.share-btn-email:hover{border-color:var(--gold-light);color:#fff}
+.back-btn{display:inline-block;margin-top:2rem;font-size:0.8rem;color:rgba(255,255,255,0.3);text-decoration:underline;cursor:pointer;font-family:'Heebo',sans-serif}
+.back-btn:hover{color:rgba(255,255,255,0.65)}
+.donate-upsell{max-width:540px;width:100%;background:rgba(184,134,11,0.07);border:1px solid var(--border);border-right:3px solid var(--gold);padding:1.5rem 2rem;margin-bottom:1.25rem;animation:fadeIn 0.5s ease 0.8s both}
+.donate-upsell h3{font-family:'Frank Ruhl Libre',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+.donate-upsell p{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1rem;font-weight:300}
+.don-list{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem}
+.don-item{display:flex;align-items:center;gap:0.5rem;flex-direction:row-reverse;justify-content:flex-end;font-size:0.9rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.5rem 0.75rem;border:1px solid rgba(255,255,255,0.08);transition:all 0.15s;font-weight:300}
+.don-item:hover{border-color:rgba(184,134,11,0.5);color:#fff;background:rgba(184,134,11,0.05)}
+.don-item input{accent-color:var(--gold-light);margin:0;width:15px;height:15px;direction:ltr}
+.donate-go-btn{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.85rem;font-weight:700;font-size:0.95rem;border:none;cursor:pointer;width:100%;font-family:'Heebo',sans-serif;transition:filter 0.15s}
+.donate-go-btn:hover{filter:brightness(1.1)}
+@keyframes popIn{0%{transform:scale(0.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
+<div class="ty-page">
+  <div class="ty-logo-bar">
+    <img src="logo-banner.jpeg" alt="קופת צדקת רשב״י">
+    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו">
+  </div>
+  <div class="check-circle">✦</div>
+  <div class="ty-kicker">התפילה התקבלה · ל"ג בעומר תשפ"ו</div>
+  <h1 class="ty-h1">שמותיכם נוספו<br>לרשימה הקדושה</h1>
+  <p class="ty-quote">"כדאי הוא רבי שמעון לסמוך עליו בשעת הדחק" — שמותיכם יוזכרו על ציון הרשב"י ברגעים הקדושים של ל"ג בעומר.</p>
 
-<div class="logo"><img src="logo-banner.jpeg" alt="קופת צדקת רשב״י"></div>
-
-<div class="box">
-  <div class="chk">
-    <svg viewBox="0 0 32 32" fill="none">
-      <polyline class="cp" points="6,17 13,24 26,9" stroke="#D4A017" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+  <div class="ty-card" id="ty-names-card" style="display:none;">
+    <h3>שמות שנמסרו לתפילה</h3>
+    <div class="ty-names" id="ty-names-display"></div>
   </div>
 
-  <span class="eyebrow">שמותך התקבלו · ל"ג בעומר · מירון</span>
-  <h1 class="h1">שמך בדרך<br>לציון הרשב"י</h1>
-  <p class="sub">אישור נשלח אליך במייל. שמותיך יועברו אישית אל הציון הקדוש של הרשב"י ביום המסוגל של ל"ג בעומר במירון.</p>
-
-  <div class="rule"><div class="rule-line"></div><span class="rule-dot">✦</span><div class="rule-line"></div></div>
-
-  <!-- DONATION -->
-  <div class="don">
-    <p class="don-q">"הרשב"י הבטיח שמחה וטוב לכל מי שיתרום לשמחת יומו הקדוש — ויהי זכותו למגן וברכה לכל השנה!"</p>
-    <p class="don-txt">חזק את תפילתך עם תרומה. כל תרומה תומכת בפעילות חי רוטל, לימוד הזוהר ושליחויות מירון.</p>
-
-    <div class="don-options">
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="תפילה - ₪18" onchange="setAmt('₪18')"> תפילה — ₪18</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="תפילה ונר - ₪36" onchange="setAmt('₪36')"> תפילה ונר — ₪36</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="הוספת שמן למדורה - ₪72" onchange="setAmt('₪72')"> הוספת שמן למדורה — ₪72</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="תומך לימוד הזוהר - ₪100" onchange="setAmt('₪100')"> תומך לימוד הזוהר — ₪100</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="נותן חסות ללימוד הזוהר - ₪180" onchange="setAmt('₪180')"> נותן חסות ללימוד הזוהר — ₪180</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="חי רוטל 54 ליטר יין - ₪260" onchange="setAmt('₪260')"> חי רוטל 54 ליטר יין — ₪260</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="תומך זהב ל\"ג בעומר - ₪360" onchange="setAmt('₪360')"> תומך זהב ל"ג בעומר — ₪360</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="נותן חסות יהלום ל\"ג בעומר - ₪500" onchange="setAmt('₪500')"> נותן חסות יהלום ל"ג בעומר — ₪500</label>
-      <label class="don-radio-row"><input type="radio" name="ty-choice" value="סכום אחר" onchange="showOther()"> סכום אחר</label>
-    </div>
-    <div id="other-wrap" style="display:none;margin-bottom:0.75rem;">
-      <input type="number" id="other-val" min="1" placeholder="הכנס סכום בשקלים" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(184,134,11,0.5);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:1rem;outline:none;text-align:center;direction:ltr;">
-    </div>
-
-    <button class="don-btn" onclick="donate()">← תרום וחזק את תפילתי</button>
+  <div class="ty-card">
+    <h3>מה קורה עכשיו?</h3>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+      <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.75);">
+        <span style="color:var(--gold-light);flex-shrink:0;">1.</span>
+        <span>תקבלו <strong style="color:#fff;">מייל אישור</strong> עם השמות ובקשות התפילה שמסרתם.</span>
+      </li>
+      <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.75);">
+        <span style="color:var(--gold-light);flex-shrink:0;">2.</span>
+        <span>הצוותים שלנו <strong style="color:#fff;">יתפללו עבור שמותיכם על ציון הרשב"י</strong> ברגעי השיא של ליל ל"ג בעומר.</span>
+      </li>
+      <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.75);">
+        <span style="color:var(--gold-light);flex-shrink:0;">3.</span>
+        <span>שתפו את הדף עם בני משפחה וחברים — <strong style="color:#fff;">עזרו לאחרים לזכות</strong> בתפילה על ציון הרשב"י.</span>
+      </li>
+    </ul>
   </div>
 
-  <!-- SHARE SECTION -->
+  <!-- תרומה (מוצג רק אם לא תרמו) -->
+  <div class="donate-upsell" id="donate-upsell">
+    <h3>חזקו את תפילתכם עם זכות הצדקה</h3>
+    <p>הוסיפו את כוח הצדקה לתפילתכם — תרומתכם תסייע למשפחות תורה לאורך כל השנה.</p>
+    <div class="don-list">
+      <!-- ₪56 Stripe link: Replace PLACEHOLDER_56_HE with real link from client -->
+      <label class="don-item"><input type="radio" name="ty-don" value="₪18" onchange="setTyDon('₪18','https://buy.stripe.com/7sY3cv4rwgEgg8G3xz6wE09')"> תפילה — ₪18</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪36" onchange="setTyDon('₪36','https://buy.stripe.com/4gMcN53nsfAc1dM8RT6wE0a')"> תפילה ונר — ₪36</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪56" onchange="setTyDon('₪56','https://buy.stripe.com/PLACEHOLDER_56_HE')"> תפילה + 3 ליטר יין — ₪56</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪72" onchange="setTyDon('₪72','https://buy.stripe.com/5kQ6oH9LQbjW9Kic456wE0b')"> הוספת שמן למדורה — ₪72</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪100" onchange="setTyDon('₪100','https://buy.stripe.com/00w14n7DIco0cWu6JL6wE0c')"> תומך לימוד הזוהר — ₪100</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪180" onchange="setTyDon('₪180','https://buy.stripe.com/9B63cv1fk5ZC9Ki3xz6wE0d')"> נותן חסות ללימוד הזוהר — ₪180</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪260" onchange="setTyDon('₪260','https://buy.stripe.com/8x2dR9cY2ew85u27NP6wE0e')"> חי רוטל 54 ליטר יין — ₪260</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪360" onchange="setTyDon('₪360','https://buy.stripe.com/00wbJ1cY273G7Cad896wE0f')"> תומך זהב ל"ג בעומר — ₪360</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪500" onchange="setTyDon('₪500','https://buy.stripe.com/6oU00j7DI0Fi1dM3xz6wE0g')"> נותן חסות יהלום ל"ג בעומר — ₪500</label>
+    </div>
+    <button class="donate-go-btn" id="ty-donate-btn" onclick="goTyDonate()">← לתרומה</button>
+  </div>
+
   <div class="share-section">
-    <div class="share-divider">
-      <div class="share-divider-line"></div>
-      <span style="color:var(--gold);font-size:.5rem;">✦</span>
-      <div class="share-divider-line"></div>
+    <p>שתפו עם אחרים ועזרו להם לזכות</p>
+    <div class="share-btns">
+      <a class="share-btn share-btn-wa" href="#" onclick="shareWA(event)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        שתף בוואטסאפ
+      </a>
+      <a class="share-btn share-btn-email" href="#" onclick="shareEmail(event)">
+        ✉ שלח במייל
+      </a>
     </div>
-    <p class="share-headline">המתפלל על חברו נענה תחילה –<br>שתף את הזכות למכריך</p>
-    <p class="share-sub">שלח לחברים ומשפחה — גם הם יכולים לזכות</p>
-    <a class="wa-btn" href="#" onclick="shareWA(event)">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      שלח לחברים ומשפחה בווצאפ
-    </a>
   </div>
 
-  <button class="skip" onclick="window.location.href='https://www.rashbi.org'">חזרה לאתר רשב"י</button>
+  <!-- LP_URL: Replace PLACEHOLDER_LP_URL_HE with the actual Hebrew landing page URL -->
+  <span class="back-btn" onclick="window.location.href='PLACEHOLDER_LP_URL_HE'">→ מסור שמות לאדם נוסף</span>
 </div>
 
-<div class="foot">קופת צדקת רשב"י · צפת–מירון, ישראל<br><a href="mailto:office@rashbi.org">office@rashbi.org</a> · 718-971-5901</div>
+<footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.25rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;text-align:center;">
+  <p style="font-size:0.68rem;color:rgba(255,255,255,0.2);font-family:'Heebo',sans-serif;font-weight:300;line-height:1.6;">מוסדות רחל אמנו · קופת צדקת רשב"י · צפת, ישראל<br>כל הזכויות שמורות © 2026</p>
+</footer>
 
 <script>
-// Replace with the actual landing page URL
-const LP_URL = 'https://YOUR_LANDING_PAGE_URL_HERE';
+var LP_URL = 'PLACEHOLDER_LP_URL_HE'; // ← החלף בכתובת URL האמיתית של הדף בעברית
 
-var currentAmt = '';
-var params = new URLSearchParams(window.location.search);
-var alreadyDonated = params.get('donated') === '1';
-if (alreadyDonated) {
-  var donBox = document.querySelector('.don');
-  if (donBox) donBox.style.display = 'none';
-}
+var tyDonUrl = '';
+function setTyDon(amt, url){ tyDonUrl = url; document.getElementById('ty-donate-btn').textContent = 'לתרומה ' + amt + ' ←'; }
+function goTyDonate(){ if(tyDonUrl){ window.open(tyDonUrl,'_blank'); }else{ alert('אנא בחר סכום תרומה.'); } }
 
-function setAmt(a) {
-  currentAmt = a;
-  document.getElementById('other-wrap').style.display = 'none';
-}
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var names = params.get('names');
+  var donated = params.get('donated');
 
-function showOther() {
-  document.getElementById('other-wrap').style.display = 'block';
-  document.getElementById('other-val').focus();
-  currentAmt = null;
-}
-
-function donate() {
-  var isOther = !currentAmt;
-  var amt = isOther ? ('₪' + (document.getElementById('other-val').value || '0')) : currentAmt;
-  if (!amt || amt === '₪' || amt === '₪0') {
-    alert('אנא בחר סכום תרומה');
-    return;
+  if(names){
+    var nameArr = names.split(',').map(function(n){ return n.trim(); }).filter(Boolean);
+    if(nameArr.length){
+      var card = document.getElementById('ty-names-card');
+      var display = document.getElementById('ty-names-display');
+      nameArr.forEach(function(n){
+        var tag = document.createElement('div'); tag.className='ty-name-tag'; tag.textContent=n; display.appendChild(tag);
+      });
+      card.style.display='block';
+    }
   }
-  fbq('track', 'AddToCart', { value: parseFloat(amt.replace(/[^0-9.]/g, '')), currency: 'ILS' });
-  // Replace with your Stripe/PayPal payment link:
-  alert('מעביר לתשלום עבור ' + amt + ' — יש להחליף בקישור Stripe/PayPal');
-}
 
-function shareWA(e) {
+  if(donated === '1'){ var upsell = document.getElementById('donate-upsell'); if(upsell) upsell.style.display='none'; }
+})();
+
+function shareWA(e){
   e.preventDefault();
+  var msg = 'מסרתי שמות לתפילה על ציון הרשב"י לל"ג בעומר — חינם!\nגם אתם יכולים: ' + LP_URL;
+  var waUrl = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  if(/Mobi|Android/i.test(navigator.userAgent)){ window.location.href=waUrl; }else{ window.open(waUrl,'_blank'); }
+}
 
-  // The exact message requested by client
-  var msg = 'מסרתי שמות לתפילה על ציון הרשב"י לל"ג בעומר — חינם!\n' + LP_URL;
-
-  var encoded = encodeURIComponent(msg);
-  var waUrl = 'https://wa.me/?text=' + encoded;
-
-  // Works on mobile and desktop
-  if (/Mobi|Android/i.test(navigator.userAgent)) {
-    window.location.href = waUrl;
-  } else {
-    window.open(waUrl, '_blank');
-  }
-
-  fbq('track', 'Share');
+function shareEmail(e){
+  e.preventDefault();
+  var subject = 'מסרו שמות לתפילה על ציון הרשב"י — ל"ג בעומר';
+  var body = 'מסרתי את שמות המשפחה שלי לתפילה על ציון הרשב"י לל"ג בעומר — בחינם לגמרי!\n\nגם אתם יכולים:\n' + LP_URL + '\n\nנזכה כולנו לישועות וברכות.';
+  window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 </script>
 </body>
