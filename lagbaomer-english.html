@@ -110,7 +110,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
   <div class="hero-content">
     <div class="hero-kicker">Lag B'Omer · Meron · Hilula of the Rashbi</div>
     <h1 class="hero-h1">This Year Your Name Will Be<br>Remembered at the Rashbi's Tzion<br>in the Most Sacred Moments of the Year.</h1>
-    <p class="hero-sub">Submit your name and the names of your family<br>for prayer, salvation and blessing — completely free</p>
+    <p class="hero-sub">Submit your name and the names of your family<br>for prayer, salvation and blessing</p>
     <div class="cta-wrap">
       <button class="shake-btn" onclick="openStep1()">✦ Submit Your Names</button>
       <p class="trust-line">Easy to fill out &nbsp;·&nbsp; No payment required &nbsp;·&nbsp; Confirmation by email</p>
@@ -134,13 +134,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
       <span class="dot">✦</span>
       <span>Preparations are underway | Submit your names now to be remembered at the peak of the sacred day</span>
       <span class="dot">✦</span>
-      <span>Achieve the merit of charity — join the sacred mission at Meron this Lag B'Omer</span>
       <span class="dot">✦</span>
       <span>The merit of charity &amp; prayer on the holy day: Submit your name and secure a miracle!</span>
       <span class="dot">✦</span>
       <span>Preparations are underway | Submit your names now to be remembered at the peak of the sacred day</span>
       <span class="dot">✦</span>
-      <span>Achieve the merit of charity — join the sacred mission at Meron this Lag B'Omer</span>
       <span class="dot">✦</span>
     </div>
   </div>
@@ -197,8 +195,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
             </select>
           </div>
           <div class="f-group" style="margin-bottom:0;"><label>Mother's Name</label><input type="text" class="mom-name" placeholder=""></div>
-          <button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">+ Add prayer intentions for this person</button>
-          <div class="name-intentions-grid" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
+          <button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">★ Prayer intentions</button>
+          <div class="name-intentions-grid" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;">
             <div class="check-grid" style="gap:0.25rem;">
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Healthy Recovery</div>
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>Happiness</div>
@@ -242,8 +240,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
         <div class="prog-step active" onclick="navToStep(3)"></div>
       </div>
       <div class="don-header-box">
-        <h3>"Rabbi Shimon is worthy to be relied upon in times of need"</h3>
-        <p>In the sacred moments of Lag B'Omer, you have the opportunity to take part in the great mission of <strong style="color:#fff;">Tzidkat Rashbi</strong> — throughout the entire year:</p>
         <ul style="margin-top:0.75rem;padding-left:0;display:flex;flex-direction:column;gap:0.4rem;list-style:none;">
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">Support hundreds of poor families</strong> destitute in Tzfat, providing them their basic needs.</span></li>
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">Supporting hundreds of families</strong> of Torah scholars who need basic sustenance.</span></li>
@@ -262,7 +258,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
           <span>I will submit my name without a donation at this time</span>
         </label>
       </div>
-      <div id="donation-details" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
+      <div id="donation-details" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;">
         <div class="f-group">
           <label>Select Donation</label>
           <div id="don-choices" style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem;">
@@ -314,7 +310,7 @@ function toggleNameIntentions(btn){
   var grid=btn.nextElementSibling;
   var visible=grid.style.display!=='none';
   grid.style.display=visible?'none':'block';
-  btn.textContent=visible?'+ Add prayer intentions for this person':'− Hide prayer intentions';
+  btn.textContent=visible?'★ Prayer intentions':'− Hide prayer intentions';
 }
 
 function createNameEntryInner(idx){
@@ -323,8 +319,8 @@ function createNameEntryInner(idx){
     '<div class="f-group"><label>Hebrew Name</label><input type="text" class="heb-name" placeholder=""></div>'+
     '<div class="f-group"><label>Gender</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'DM Sans\',sans-serif;font-size:0.88rem;outline:none;appearance:none;"><option value="">Select</option><option value="Male">Ben (Male)</option><option value="Female">Bat (Female)</option></select></div>'+
     '<div class="f-group" style="margin-bottom:0;"><label>Mother\'s Name</label><input type="text" class="mom-name" placeholder=""></div>'+
-    '<button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">+ Add prayer intentions for this person</button>'+
-    '<div class="name-intentions-grid" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;"><div class="check-grid" style="gap:0.25rem;">'+intHtml+'</div></div>';
+    '<button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">★ Prayer intentions</button>'+
+    '<div class="name-intentions-grid" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;"><div class="check-grid" style="gap:0.25rem;">'+intHtml+'</div></div>';
 }
 
 function addName(){
@@ -365,6 +361,10 @@ function goStep2(){
 }
 
 function goStep3(){
+  // Validate at least one name entered
+  var hasName = false;
+  document.querySelectorAll('.name-entry .heb-name').forEach(function(el){ if(el.value.trim()) hasName = true; });
+  if(!hasName){ alert('Please enter at least one name before continuing.'); return; }
   state.names_entries=[];
   document.querySelectorAll('.name-entry').forEach(function(entry){
     var hn=entry.querySelector('.heb-name');var mn=entry.querySelector('.mom-name');var gs=entry.querySelector('.gender-sel');
@@ -389,8 +389,17 @@ function buildPayload(type){
   var entries=state.names_entries.slice(0,10);
   for(var i=0;i<10;i++){
     var prefix='person_'+(i+1)+'_';
-    if(i<entries.length){nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';nameFields[prefix+'gender']=entries[i].gender||'';nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';}
-    else{nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';}
+    if(i<entries.length){
+      nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';
+      nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';
+      nameFields[prefix+'gender']=entries[i].gender||'';
+      nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';
+      var prayers=entries[i].intentions||[];
+      for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]=p<prayers.length?prayers[p]:'';}
+    }else{
+      nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';
+      for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]='';}
+    }
   }
   var base={type:type,language:'english',timestamp:new Date().toISOString(),date:new Date().toLocaleDateString('en-GB'),time:new Date().toLocaleTimeString('en-GB'),first_name:state.fname,last_name:state.lname,full_name:(state.fname+' '+state.lname).trim(),email:state.email,phone:state.phone,total_names_submitted:entries.length,names_summary:entries.map(function(n){return n.heb_name;}).join(', '),donation_included:state.donation_included,donation_choice:state.donation_choice||'',donation_amount:state.donationAmt||'',donation_currency:'USD',payment_method:state.payment_method||'',source_page:window.location.href,referrer:document.referrer||'',user_agent:navigator.userAgent,screen_width:window.screen.width,screen_height:window.screen.height,language_browser:navigator.language||''};
   Object.assign(base,nameFields);

@@ -107,7 +107,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
   <div class="hero-content">
     <div class="hero-kicker">ל"ג בעומר · מירון · תשפ״ו</div>
     <h1 class="hero-h1">השנה שמך יוזכר<br>בציון הרשב"י<br>ברגעים הכי קדושים בשנה.</h1>
-    <p class="hero-sub" style="margin-bottom:3rem;">מסור עכשיו את שמותיך ואת שמות בני משפחתך לתפילה<br>לישועה ולברכה — בחינם לגמרי</p>
+    <p class="hero-sub" style="margin-bottom:3rem;">מסור עכשיו את שמותיך ואת שמות בני משפחתך לתפילה<br>לישועה ולברכה</p>
     <div class="cta-wrap" style="margin-top:1rem;">
       <button class="shake-btn" onclick="openStep1()">✦ למסירת שמות</button>
       <p class="trust-line">קל למילוי &nbsp;·&nbsp; ללא תשלום &nbsp;·&nbsp; אישור במייל</p>
@@ -131,13 +131,11 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
       <span class="dot">✦</span>
       <span>ההכנות בעיצומן | מסרו כעת את שמותיכם להזכרה בשיא היום הקדוש</span>
       <span class="dot">✦</span>
-      <span>זכו בזכות הצדקה — היו שותפים במשימה הקדושה במירון ל"ג בעומר</span>
       <span class="dot">✦</span>
       <span>זכות הצדקה והתפילה ביום הקדוש: מסרו שם והבטיחו לעצמכם ישועה!</span>
       <span class="dot">✦</span>
       <span>ההכנות בעיצומן | מסרו כעת את שמותיכם להזכרה בשיא היום הקדוש</span>
       <span class="dot">✦</span>
-      <span>זכו בזכות הצדקה — היו שותפים במשימה הקדושה במירון ל"ג בעומר</span>
       <span class="dot">✦</span>
     </div>
   </div>
@@ -194,8 +192,8 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
             </select>
           </div>
           <div class="f-group" style="margin-bottom:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder=""></div>
-          <button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">+ הוסף בקשות תפילה לאדם זה</button>
-          <div class="name-intentions-grid" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
+          <button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">★ בקשות תפילה</button>
+          <div class="name-intentions-grid" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;">
             <div class="check-grid" style="gap:0.25rem;">
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>רפואה שלמה</div>
               <div class="ck-sm" onclick="this.classList.toggle('on')"><div class="ck-box"></div>שמחה ואושר</div>
@@ -239,8 +237,6 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
         <div class="prog-step active" onclick="navToStep(3)"></div>
       </div>
       <div class="don-header-box">
-        <h3>"כדאי הוא רבי שמעון לסמוך עליו בשעת הדחק"</h3>
-        <p>ברגעים הקדושים של ל"ג בעומר, יש לך הזדמנות לקחת חלק במפעל האדיר של <strong style="color:#fff;">צדקת רשב"י</strong> — לאורך כל השנה:</p>
         <ul style="margin-top:0.75rem;padding-right:0;display:flex;flex-direction:column;gap:0.4rem;list-style:none;">
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">תמיכה במאות משפחות עניות</strong> בעיר הקודש צפת בצרכים הבסיסיים.</span></li>
           <li style="display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--gold-light);flex-shrink:0;">✦</span><span><strong style="color:#fff;">החזקת מאות משפחות</strong> של עמלי תורה הזקוקים לסיוע קיומי.</span></li>
@@ -259,23 +255,23 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
           <span>אמסור את השם ללא תרומה כרגע</span>
         </label>
       </div>
-      <div id="donation-details" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
+      <div id="donation-details" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;">
         <div class="f-group">
           <label>בחר סוג תרומה</label>
           <div id="don-choices" style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem;">
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה - ₪18" onchange="syncDonAmt('₪18')"> תפילה — ₪18</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה ונר - ₪36" onchange="syncDonAmt('₪36')"> תפילה ונר — ₪36</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה + 3 ליטר יין - ₪56" onchange="syncDonAmt('₪56')"> תפילה + 3 ליטר יין — ₪56</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="הוספת שמן למדורה - ₪72" onchange="syncDonAmt('₪72')"> הוספת שמן למדורה — ₪72</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך לימוד הזוהר - ₪100" onchange="syncDonAmt('₪100')"> תומך לימוד הזוהר — ₪100</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="נותן חסות ללימוד הזוהר - ₪180" onchange="syncDonAmt('₪180')"> נותן חסות ללימוד הזוהר — ₪180</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="חי רוטל 54 ליטר יין - ₪260" onchange="syncDonAmt('₪260')"> חי רוטל 54 ליטר יין — ₪260</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך זהב ל&quot;ג בעומר - ₪360" onchange="syncDonAmt('₪360')"> תומך זהב ל"ג בעומר — ₪360</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="נותן חסות יהלום ל&quot;ג בעומר - ₪500" onchange="syncDonAmt('₪500')"> נותן חסות יהלום ל"ג בעומר — ₪500</label>
-            <label class="don-radio-row"><input type="radio" name="don-choice" value="סכום אחר" onchange="syncDonAmt('סכום אחר')"> סכום אחר</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה - ₪56" onchange="syncDonAmt('תפילה - ₪56')"> תפילה — ₪56</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה והדלקת נר - ₪72" onchange="syncDonAmt('תפילה והדלקת נר - ₪72')"> תפילה והדלקת נר — ₪72</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="הוספת שמן למדורה - ₪100" onchange="syncDonAmt('הוספת שמן למדורה - ₪100')"> הוספת שמן למדורה — ₪100</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="אמירת ספר תהילים בציון - ₪180" onchange="syncDonAmt('אמירת ספר תהילים בציון - ₪180')"> אמירת ספר תהילים בציון — ₪180</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="חסות לימוד זוהר - ₪180" onchange="syncDonAmt('חסות לימוד זוהר - ₪180')"> חסות לימוד זוהר — ₪180</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="חי רוטל 18 ליטר יין - ₪260" onchange="syncDonAmt('חי רוטל 18 ליטר יין - ₪260')"> ח"י רוטל 18 ליטר יין — ₪260</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="פדיון נפש - ₪360" onchange="syncDonAmt('פדיון נפש - ₪360')"> פדיון נפש — ₪360</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="חי רוטל 54 ליטר יין - ₪780" onchange="syncDonAmt('חי רוטל 54 ליטר יין - ₪780')"> ח"י רוטל 54 ליטר יין — ₪780</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך יהלום לג בעומר - ₪1,000" onchange="syncDonAmt('תומך יהלום לג בעומר - ₪1,000')"> תומך יהלום ל"ג בעומר — ₪1,000</label>
           </div>
-        </div>
-        <div class="f-group">
+          </div>
+          <div class="f-group">
+          <label>אמצעי  <div class="f-group">
           <label>אמצעי תשלום</label>
           <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-direction:row-reverse;justify-content:flex-end;">
             <label class="don-radio-row" style="border:none;padding:0.2rem 0;"><input type="radio" name="pay-method" value="כרטיס אשראי" checked style="accent-color:var(--gold-light);direction:ltr;background:transparent;border:none;padding:0;"> כרטיס אשראי</label>
@@ -311,7 +307,7 @@ function toggleNameIntentions(btn){
   var grid=btn.nextElementSibling;
   var visible=grid.style.display!=='none';
   grid.style.display=visible?'none':'block';
-  btn.textContent=visible?'+ הוסף בקשות תפילה לאדם זה':'− הסתר בקשות תפילה';
+  btn.textContent=visible?'★ בקשות תפילה':'− הסתר בקשות תפילה';
 }
 
 function createNameEntryInner(idx){
@@ -320,8 +316,8 @@ function createNameEntryInner(idx){
     '<div class="f-group"><label>שם בעברית</label><input type="text" class="heb-name" placeholder=""></div>'+
     '<div class="f-group"><label>מין</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'Heebo\',sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;"><option value="">בחר</option><option value="זכר">בן (זכר)</option><option value="נקבה">בת (נקבה)</option></select></div>'+
     '<div class="f-group" style="margin-bottom:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder=""></div>'+
-    '<button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">+ הוסף בקשות תפילה לאדם זה</button>'+
-    '<div class="name-intentions-grid" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;"><div class="check-grid" style="gap:0.25rem;">'+intHtml+'</div></div>';
+    '<button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">★ בקשות תפילה</button>'+
+    '<div class="name-intentions-grid" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;"><div class="check-grid" style="gap:0.25rem;">'+intHtml+'</div></div>';
 }
 
 function addName(){
@@ -362,6 +358,9 @@ function goStep2(){
 }
 
 function goStep3(){
+  var hasName = false;
+  document.querySelectorAll('.name-entry .heb-name').forEach(function(el){ if(el.value.trim()) hasName = true; });
+  if(!hasName){ alert('יש להזין לפחות שם אחד לפני המשך.'); return; }
   state.names_entries=[];
   document.querySelectorAll('.name-entry').forEach(function(entry){
     var hn=entry.querySelector('.heb-name');var mn=entry.querySelector('.mom-name');var gs=entry.querySelector('.gender-sel');
@@ -386,8 +385,17 @@ function buildPayload(type){
   var entries=state.names_entries.slice(0,10);
   for(var i=0;i<10;i++){
     var prefix='person_'+(i+1)+'_';
-    if(i<entries.length){nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';nameFields[prefix+'gender']=entries[i].gender||'';nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';}
-    else{nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';}
+    if(i<entries.length){
+      nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';
+      nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';
+      nameFields[prefix+'gender']=entries[i].gender||'';
+      nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';
+      var prayers=entries[i].intentions||[];
+      for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]=p<prayers.length?prayers[p]:'';}
+    }else{
+      nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';
+      for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]='';}
+    }
   }
   var base={type:type,language:'hebrew',timestamp:new Date().toISOString(),date:new Date().toLocaleDateString('he-IL'),time:new Date().toLocaleTimeString('he-IL'),first_name:state.fname,last_name:state.lname,full_name:(state.fname+' '+state.lname).trim(),email:state.email,phone:state.phone,total_names_submitted:entries.length,names_summary:entries.map(function(n){return n.heb_name;}).join(', '),donation_included:state.donation_included,donation_choice:state.donation_choice||'',donation_amount:state.donationAmt||'',donation_currency:'ILS',payment_method:state.payment_method||'',source_page:window.location.href,referrer:document.referrer||'',user_agent:navigator.userAgent,screen_width:window.screen.width,screen_height:window.screen.height,language_browser:navigator.language||''};
   Object.assign(base,nameFields);
@@ -396,13 +404,23 @@ function buildPayload(type){
 
 function submitPrayer(){fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('prayer'))}).catch(function(){});}
 
-var STRIPE_LINKS_HE={'₪18':'https://buy.stripe.com/7sY3cv4rwgEgg8G3xz6wE09','₪36':'https://buy.stripe.com/4gMcN53nsfAc1dM8RT6wE0a','₪56':'https://buy.stripe.com/PLACEHOLDER_56_HE','₪72':'https://buy.stripe.com/5kQ6oH9LQbjW9Kic456wE0b','₪100':'https://buy.stripe.com/00w14n7DIco0cWu6JL6wE0c','₪180':'https://buy.stripe.com/9B63cv1fk5ZC9Ki3xz6wE0d','₪260':'https://buy.stripe.com/8x2dR9cY2ew85u27NP6wE0e','₪360':'https://buy.stripe.com/00wbJ1cY273G7Cad896wE0f','₪500':'https://buy.stripe.com/6oU00j7DI0Fi1dM3xz6wE0g','סכום אחר':'https://buy.stripe.com/eVqeVde261Jm7Caecd6wE0h'};
+var STRIPE_LINKS_HE={
+  'תפילה - ₪56':'https://buy.stripe.com/PLACEHOLDER_56_HE',
+  'תפילה והדלקת נר - ₪72':'https://buy.stripe.com/PLACEHOLDER_72_HE',
+  'הוספת שמן למדורה - ₪100':'https://buy.stripe.com/PLACEHOLDER_100_HE',
+  'אמירת ספר תהילים בציון - ₪180':'https://buy.stripe.com/PLACEHOLDER_180a_HE',
+  'חסות לימוד זוהר - ₪180':'https://buy.stripe.com/PLACEHOLDER_180b_HE',
+  'חי רוטל 18 ליטר יין - ₪260':'https://buy.stripe.com/PLACEHOLDER_260_HE',
+  'פדיון נפש - ₪360':'https://buy.stripe.com/PLACEHOLDER_360_HE',
+  'חי רוטל 54 ליטר יין - ₪780':'https://buy.stripe.com/PLACEHOLDER_780_HE',
+  'תומך יהלום לג בעומר - ₪1,000':'https://buy.stripe.com/PLACEHOLDER_1000_HE'
+};
 
 function submitDonation(){
   fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('donation'))}).catch(function(){});
   fbq('track','AddToCart',{value:parseFloat((state.donationAmt||'0').replace(/[^0-9.]/g,'')),currency:'ILS'});
   if(state.payment_method==='כרטיס אשראי'){
-    var stripeUrl=STRIPE_LINKS_HE[state.donationAmt];
+    var stripeUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt];
     if(stripeUrl){window.open(stripeUrl,'_blank');goThankyou();}else{alert('אנא בחר סכום תרומה.');}
   }else{alert('תשלום PayPal אינו זמין כרגע. אנא בחר כרטיס אשראי.');}
 }
