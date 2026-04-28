@@ -294,7 +294,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 
 <script>
 (function(){
-  var deadline=new Date('2026-05-04T21:00:00Z').getTime();
+  var deadline=new Date('2026-05-05T21:00:00Z').getTime();
   function pad(n){return n<10?'0'+n:''+n}
   function tick(){var diff=Math.max(0,deadline-Date.now());document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));document.getElementById('cd-h').textContent=pad(Math.floor((diff%86400000)/3600000));document.getElementById('cd-m').textContent=pad(Math.floor((diff%3600000)/60000));document.getElementById('cd-s').textContent=pad(Math.floor((diff%60000)/1000))}
   tick();setInterval(tick,1000);
@@ -380,8 +380,14 @@ function goStep3(){
 function submitFinal(){
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'כרטיס אשראי';
-  submitPrayer();
-  if(state.donation_included){submitDonation();}else{goThankyou();}
+  var payload=buildPayload('submission');
+  fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+  if(state.donation_included){
+    var stripeUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt];
+    if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')===-1){window.open(stripeUrl,'_blank');setTimeout(function(){window.location.href='thankyou-hebrew.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated=1';},400);}
+    else if(stripeUrl){alert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');}
+    else{alert('אנא בחר סכום תרומה.');}
+  }else{goThankyou();}
 }
 
 function buildPayload(type){
@@ -406,7 +412,6 @@ function buildPayload(type){
   return base;
 }
 
-function submitPrayer(){fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('prayer')),keepalive:true}).catch(function(){});}
 
 var STRIPE_LINKS_HE={
   'תפילה - ₪56':'https://buy.stripe.com/eVqdR9bTY9bO1dMgkl6wE0i',
@@ -420,14 +425,6 @@ var STRIPE_LINKS_HE={
   'תומך יהלום לג בעומר - ₪1,000':'https://buy.stripe.com/dRm00jcY25ZCaOm4BD6wE0l'
 };
 
-function submitDonation(){
-  fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('donation')),keepalive:true}).catch(function(){});
-  fbq('track','AddToCart',{value:parseFloat((state.donationAmt||'0').replace(/[^0-9.]/g,'')),currency:'ILS'});
-  if(state.payment_method==='כרטיס אשראי'){
-    var stripeUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt];
-    if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')===-1){window.open(stripeUrl,'_blank');goThankyou();}else if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')!==-1){alert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');} else{alert('אנא בחר סכום תרומה.');}
-  }else{alert('תשלום PayPal אינו זמין כרגע. אנא בחר כרטיס אשראי.');}
-}
 
 function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-hebrew.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
 
