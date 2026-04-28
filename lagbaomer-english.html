@@ -84,7 +84,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
 .don-radio-row{display:flex;align-items:flex-start;gap:0.6rem;font-size:1rem;color:rgba(255,255,255,0.75);cursor:pointer;padding:0.6rem 0.8rem;border:1px solid rgba(255,255,255,0.08);margin-bottom:0.4rem;transition:all 0.15s;font-weight:300;line-height:1.4}
 .don-radio-row:hover{border-color:rgba(184,134,11,0.4);color:#fff}
 .don-radio-row input{accent-color:var(--gold-light);width:16px;height:16px;flex-shrink:0;margin-top:2px;background:transparent;border:none;padding:0}
-.success-donate-cta{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.95rem 2rem;font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;transition:filter 0.15s;font-family:'DM Sans',sans-serif;animation:shakePulse 2.5s ease 1s infinite;margin-top:0.75rem;letter-spacing:0.02em}
+.success-donate-cta{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.95rem 2rem;font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;transition:filter 0.15s;font-family:'DM Sans',sans-serif;margin-top:0.75rem;letter-spacing:0.02em}
 .success-donate-cta:hover{filter:brightness(1.1);animation:none}
 .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 20px rgba(37,211,102,0.35);animation:floatBob 3s ease infinite;text-decoration:none}
 .wa-float svg{width:28px;height:28px;fill:#fff}
@@ -406,12 +406,12 @@ function buildPayload(type){
   return base;
 }
 
-function submitPrayer(){fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('prayer'))}).catch(function(){});}
+function submitPrayer(){fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('prayer')),keepalive:true}).catch(function(){});}
 
 var STRIPE_LINKS={'$18':'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00','$36':'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01','$56':'https://buy.stripe.com/PLACEHOLDER_56_EN','$72':'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02','$100':'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03','$180':'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04','$260':'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05','$360':'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06','$500':'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07','Other':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'};
 
 function submitDonation(){
-  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('donation'))}).catch(function(){});
+  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('donation')),keepalive:true}).catch(function(){});
   fbq('track','AddToCart',{value:parseFloat((state.donationAmt||'0').replace(/[^0-9.]/g,'')),currency:'USD'});
   if(state.payment_method==='Credit Card'){
     var stripeUrl=STRIPE_LINKS[state.donationAmt];
@@ -419,7 +419,7 @@ function submitDonation(){
   }else{alert('PayPal payments are not available at this time. Please select Credit Card.');}
 }
 
-function goThankyou(){closeAll();window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');}
+function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
 
 function shakeField(id){var el=document.getElementById(id);el.style.borderColor='#e55';el.style.animation='fieldShake 0.4s ease';el.focus();setTimeout(function(){el.style.borderColor='';el.style.animation='';},800);}
 
