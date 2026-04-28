@@ -298,7 +298,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
 
 <script>
 (function(){
-  var deadline=new Date('2026-05-04T21:00:00Z').getTime();
+  var deadline=new Date('2026-05-05T21:00:00Z').getTime();
   function pad(n){return n<10?'0'+n:''+n}
   function tick(){var diff=Math.max(0,deadline-Date.now());document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));document.getElementById('cd-h').textContent=pad(Math.floor((diff%86400000)/3600000));document.getElementById('cd-m').textContent=pad(Math.floor((diff%3600000)/60000));document.getElementById('cd-s').textContent=pad(Math.floor((diff%60000)/1000))}
   tick();setInterval(tick,1000);
@@ -385,8 +385,14 @@ function goStep3(){
 function submitFinal(){
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'Credit Card';
-  submitPrayer();
-  if(state.donation_included){submitDonation();}else{goThankyou();}
+  var payload=buildPayload('submission');
+  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+  if(state.donation_included){
+    var stripeUrl=STRIPE_LINKS[state.donationAmt];
+    if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')===-1){window.open(stripeUrl,'_blank');setTimeout(function(){window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated=1';},400);}
+    else if(stripeUrl){alert('Payment link for this amount is not set up yet. Please choose another amount.');}
+    else{alert('Please select a donation amount.');}
+  }else{goThankyou();}
 }
 
 function buildPayload(type){
@@ -411,18 +417,9 @@ function buildPayload(type){
   return base;
 }
 
-function submitPrayer(){fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('prayer')),keepalive:true}).catch(function(){});}
 
 var STRIPE_LINKS={'$18':'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00','$36':'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01','$56':'https://buy.stripe.com/aFa7sL5vAgEg1dM4BD6wE0m','$72':'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02','$100':'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03','$180':'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04','$260':'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05','$360':'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06','$500':'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07','Other':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'};
 
-function submitDonation(){
-  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload('donation')),keepalive:true}).catch(function(){});
-  fbq('track','AddToCart',{value:parseFloat((state.donationAmt||'0').replace(/[^0-9.]/g,'')),currency:'USD'});
-  if(state.payment_method==='Credit Card'){
-    var stripeUrl=STRIPE_LINKS[state.donationAmt];
-    if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')===-1){window.open(stripeUrl,'_blank');goThankyou();}else if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')!==-1){alert('Payment link for this amount is not set up yet. Please choose another amount.');}else{alert('Please select a donation amount.');}
-  }else{alert('PayPal payments are not available at this time. Please select Credit Card.');}
-}
 
 function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
 
