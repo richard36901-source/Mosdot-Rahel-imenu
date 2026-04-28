@@ -40,10 +40,10 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 .proof-track{display:flex;gap:4rem;animation:scrollLeft 28s linear infinite;white-space:nowrap}
 .proof-track span{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;flex-shrink:0;font-family:'Heebo',sans-serif;font-weight:400}
 .proof-track .dot{color:var(--gold);font-size:0.5rem;vertical-align:middle}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;backdrop-filter:blur(3px);direction:ltr}
+.overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.78);display:grid;place-items:center;z-index:1000;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;backdrop-filter:blur(3px)}
 .overlay.open{opacity:1;pointer-events:all}
-.modal{background:#141008;border:1px solid var(--border);width:100%;max-width:490px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px) scale(0.97);transition:transform 0.25s ease;direction:rtl}
-.overlay.open .modal{transform:translateY(0) scale(1)}
+.modal{background:#141008;border:1px solid var(--border);width:100%;max-width:490px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px) scale(0.97);transition:transform 0.25s ease;direction:rtl;margin:0 auto}
+.overlay.open .modal{transform:translateY(0) scale(1);margin:0 auto}
 .modal-header{padding:1.75rem 2rem 1.25rem;border-bottom:1px solid var(--border);position:relative}
 .modal-step{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;color:var(--gold-light);margin-bottom:0.4rem;display:block}
 .modal-title{font-family:'Frank Ruhl Libre',serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.3}
@@ -255,7 +255,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
           <span>אמסור את השם ללא תרומה כרגע</span>
         </label>
       </div>
-      <div id="donation-details" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;">
+      <div id="donation-details" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
         <div class="f-group">
           <label>בחר סוג תרומה</label>
           <div id="don-choices" style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem;">
@@ -269,9 +269,8 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
             <label class="don-radio-row"><input type="radio" name="don-choice" value="חי רוטל 54 ליטר יין - ₪780" onchange="syncDonAmt('חי רוטל 54 ליטר יין - ₪780')"> ח"י רוטל 54 ליטר יין — ₪780</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך יהלום לג בעומר - ₪1,000" onchange="syncDonAmt('תומך יהלום לג בעומר - ₪1,000')"> תומך יהלום ל"ג בעומר — ₪1,000</label>
           </div>
-          </div>
-          <div class="f-group">
-          <label>אמצעי  <div class="f-group">
+        </div>
+        <div class="f-group">
           <label>אמצעי תשלום</label>
           <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-direction:row-reverse;justify-content:flex-end;">
             <label class="don-radio-row" style="border:none;padding:0.2rem 0;"><input type="radio" name="pay-method" value="כרטיס אשראי" checked style="accent-color:var(--gold-light);direction:ltr;background:transparent;border:none;padding:0;"> כרטיס אשראי</label>
