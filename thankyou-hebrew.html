@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>תפילתך התקבלה — ל"ג בעומר אצל הרשב"י</title>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- FIX: font changed from Heebo to Rubik -->
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','929347383251605');fbq('track','PageView');fbq('track','Purchase',{value:0,currency:'ILS'});
@@ -13,27 +14,32 @@ fbq('init','929347383251605');fbq('track','PageView');fbq('track','Purchase',{va
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--gold:#B8860B;--gold-light:#D4A017;--bg:#0a0805;--border:rgba(184,134,11,0.25)}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl}
+/* FIX: font Rubik throughout */
+body{font-family:'Rubik',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl}
 .ty-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem 1.5rem 4rem;position:relative}
-.ty-logo-bar{display:flex;align-items:center;justify-content:center;gap:2rem;padding:0 0 1.5rem;width:100%}
-.ty-logo-bar img{height:72px;width:auto;object-fit:contain}
+/* FIX: logos matched in size */
+.ty-logo-bar{display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:0 0 1.5rem;width:100%}
+.ty-logo-bar img{height:120px;width:auto;object-fit:contain}
 .check-circle{width:72px;height:72px;border-radius:50%;background:rgba(184,134,11,0.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem;animation:popIn 0.5s ease 0.2s both}
 .ty-kicker{font-size:0.7rem;letter-spacing:0.12em;color:var(--gold-light);margin-bottom:0.75rem;text-align:center;animation:fadeIn 0.5s ease 0.4s both;font-weight:500}
 .ty-h1{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;color:#fff;text-align:center;line-height:1.2;margin-bottom:0.85rem;animation:fadeIn 0.5s ease 0.5s both;max-width:640px}
 .ty-quote{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1rem,2.5vw,1.25rem);color:rgba(255,255,255,0.65);text-align:center;max-width:540px;line-height:1.75;margin-bottom:2rem;animation:fadeIn 0.5s ease 0.6s both}
+/* FIX: donation received banner */
+.donation-received-banner{max-width:540px;width:100%;background:rgba(184,134,11,0.12);border:1px solid var(--gold);padding:1rem 1.5rem;margin-bottom:1.25rem;text-align:center;animation:fadeIn 0.5s ease 0.55s both;display:none}
+.donation-received-banner p{font-family:'Frank Ruhl Libre',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.04em;line-height:1.5}
 .ty-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:1.5rem 2rem;max-width:540px;width:100%;margin-bottom:1.25rem;animation:fadeIn 0.5s ease 0.7s both}
-.ty-card h3{font-size:0.85rem;font-weight:600;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:1rem;font-family:'Heebo',sans-serif}
+.ty-card h3{font-size:0.85rem;font-weight:600;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:1rem;font-family:'Rubik',sans-serif}
 .ty-names{display:flex;flex-wrap:wrap;gap:0.5rem}
-.ty-name-tag{background:rgba(184,134,11,0.12);border:1px solid var(--border);padding:0.35rem 0.85rem;font-size:0.9rem;color:rgba(255,255,255,0.8);font-family:'Heebo',sans-serif;font-weight:300}
+.ty-name-tag{background:rgba(184,134,11,0.12);border:1px solid var(--border);padding:0.35rem 0.85rem;font-size:0.9rem;color:rgba(255,255,255,0.8);font-family:'Rubik',sans-serif;font-weight:300}
 .share-section{max-width:540px;width:100%;animation:fadeIn 0.5s ease 0.85s both;text-align:center}
 .share-section p{font-size:0.8rem;color:rgba(255,255,255,0.35);margin-bottom:0.85rem;letter-spacing:0.06em}
 .share-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
-.share-btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.7rem 1.4rem;font-family:'Heebo',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;border:none;transition:all 0.15s;text-decoration:none}
+.share-btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.7rem 1.4rem;font-family:'Rubik',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;border:none;transition:all 0.15s;text-decoration:none}
 .share-btn-wa{background:#25D366;color:#fff}
 .share-btn-wa:hover{background:#1da851}
 .share-btn-email{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7)}
 .share-btn-email:hover{border-color:var(--gold-light);color:#fff}
-.back-btn{display:inline-block;margin-top:2rem;font-size:0.8rem;color:rgba(255,255,255,0.3);text-decoration:underline;cursor:pointer;font-family:'Heebo',sans-serif}
+.back-btn{display:inline-block;margin-top:2rem;font-size:0.8rem;color:rgba(255,255,255,0.3);text-decoration:underline;cursor:pointer;font-family:'Rubik',sans-serif}
 .back-btn:hover{color:rgba(255,255,255,0.65)}
 .donate-upsell{max-width:540px;width:100%;background:rgba(184,134,11,0.07);border:1px solid var(--border);border-right:3px solid var(--gold);padding:1.5rem 2rem;margin-bottom:1.25rem;animation:fadeIn 0.5s ease 0.8s both}
 .donate-upsell h3{font-family:'Frank Ruhl Libre',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
@@ -42,22 +48,47 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 .don-item{display:flex;align-items:center;gap:0.5rem;flex-direction:row-reverse;justify-content:flex-end;font-size:0.9rem;color:rgba(255,255,255,0.7);cursor:pointer;padding:0.5rem 0.75rem;border:1px solid rgba(255,255,255,0.08);transition:all 0.15s;font-weight:300}
 .don-item:hover{border-color:rgba(184,134,11,0.5);color:#fff;background:rgba(184,134,11,0.05)}
 .don-item input{accent-color:var(--gold-light);margin:0;width:15px;height:15px;direction:ltr}
-.donate-go-btn{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.85rem;font-weight:700;font-size:0.95rem;border:none;cursor:pointer;width:100%;font-family:'Heebo',sans-serif;transition:filter 0.15s}
+.donate-go-btn{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.85rem;font-weight:700;font-size:0.95rem;border:none;cursor:pointer;width:100%;font-family:'Rubik',sans-serif;transition:filter 0.15s}
 .donate-go-btn:hover{filter:brightness(1.1)}
+/* FIX: custom alert modal */
+.custom-alert-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.82);display:none;place-items:center;z-index:3000;backdrop-filter:blur(4px)}
+.custom-alert-box{background:#141008;border:1px solid var(--border);padding:2rem 2.25rem;max-width:380px;width:90%;text-align:center;direction:rtl}
+.custom-alert-box p{color:rgba(255,255,255,0.88);margin-bottom:1.4rem;line-height:1.65;font-size:0.97rem;font-family:'Rubik',sans-serif}
+.custom-alert-box button{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;border:none;padding:0.65rem 2rem;font-weight:700;cursor:pointer;font-family:'Rubik',sans-serif;font-size:0.95rem}
 @keyframes popIn{0%{transform:scale(0.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
+
+<!-- FIX: custom alert modal -->
+<div class="custom-alert-overlay" id="customAlertOverlay" style="display:none;">
+  <div class="custom-alert-box">
+    <p id="customAlertMsg"></p>
+    <button onclick="document.getElementById('customAlertOverlay').style.display='none'">אישור</button>
+  </div>
+</div>
+
 <div class="ty-page">
   <div class="ty-logo-bar">
-    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;"><img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:160px;width:auto;object-fit:contain;"></a>
-    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו">
+    <!-- FIX: both logos 120px; Rachel Imenu wrapped in link -->
+    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;">
+      <img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:120px;width:auto;object-fit:contain;">
+    </a>
+    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener" style="display:inline-flex;">
+      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:120px;width:auto;object-fit:contain;">
+    </a>
   </div>
+
   <div class="check-circle">✦</div>
   <div class="ty-kicker">התפילה התקבלה · ל"ג בעומר תשפ"ו</div>
   <h1 class="ty-h1">שמותיכם נוספו<br>לרשימה הקדושה</h1>
   <p class="ty-quote">"כדאי הוא רבי שמעון לסמוך עליו בשעת הדחק" — שמותיכם יוזכרו על ציון הרשב"י ברגעים הקדושים של ל"ג בעומר.</p>
+
+  <!-- FIX: donation received banner — מוצג רק כאשר donated=1 -->
+  <div class="donation-received-banner" id="donation-received-banner">
+    <p>✦ &nbsp; תרומתך התקבלה — יהי רצון שתעמוד לך ולמשפחתך לזכות גדולה &nbsp; ✦</p>
+  </div>
 
   <div class="ty-card" id="ty-names-card" style="display:none;">
     <h3>שמות שנמסרו לתפילה</h3>
@@ -82,21 +113,22 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
     </ul>
   </div>
 
-  <!-- תרומה (מוצג רק אם לא תרמו) -->
+  <!-- FIX: upsell amounts now match the Hebrew landing page options exactly -->
   <div class="donate-upsell" id="donate-upsell">
     <h3>חזקו את תפילתכם עם זכות הצדקה</h3>
     <p>הוסיפו את כוח הצדקה לתפילתכם — תרומתכם תסייע למשפחות תורה לאורך כל השנה.</p>
     <div class="don-list">
-      <!-- ₪56 Stripe link: Replace PLACEHOLDER_56_HE with real link from client -->
-      <label class="don-item"><input type="radio" name="ty-don" value="₪18" onchange="setTyDon('₪18','https://buy.stripe.com/7sY3cv4rwgEgg8G3xz6wE09')"> תפילה — ₪18</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪36" onchange="setTyDon('₪36','https://buy.stripe.com/4gMcN53nsfAc1dM8RT6wE0a')"> תפילה ונר — ₪36</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪56" onchange="setTyDon('₪56','https://buy.stripe.com/PLACEHOLDER_56_HE')"> תפילה + 3 ליטר יין — ₪56</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪72" onchange="setTyDon('₪72','https://buy.stripe.com/5kQ6oH9LQbjW9Kic456wE0b')"> הוספת שמן למדורה — ₪72</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪100" onchange="setTyDon('₪100','https://buy.stripe.com/00w14n7DIco0cWu6JL6wE0c')"> תומך לימוד הזוהר — ₪100</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪180" onchange="setTyDon('₪180','https://buy.stripe.com/9B63cv1fk5ZC9Ki3xz6wE0d')"> נותן חסות ללימוד הזוהר — ₪180</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪260" onchange="setTyDon('₪260','https://buy.stripe.com/8x2dR9cY2ew85u27NP6wE0e')"> חי רוטל 54 ליטר יין — ₪260</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪360" onchange="setTyDon('₪360','https://buy.stripe.com/00wbJ1cY273G7Cad896wE0f')"> תומך זהב ל"ג בעומר — ₪360</label>
-      <label class="don-item"><input type="radio" name="ty-don" value="₪500" onchange="setTyDon('₪500','https://buy.stripe.com/6oU00j7DI0Fi1dM3xz6wE0g')"> נותן חסות יהלום ל"ג בעומר — ₪500</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪56" onchange="setTyDon('₪56','https://buy.stripe.com/eVqdR9bTY9bO1dMgkl6wE0i')"> תפילה — ₪56</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪72" onchange="setTyDon('₪72','https://buy.stripe.com/5kQ6oH9LQbjW9Kic456wE0b')"> תפילה והדלקת נר — ₪72</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪100" onchange="setTyDon('₪100','https://buy.stripe.com/00w14n7DIco0cWu6JL6wE0c')"> הוספת שמן למדורה — ₪100</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪180א" onchange="setTyDon('₪180','https://buy.stripe.com/9B63cv1fk5ZC9Ki3xz6wE0d')"> אמירת ספר תהילים בציון — ₪180</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪180ב" onchange="setTyDon('₪180','https://buy.stripe.com/00weVd4rwco0aOm0ln6wE0j')"> חסות לימוד זוהר — ₪180</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪260" onchange="setTyDon('₪260','https://buy.stripe.com/8x2dR9cY2ew85u27NP6wE0e')"> ח"י רוטל 18 ליטר יין — ₪260</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪360" onchange="setTyDon('₪360','https://buy.stripe.com/00wbJ1cY273G7Cad896wE0f')"> פדיון נפש — ₪360</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪780" onchange="setTyDon('₪780','https://buy.stripe.com/9B628rgaegEgaOmecd6wE0k')"> ח"י רוטל 54 ליטר יין — ₪780</label>
+      <label class="don-item"><input type="radio" name="ty-don" value="₪1000" onchange="setTyDon('₪1,000','https://buy.stripe.com/dRm00jcY25ZCaOm4BD6wE0l')"> תומך יהלום ל"ג בעומר — ₪1,000</label>
+      <!-- FIX: סכום אחר added (Stripe only) -->
+      <label class="don-item"><input type="radio" name="ty-don" value="אחר" onchange="setTyDon('סכום אחר','PLACEHOLDER_STRIPE_OTHER_HE')"> סכום אחר</label>
     </div>
     <button class="donate-go-btn" id="ty-donate-btn" onclick="goTyDonate()">← לתרומה</button>
   </div>
@@ -114,20 +146,29 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
     </div>
   </div>
 
-  <!-- LP_URL: Replace https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html with the actual Hebrew landing page URL -->
   <span class="back-btn" onclick="window.location.href='https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html'">→ מסור שמות לאדם נוסף</span>
 </div>
 
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.25rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;text-align:center;">
-  <p style="font-size:0.68rem;color:rgba(255,255,255,0.2);font-family:'Heebo',sans-serif;font-weight:300;line-height:1.6;">מוסדות רחל אמנו · קופת צדקת רשב"י · צפת, ישראל<br>כל הזכויות שמורות © 2026</p>
+  <p style="font-size:0.68rem;color:rgba(255,255,255,0.2);font-family:'Rubik',sans-serif;font-weight:300;line-height:1.6;">מוסדות רחל אמנו · קופת צדקת רשב"י · צפת, ישראל<br>כל הזכויות שמורות © 2026</p>
 </footer>
 
 <script>
-var LP_URL = 'https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html'; // ← החלף בכתובת URL האמיתית של הדף בעברית
+var LP_URL = 'https://richard36901-source.github.io/Mosdot-Rahel-imenu/lagbaomer-hebrew.html';
+
+/* FIX: custom alert replaces browser alert() */
+function showAlert(msg){
+  document.getElementById('customAlertMsg').textContent=msg;
+  document.getElementById('customAlertOverlay').style.display='grid';
+}
 
 var tyDonUrl = '';
-function setTyDon(amt, url){ tyDonUrl = url; document.getElementById('ty-donate-btn').textContent = 'לתרומה ' + amt + ' ←'; }
-function goTyDonate(){ if(!tyDonUrl){ alert('אנא בחר סכום תרומה.'); return; } window.open(tyDonUrl,'_blank','noopener'); }
+function setTyDon(amt, url){ tyDonUrl = url; document.getElementById('ty-donate-btn').textContent = '← לתרומה ' + amt; }
+function goTyDonate(){
+  if(!tyDonUrl){ showAlert('אנא בחר סכום תרומה.'); return; }
+  if(tyDonUrl.indexOf('PLACEHOLDER')!==-1){ showAlert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.'); return; }
+  window.location.href = tyDonUrl;
+}
 
 (function(){
   var params = new URLSearchParams(window.location.search);
@@ -146,7 +187,13 @@ function goTyDonate(){ if(!tyDonUrl){ alert('אנא בחר סכום תרומה.'
     }
   }
 
-  if(donated === '1'){ var upsell = document.getElementById('donate-upsell'); if(upsell) upsell.style.display='none'; }
+  /* FIX: if donated, hide upsell and show "תרומתך התקבלה" banner */
+  if(donated === '1'){
+    var upsell = document.getElementById('donate-upsell');
+    if(upsell) upsell.style.display='none';
+    var banner = document.getElementById('donation-received-banner');
+    if(banner) banner.style.display='block';
+  }
 })();
 
 function shareWA(e){
