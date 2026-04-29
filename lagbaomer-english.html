@@ -17,7 +17,7 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;width:100%;font-size:17px}
 .hero-page{min-height:100vh;display:flex;flex-direction:column;align-items:stretch;position:relative;overflow:hidden}
 .logo-bar{width:100%;background:transparent;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1.5rem 1.5rem 0;position:relative;z-index:10;animation:fadeDown 0.5s ease forwards}
-.logo-bar img{height:72px;width:auto;object-fit:contain}
+.logo-bar img{height:120px;width:auto;object-fit:contain} /* FIX #1: both logos now same height */
 .hero-image-wrap{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0.38}
 .hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,5,0.55) 0%,rgba(10,8,5,0.15) 35%,rgba(10,8,5,0.6) 75%,rgba(10,8,5,0.95) 100%),radial-gradient(ellipse 80% 60% at 50% 40%,rgba(184,134,11,0.08) 0%,transparent 70%)}
@@ -88,6 +88,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
 .success-donate-cta:hover{filter:brightness(1.1);animation:none}
 .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 20px rgba(37,211,102,0.35);animation:floatBob 3s ease infinite;text-decoration:none}
 .wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* FIX #4: Custom alert modal (replaces browser alert with site-specific dialog) */
+.custom-alert-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.82);display:none;place-items:center;z-index:3000;backdrop-filter:blur(4px)}
+.custom-alert-box{background:#141008;border:1px solid var(--border);padding:2rem 2.25rem;max-width:380px;width:90%;text-align:center}
+.custom-alert-box p{color:rgba(255,255,255,0.88);margin-bottom:1.4rem;line-height:1.65;font-size:0.97rem}
+.custom-alert-box button{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;border:none;padding:0.65rem 2rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.95rem}
+
 @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes shakePulse{0%,85%,100%{transform:translateX(0) scale(1);box-shadow:0 4px 20px rgba(184,134,11,0.3)}87%{transform:translateX(-4px) scale(1.01)}89%{transform:translateX(4px) scale(1.01)}91%{transform:translateX(-3px)}93%{transform:translateX(3px)}95%{transform:translateX(0) scale(1.02);box-shadow:0 6px 28px rgba(184,134,11,0.5)}}
@@ -99,13 +106,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
 </head>
 <body>
 
+<!-- FIX #4: Custom alert modal element -->
+<div class="custom-alert-overlay" id="customAlertOverlay" style="display:none;">
+  <div class="custom-alert-box">
+    <p id="customAlertMsg"></p>
+    <button onclick="document.getElementById('customAlertOverlay').style.display='none'">OK</button>
+  </div>
+</div>
+
 <div class="hero-page">
   <div class="hero-image-wrap">
     <img src="hero-campaign.jpeg" alt="Meron Lag B'Omer">
   </div>
   <div class="logo-bar">
-    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;"><img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi" style="height:220px;width:auto;object-fit:contain;"></a>
-    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu" style="height:90px;width:auto;object-fit:contain;">
+    <!-- FIX #1: Rashbi logo height now 120px to match Rachel Imenu -->
+    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;">
+      <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi" style="height:120px;width:auto;object-fit:contain;">
+    </a>
+    <!-- FIX #2: Rachel Imenu logo now wrapped in link — update HREF below to the correct URL -->
+    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener" style="display:inline-flex;">
+      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu" style="height:120px;width:auto;object-fit:contain;">
+    </a>
   </div>
   <div class="hero-content">
     <div class="hero-kicker">Lag B'Omer · Meron · Hilula of the Rashbi</div>
@@ -229,7 +250,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
   </div>
 </div>
 
-<!-- STEP 4 -->
+<!-- STEP 3 (donation) -->
 <div class="overlay" id="overlay-step4">
   <div class="modal">
     <div class="modal-header">
@@ -278,6 +299,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
             <label class="don-radio-row"><input type="radio" name="don-choice" value="Other" onchange="syncDonAmt('Other')"> Other Amount</label>
           </div>
         </div>
+        <!-- FIX #3: PayPal option now active (requires PayPal URLs to be filled in PAYPAL_LINKS below) -->
         <div class="f-group">
           <label>Payment Method</label>
           <div style="display:flex;gap:1.25rem;margin-bottom:0.75rem;">
@@ -286,7 +308,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
           </div>
         </div>
       </div>
-      <button class="success-donate-cta" onclick="submitFinal()">Submit My Prayer →</button>
+      <!-- FIX #8 (English): button text changes dynamically via toggleDonation() -->
+      <button class="success-donate-cta" id="submitBtn" onclick="submitFinal()">Submit My Prayer →</button>
       <button class="modal-btn modal-btn-back" onclick="goBack(3)">← Back</button>
     </div>
   </div>
@@ -304,11 +327,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
   tick();setInterval(tick,1000);
 })();
 
+/* FIX #4: Custom alert — replaces browser alert() so no "says" prefix appears */
+function showAlert(msg){
+  document.getElementById('customAlertMsg').textContent=msg;
+  document.getElementById('customAlertOverlay').style.display='grid';
+}
+
 var state={fname:'',lname:'',email:'',phone:'',names_entries:[],intentions:[],personal_prayer:'',donation_included:false,donation_choice:'',donationAmt:'',payment_method:'Credit Card'};
 var nameCount=1;
 var currentStep=1;
 
-var EN_INTENTIONS=['Healthy Recovery','Happiness','Suitable Shidduch','Success','Good Income','Shalom Bayit','Healthy Children','Return to Torah','Nachat from Children','Success in Studies','Clarity in Life','Physical &amp; Mental Health','Success in Surgery','Find Work','Healthy Pregnancy &amp; Birth','Protection &amp; Safety'];
+var EN_INTENTIONS=['Healthy Recovery','Happiness','Suitable Shidduch','Success','Good Income','Shalom Bayit','Healthy Children','Return to Torah','Nachat from Children','Success in Studies','Clarity in Life','Physical & Mental Health','Success in Surgery','Find Work','Healthy Pregnancy & Birth','Protection & Safety'];
 
 function toggleNameIntentions(btn){
   var grid=btn.nextElementSibling;
@@ -348,7 +377,14 @@ function navToStep(n){
 
 function goBack(fromStep){navToStep(fromStep-1);}
 
-function toggleDonation(show){document.getElementById('donation-details').style.display=show?'block':'none';state.donation_included=show;}
+/* FIX #3: toggleDonation now also updates button label */
+function toggleDonation(show){
+  document.getElementById('donation-details').style.display=show?'block':'none';
+  state.donation_included=show;
+  var btn=document.getElementById('submitBtn');
+  if(btn) btn.textContent=show?'Submit My Prayer & Proceed to Payment →':'Submit My Prayer →';
+}
+
 function syncDonAmt(amt){state.donationAmt=amt;var sel=document.querySelector('input[name="don-choice"]:checked');state.donation_choice=sel?sel.value:'';}
 function openStep1(){document.getElementById('overlay-step1').classList.add('open');fbq('track','InitiateCheckout');}
 function closeAll(){document.querySelectorAll('.overlay').forEach(function(o){o.classList.remove('open');});}
@@ -366,33 +402,56 @@ function goStep2(){
 }
 
 function goStep3(){
-  // Validate at least one name entered
-  var hasName = false;
-  document.querySelectorAll('.name-entry .heb-name').forEach(function(el){ if(el.value.trim()) hasName = true; });
-  if(!hasName){ alert('Please enter at least one name before continuing.'); return; }
+  var hasName=false;
+  document.querySelectorAll('.name-entry .heb-name').forEach(function(el){if(el.value.trim())hasName=true;});
+  if(!hasName){showAlert('Please enter at least one name before continuing.');return;}  /* FIX #4 */
   state.names_entries=[];
   document.querySelectorAll('.name-entry').forEach(function(entry){
     var hn=entry.querySelector('.heb-name');var mn=entry.querySelector('.mom-name');var gs=entry.querySelector('.gender-sel');
     var nameIntentions=[];
-    entry.querySelectorAll('.ck-sm.on').forEach(function(el){nameIntentions.push(el.textContent.trim());});var cpEl=entry.querySelector('.custom-prayer');var customPrayer=cpEl?cpEl.value.trim():'';
+    entry.querySelectorAll('.ck-sm.on').forEach(function(el){nameIntentions.push(el.textContent.trim());});
+    var cpEl=entry.querySelector('.custom-prayer');var customPrayer=cpEl?cpEl.value.trim():'';
     if(hn&&hn.value.trim())state.names_entries.push({heb_name:hn.value.trim(),mothers_name:mn?mn.value.trim():'',gender:gs?gs.value:'',intentions:nameIntentions,custom_prayer:customPrayer});
   });
   currentStep=3;
   document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-
+/* ─── FIX #6: Stripe redirect happens in same tab so thank-you page only ───
+   appears AFTER the user completes payment (configured via Stripe success URL).
+   The webhook is sent with keepalive:true before navigation.               */
 function submitFinal(){
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'Credit Card';
   var payload=buildPayload('submission');
   fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+
   if(state.donation_included){
-    var stripeUrl=STRIPE_LINKS[state.donationAmt];
-    if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')===-1){window.open(stripeUrl,'_blank');setTimeout(function(){window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated=1';},400);}
-    else if(stripeUrl){alert('Payment link for this amount is not set up yet. Please choose another amount.');}
-    else{alert('Please select a donation amount.');}
-  }else{goThankyou();}
+    var paymentMethod=state.payment_method;
+    var paymentUrl=null;
+
+    if(paymentMethod==='PayPal'){
+      /* Other amount is Stripe only */
+      if(state.donationAmt==='Other'){
+        showAlert('Other Amount is available via Credit Card only. Please select Credit Card or choose a fixed amount for PayPal.');
+        return;
+      }
+      paymentUrl=PAYPAL_LINKS[state.donationAmt]||null;
+    } else {
+      paymentUrl=STRIPE_LINKS[state.donationAmt]||null;
+    }
+
+    if(paymentUrl&&paymentUrl.indexOf('PLACEHOLDER')===-1){
+      /* FIX #6: redirect in same tab — Stripe/PayPal success URL should point to thankyou-english.html */
+      window.location.href=paymentUrl;
+    } else if(paymentUrl){
+      showAlert('Payment link for this amount is not yet configured. Please choose another amount.');  /* FIX #4 */
+    } else {
+      showAlert('Please select a donation amount.');  /* FIX #4 */
+    }
+  } else {
+    goThankyou();
+  }
 }
 
 function buildPayload(type){
@@ -404,10 +463,11 @@ function buildPayload(type){
       nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';
       nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';
       nameFields[prefix+'gender']=entries[i].gender||'';
-      nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';nameFields[prefix+'custom_prayer']=entries[i].custom_prayer||'';
+      nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';
+      nameFields[prefix+'custom_prayer']=entries[i].custom_prayer||'';
       var prayers=entries[i].intentions||[];
       for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]=p<prayers.length?prayers[p]:'';}
-    }else{
+    } else {
       nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';
       for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]='';}
     }
@@ -417,9 +477,31 @@ function buildPayload(type){
   return base;
 }
 
+var STRIPE_LINKS={
+  '$18':'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00',
+  '$36':'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01',
+  '$56':'https://buy.stripe.com/aFa7sL5vAgEg1dM4BD6wE0m',
+  '$72':'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02',
+  '$100':'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03',
+  '$180':'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04',
+  '$260':'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05',
+  '$360':'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06',
+  '$500':'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07',
+  'Other':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'
+};
 
-var STRIPE_LINKS={'$18':'https://buy.stripe.com/9B67sLgae3Ru09Igkl6wE00','$36':'https://buy.stripe.com/28E8wP0bg9bO9Kib016wE01','$56':'https://buy.stripe.com/aFa7sL5vAgEg1dM4BD6wE0m','$72':'https://buy.stripe.com/4gMbJ1f6aafSf4C2tv6wE02','$100':'https://buy.stripe.com/cNi28raPU5ZCf4C8RT6wE03','$180':'https://buy.stripe.com/14A9ATcY2fAc2hQ2tv6wE04','$260':'https://buy.stripe.com/3cIeVd4rw3Ru5u23xz6wE05','$360':'https://buy.stripe.com/5kQ14ncY21Jm4pY2tv6wE06','$500':'https://buy.stripe.com/bJecN57DIgEgaOmfgh6wE07','Other':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'};
-
+/* FIX #3: PayPal links — replace PLACEHOLDER values with your actual PayPal.me or hosted PayPal links */
+var PAYPAL_LINKS={
+  '$18':'https://www.paypal.com/ncp/payment/4BB4FEVZAEQLC',
+  '$36':'https://www.paypal.com/ncp/payment/VG8K8QC66QDDG',
+  '$56':'https://www.paypal.com/ncp/payment/FHVNMBKSPW4CS',
+  '$72':'https://www.paypal.com/ncp/payment/A3GBJWLDF8WMS',
+  '$100':'https://www.paypal.com/ncp/payment/THAX32KFUD8BQ',
+  '$180':'https://www.paypal.com/ncp/payment/HU9Q6ZJR6DY5J',
+  '$260':'https://www.paypal.com/ncp/payment/DZL9HJ9YQY59C',
+  '$360':'https://www.paypal.com/ncp/payment/CGVPBFP3BQB64',
+  '$500':'https://www.paypal.com/ncp/payment/V6SM4SL2N7GE6'
+};
 
 function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
 
