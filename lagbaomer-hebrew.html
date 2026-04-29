@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>שלח את שמך לרשב"י — ל"ג בעומר במירון</title>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- FIX #10: Changed font from Heebo to Rubik (as discussed) -->
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','929347383251605');fbq('track','PageView');
@@ -14,10 +15,11 @@ fbq('init','929347383251605');fbq('track','PageView');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{--gold:#B8860B;--gold-light:#D4A017;--bg:#0a0805;--border:rgba(184,134,11,0.25)}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl;width:100%;font-size:17px}
+/* FIX #10: font-family changed to Rubik throughout */
+body{font-family:'Rubik',sans-serif;background:var(--bg);color:#eee;min-height:100vh;overflow-x:hidden;direction:rtl;width:100%;font-size:17px}
 .hero-page{min-height:100vh;display:flex;flex-direction:column;align-items:stretch;position:relative;overflow:hidden}
 .logo-bar{width:100%;background:transparent;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1.5rem 1.5rem 0;position:relative;z-index:10;animation:fadeDown 0.5s ease forwards;direction:ltr}
-.logo-bar img{height:72px;width:auto;object-fit:contain}
+.logo-bar img{height:120px;width:auto;object-fit:contain} /* FIX #1: both logos now same height */
 .hero-image-wrap{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0.38}
 .hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,5,0.55) 0%,rgba(10,8,5,0.15) 35%,rgba(10,8,5,0.6) 75%,rgba(10,8,5,0.95) 100%),radial-gradient(ellipse 80% 60% at 50% 40%,rgba(184,134,11,0.08) 0%,transparent 70%)}
@@ -26,19 +28,19 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 .hero-h1{font-family:'Frank Ruhl Libre',serif;font-size:clamp(2rem,7vw,4.2rem);font-weight:900;line-height:1.15;color:#fff;margin-bottom:1.1rem;animation:fadeDown 0.6s ease 0.25s both;text-shadow:0 2px 30px rgba(0,0,0,0.7);max-width:820px}
 .hero-sub{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1.1rem,2.8vw,1.45rem);font-weight:400;color:rgba(255,255,255,0.82);max-width:620px;margin:0 auto 2rem;line-height:1.75;animation:fadeDown 0.6s ease 0.35s both;text-shadow:0 1px 12px rgba(0,0,0,0.6)}
 .cta-wrap{animation:fadeDown 0.6s ease 0.45s both}
-.shake-btn{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;font-family:'Heebo',sans-serif;font-size:1.2rem;font-weight:700;padding:1.15rem 3rem;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;animation:shakePulse 3s ease 2s infinite;direction:rtl;letter-spacing:0.01em;box-shadow:0 4px 24px rgba(184,134,11,0.4)}
+.shake-btn{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;font-family:'Rubik',sans-serif;font-size:1.2rem;font-weight:700;padding:1.15rem 3rem;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;animation:shakePulse 3s ease 2s infinite;direction:rtl;letter-spacing:0.01em;box-shadow:0 4px 24px rgba(184,134,11,0.4)}
 .shake-btn:hover{transform:scale(1.04);box-shadow:0 8px 36px rgba(184,134,11,0.55);animation:none}
 .trust-line{margin-top:0.85rem;font-size:0.78rem;color:rgba(255,255,255,0.38);animation:fadeIn 0.6s ease 0.6s both;font-weight:300}
 .countdown-wrap{margin-top:2.5rem;text-align:center;opacity:0;animation:fadeIn 0.8s ease 0.8s forwards;padding-top:1rem;border-top:1px solid rgba(184,134,11,0.15)}
-.countdown-label{font-size:0.63rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;font-weight:300;font-family:'Heebo',sans-serif}
+.countdown-label{font-size:0.63rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;font-weight:300;font-family:'Rubik',sans-serif}
 .countdown-digits{display:inline-flex;gap:0.4rem;align-items:flex-end;direction:ltr}
 .cd-unit{text-align:center;min-width:42px}
 .cd-num{font-family:Georgia,serif;font-size:1.8rem;color:#D4A017;line-height:1}
-.cd-lbl{font-size:0.52rem;letter-spacing:.08em;color:rgba(255,255,255,.25);margin-top:2px;font-family:'Heebo',sans-serif;font-weight:300}
+.cd-lbl{font-size:0.52rem;letter-spacing:.08em;color:rgba(255,255,255,.25);margin-top:2px;font-family:'Rubik',sans-serif;font-weight:300}
 .cd-sep{font-size:1.5rem;color:#B8860B;padding-bottom:10px;line-height:1}
 .proof-strip{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.65);border-top:1px solid var(--border);padding:0.65rem 0;overflow:hidden;direction:ltr;z-index:10}
 .proof-track{display:flex;gap:4rem;animation:scrollLeft 28s linear infinite;white-space:nowrap}
-.proof-track span{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;flex-shrink:0;font-family:'Heebo',sans-serif;font-weight:400}
+.proof-track span{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;flex-shrink:0;font-family:'Rubik',sans-serif;font-weight:400}
 .proof-track .dot{color:var(--gold);font-size:0.5rem;vertical-align:middle}
 .overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.78);display:grid;place-items:center;z-index:1000;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;backdrop-filter:blur(3px)}
 .overlay.open{opacity:1;pointer-events:all}
@@ -56,7 +58,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 .prog-step.active{background:var(--gold-light);cursor:pointer}
 .f-group{margin-bottom:1rem}
 .f-group label{display:block;font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.45);margin-bottom:0.35rem}
-.f-group input,.f-group textarea,.f-group select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.75rem 0.9rem;font-family:'Heebo',sans-serif;font-size:1rem;font-weight:300;outline:none;transition:border-color 0.15s;direction:rtl}
+.f-group input,.f-group textarea,.f-group select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.75rem 0.9rem;font-family:'Rubik',sans-serif;font-size:1rem;font-weight:300;outline:none;transition:border-color 0.15s;direction:rtl}
 .f-group input:focus,.f-group textarea:focus,.f-group select:focus{border-color:var(--gold);background:rgba(255,255,255,0.08)}
 .f-group textarea{min-height:80px;resize:vertical}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
@@ -70,8 +72,8 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 .ck-sm:hover{border-color:rgba(184,134,11,0.4);color:rgba(255,255,255,0.85)}
 .ck-sm.on{border-color:var(--gold);color:#fff;background:rgba(184,134,11,0.1)}
 .ck-sm .ck-box{width:9px;height:9px}
-.intentions-toggle{font-size:0.72rem;color:var(--gold-light);cursor:pointer;margin-top:0.5rem;background:none;border:none;padding:0;font-family:'Heebo',sans-serif;text-decoration:underline;display:block;direction:rtl}
-.modal-btn{width:100%;padding:0.9rem;font-family:'Heebo',sans-serif;font-size:1rem;font-weight:700;border:none;cursor:pointer;transition:all 0.15s;margin-top:0.5rem}
+.intentions-toggle{font-size:0.72rem;color:var(--gold-light);cursor:pointer;margin-top:0.5rem;background:none;border:none;padding:0;font-family:'Rubik',sans-serif;text-decoration:underline;display:block;direction:rtl}
+.modal-btn{width:100%;padding:0.9rem;font-family:'Rubik',sans-serif;font-size:1rem;font-weight:700;border:none;cursor:pointer;transition:all 0.15s;margin-top:0.5rem}
 .modal-btn-primary{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000}
 .modal-btn-primary:hover{filter:brightness(1.1)}
 .modal-btn-back{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);margin-top:0.4rem}
@@ -83,10 +85,17 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 .don-radio-row{display:flex;align-items:flex-start;gap:0.6rem;flex-direction:row-reverse;justify-content:flex-end;font-size:1rem;color:rgba(255,255,255,0.75);cursor:pointer;padding:0.6rem 0.8rem;border:1px solid rgba(255,255,255,0.08);margin-bottom:0.4rem;transition:all 0.15s;font-weight:300;line-height:1.4}
 .don-radio-row:hover{border-color:rgba(184,134,11,0.4);color:#fff}
 .don-radio-row input{accent-color:var(--gold-light);width:16px;height:16px;flex-shrink:0;margin-top:2px;direction:ltr;background:transparent;border:none;padding:0}
-.success-donate-cta{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.95rem 2rem;font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;transition:filter 0.15s;font-family:'Heebo',sans-serif;margin-top:0.75rem}
+.success-donate-cta{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;padding:0.95rem 2rem;font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;transition:filter 0.15s;font-family:'Rubik',sans-serif;margin-top:0.75rem}
 .success-donate-cta:hover{filter:brightness(1.1);animation:none}
 .wa-float{position:fixed;bottom:1.5rem;left:1.5rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 20px rgba(37,211,102,0.35);animation:floatBob 3s ease infinite;text-decoration:none}
 .wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* FIX #4: Custom alert modal */
+.custom-alert-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.82);display:none;place-items:center;z-index:3000;backdrop-filter:blur(4px)}
+.custom-alert-box{background:#141008;border:1px solid var(--border);padding:2rem 2.25rem;max-width:380px;width:90%;text-align:center;direction:rtl}
+.custom-alert-box p{color:rgba(255,255,255,0.88);margin-bottom:1.4rem;line-height:1.65;font-size:0.97rem;font-family:'Rubik',sans-serif}
+.custom-alert-box button{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#000;border:none;padding:0.65rem 2rem;font-weight:700;cursor:pointer;font-family:'Rubik',sans-serif;font-size:0.95rem}
+
 @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes shakePulse{0%,85%,100%{transform:translateX(0) scale(1);box-shadow:0 4px 20px rgba(184,134,11,0.3)}87%{transform:translateX(-4px) scale(1.01)}89%{transform:translateX(4px) scale(1.01)}91%{transform:translateX(-3px)}93%{transform:translateX(3px)}95%{transform:translateX(0) scale(1.02);box-shadow:0 6px 28px rgba(184,134,11,0.5)}}
@@ -98,11 +107,25 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
 </head>
 <body>
 
+<!-- FIX #4: Custom alert modal element -->
+<div class="custom-alert-overlay" id="customAlertOverlay" style="display:none;">
+  <div class="custom-alert-box">
+    <p id="customAlertMsg"></p>
+    <button onclick="document.getElementById('customAlertOverlay').style.display='none'">אישור</button>
+  </div>
+</div>
+
 <div class="hero-page">
   <div class="hero-image-wrap"><img src="hero-campaign.jpeg" alt="מירון ל״ג בעומר"></div>
   <div class="logo-bar">
-    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;"><img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:220px;width:auto;object-fit:contain;"></a>
-    <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:90px;width:auto;object-fit:contain;">
+    <!-- FIX #1: Rashbi logo height now 120px to match Rachel Imenu -->
+    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;">
+      <img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:120px;width:auto;object-fit:contain;">
+    </a>
+    <!-- FIX #2: Rachel Imenu logo now wrapped in link — update HREF below to the correct URL -->
+    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener" style="display:inline-flex;">
+      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:120px;width:auto;object-fit:contain;">
+    </a>
   </div>
   <div class="hero-content">
     <div class="hero-kicker">ל"ג בעומר · מירון · תשפ״ו</div>
@@ -187,7 +210,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
           <div class="f-group"><label>שם בעברית</label><input type="text" class="heb-name" placeholder=""></div>
           <div class="f-group">
             <label>מין</label>
-            <select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;">
+            <select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Rubik',sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;">
               <option value="">בחר</option><option value="זכר">בן (זכר)</option><option value="נקבה">בת (נקבה)</option>
             </select>
           </div>
@@ -215,18 +238,18 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
           </div>
           <div class="f-group" style="margin-top:0.5rem;margin-bottom:0;">
             <label style="font-size:0.68rem;">תפילה אישית (לא חובה)</label>
-            <textarea class="custom-prayer" placeholder="כתוב תפילה אישית עבור אדם זה..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Heebo',sans-serif;font-size:0.85rem;font-weight:300;outline:none;resize:vertical;min-height:60px;direction:rtl;"></textarea>
+            <textarea class="custom-prayer" placeholder="כתוב תפילה אישית עבור אדם זה..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:'Rubik',sans-serif;font-size:0.85rem;font-weight:300;outline:none;resize:vertical;min-height:60px;direction:rtl;"></textarea>
           </div>
         </div>
       </div>
-      <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.55rem 1rem;cursor:pointer;width:100%;margin:0.85rem 0 0.75rem;font-family:'Heebo',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ הוסף אדם נוסף</button>
+      <button onclick="addName()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-size:0.82rem;padding:0.55rem 1rem;cursor:pointer;width:100%;margin:0.85rem 0 0.75rem;font-family:'Rubik',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">+ הוסף אדם נוסף</button>
       <button class="modal-btn modal-btn-primary" onclick="goStep3()">המשך ←</button>
       <button class="modal-btn modal-btn-back" onclick="goBack(2)">→ חזרה</button>
     </div>
   </div>
 </div>
 
-<!-- שלב 4 -->
+<!-- שלב 3 (תרומה) -->
 <div class="overlay" id="overlay-step4">
   <div class="modal">
     <div class="modal-header">
@@ -262,6 +285,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
       <div id="donation-details" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
         <div class="f-group">
           <label>בחר סוג תרומה</label>
+          <!-- FIX #7: "סכום אחר" option added at bottom of Hebrew donation list -->
           <div id="don-choices" style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem;">
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה - ₪56" onchange="syncDonAmt('תפילה - ₪56')"> תפילה — ₪56</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תפילה והדלקת נר - ₪72" onchange="syncDonAmt('תפילה והדלקת נר - ₪72')"> תפילה והדלקת נר — ₪72</label>
@@ -272,8 +296,10 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
             <label class="don-radio-row"><input type="radio" name="don-choice" value="פדיון נפש - ₪360" onchange="syncDonAmt('פדיון נפש - ₪360')"> פדיון נפש — ₪360</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="חי רוטל 54 ליטר יין - ₪780" onchange="syncDonAmt('חי רוטל 54 ליטר יין - ₪780')"> ח"י רוטל 54 ליטר יין — ₪780</label>
             <label class="don-radio-row"><input type="radio" name="don-choice" value="תומך יהלום לג בעומר - ₪1,000" onchange="syncDonAmt('תומך יהלום לג בעומר - ₪1,000')"> תומך יהלום ל"ג בעומר — ₪1,000</label>
+            <label class="don-radio-row"><input type="radio" name="don-choice" value="סכום אחר" onchange="syncDonAmt('סכום אחר')"> סכום אחר</label>
           </div>
         </div>
+        <!-- FIX #3: PayPal option active (requires PayPal URLs in PAYPAL_LINKS_HE) -->
         <div class="f-group">
           <label>אמצעי תשלום</label>
           <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-direction:row-reverse;justify-content:flex-end;">
@@ -282,7 +308,8 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
           </div>
         </div>
       </div>
-      <button class="success-donate-cta" onclick="submitFinal()">← שלח את תפילתי</button>
+      <!-- FIX #8: button text updates dynamically via toggleDonation() -->
+      <button class="success-donate-cta" id="submitBtn" onclick="submitFinal()">← שלח את תפילתי</button>
       <button class="modal-btn modal-btn-back" onclick="goBack(3)">→ חזרה</button>
     </div>
   </div>
@@ -299,6 +326,12 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:#eee;min-height:1
   function tick(){var diff=Math.max(0,deadline-Date.now());document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));document.getElementById('cd-h').textContent=pad(Math.floor((diff%86400000)/3600000));document.getElementById('cd-m').textContent=pad(Math.floor((diff%3600000)/60000));document.getElementById('cd-s').textContent=pad(Math.floor((diff%60000)/1000))}
   tick();setInterval(tick,1000);
 })();
+
+/* FIX #4: Custom alert — no browser "says" prefix */
+function showAlert(msg){
+  document.getElementById('customAlertMsg').textContent=msg;
+  document.getElementById('customAlertOverlay').style.display='grid';
+}
 
 var state={fname:'',lname:'',email:'',phone:'',names_entries:[],intentions:[],personal_prayer:'',donation_included:false,donation_choice:'',donationAmt:'',payment_method:'כרטיס אשראי'};
 var nameCount=1;
@@ -317,10 +350,10 @@ function createNameEntryInner(idx){
   var intHtml=HE_INTENTIONS.map(function(i){return '<div class="ck-sm" onclick="this.classList.toggle(\'on\')"><div class="ck-box"></div>'+i+'</div>';}).join('');
   return '<div style="font-size:0.7rem;letter-spacing:0.08em;color:var(--gold-light);margin-bottom:0.6rem;font-weight:500;">אדם '+(idx+1)+'</div>'+
     '<div class="f-group"><label>שם בעברית</label><input type="text" class="heb-name" placeholder=""></div>'+
-    '<div class="f-group"><label>מין</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'Heebo\',sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;"><option value="">בחר</option><option value="זכר">בן (זכר)</option><option value="נקבה">בת (נקבה)</option></select></div>'+
+    '<div class="f-group"><label>מין</label><select class="gender-sel" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'Rubik\',sans-serif;font-size:0.88rem;outline:none;appearance:none;direction:rtl;"><option value="">בחר</option><option value="זכר">בן (זכר)</option><option value="נקבה">בת (נקבה)</option></select></div>'+
     '<div class="f-group" style="margin-bottom:0;"><label>שם האם</label><input type="text" class="mom-name" placeholder=""></div>'+
     '<button type="button" class="intentions-toggle" onclick="toggleNameIntentions(this)">★ בקשות תפילה</button>'+
-    '<div class="f-group" style="margin-top:0.5rem;margin-bottom:0;"><label style="font-size:0.68rem;">תפילה אישית (לא חובה)</label><textarea class="custom-prayer" placeholder="כתוב תפילה אישית עבור אדם זה..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'Heebo\',sans-serif;font-size:0.85rem;font-weight:300;outline:none;resize:vertical;min-height:60px;direction:rtl;"></textarea></div>'+
+    '<div class="f-group" style="margin-top:0.5rem;margin-bottom:0;"><label style="font-size:0.68rem;">תפילה אישית (לא חובה)</label><textarea class="custom-prayer" placeholder="כתוב תפילה אישית עבור אדם זה..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:0.6rem 0.8rem;font-family:\'Rubik\',sans-serif;font-size:0.85rem;font-weight:300;outline:none;resize:vertical;min-height:60px;direction:rtl;"></textarea></div>'+
     '<div class="name-intentions-grid" style="display:block;margin-top:0.5rem;margin-bottom:0.5rem;"><div class="check-grid" style="gap:0.25rem;">'+intHtml+'</div></div>';
 }
 
@@ -344,7 +377,17 @@ function navToStep(n){
 
 function goBack(fromStep){navToStep(fromStep-1);}
 
-function toggleDonation(show){document.getElementById('donation-details').style.display=show?'block':'none';state.donation_included=show;}
+/* FIX #3 + #8: toggleDonation updates button text and shows/hides donation panel */
+function toggleDonation(show){
+  document.getElementById('donation-details').style.display=show?'block':'none';
+  state.donation_included=show;
+  var btn=document.getElementById('submitBtn');
+  if(btn){
+    /* FIX #8: if donating → show payment CTA; otherwise → plain submit */
+    btn.textContent=show?'← שלח את תפילתי ועבור לתשלום':'← שלח את תפילתי';
+  }
+}
+
 function syncDonAmt(amt){state.donationAmt=amt;var sel=document.querySelector('input[name="don-choice"]:checked');state.donation_choice=sel?sel.value:'';}
 function openStep1(){document.getElementById('overlay-step1').classList.add('open');fbq('track','InitiateCheckout');}
 function closeAll(){document.querySelectorAll('.overlay').forEach(function(o){o.classList.remove('open');});}
@@ -362,32 +405,55 @@ function goStep2(){
 }
 
 function goStep3(){
-  var hasName = false;
-  document.querySelectorAll('.name-entry .heb-name').forEach(function(el){ if(el.value.trim()) hasName = true; });
-  if(!hasName){ alert('יש להזין לפחות שם אחד לפני המשך.'); return; }
+  var hasName=false;
+  document.querySelectorAll('.name-entry .heb-name').forEach(function(el){if(el.value.trim())hasName=true;});
+  if(!hasName){showAlert('יש להזין לפחות שם אחד לפני המשך.');return;}  /* FIX #4 */
   state.names_entries=[];
   document.querySelectorAll('.name-entry').forEach(function(entry){
     var hn=entry.querySelector('.heb-name');var mn=entry.querySelector('.mom-name');var gs=entry.querySelector('.gender-sel');
     var nameIntentions=[];
-    entry.querySelectorAll('.ck-sm.on').forEach(function(el){nameIntentions.push(el.textContent.trim());});var cpEl=entry.querySelector('.custom-prayer');var customPrayer=cpEl?cpEl.value.trim():'';
+    entry.querySelectorAll('.ck-sm.on').forEach(function(el){nameIntentions.push(el.textContent.trim());});
+    var cpEl=entry.querySelector('.custom-prayer');var customPrayer=cpEl?cpEl.value.trim():'';
     if(hn&&hn.value.trim())state.names_entries.push({heb_name:hn.value.trim(),mothers_name:mn?mn.value.trim():'',gender:gs?gs.value:'',intentions:nameIntentions,custom_prayer:customPrayer});
   });
   currentStep=3;
   document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-
+/* FIX #6: redirect in same tab so thank-you page shows only after payment completes.
+   Configure the success_url in your Stripe dashboard to point to thankyou-hebrew.html */
 function submitFinal(){
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'כרטיס אשראי';
   var payload=buildPayload('submission');
   fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+
   if(state.donation_included){
-    var stripeUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt];
-    if(stripeUrl&&stripeUrl.indexOf('PLACEHOLDER')===-1){window.open(stripeUrl,'_blank');setTimeout(function(){window.location.href='thankyou-hebrew.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated=1';},400);}
-    else if(stripeUrl){alert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');}
-    else{alert('אנא בחר סכום תרומה.');}
-  }else{goThankyou();}
+    var paymentMethod=state.payment_method;
+    var paymentUrl=null;
+
+    if(paymentMethod==='PayPal'){
+      /* סכום אחר זמין רק דרך Stripe */
+      if(state.donation_choice==='סכום אחר'||state.donationAmt==='סכום אחר'){
+        showAlert('סכום אחר זמין בכרטיס אשראי בלבד. אנא בחר כרטיס אשראי או סכום קבוע עבור PayPal.');
+        return;
+      }
+      paymentUrl=PAYPAL_LINKS_HE[state.donation_choice]||PAYPAL_LINKS_HE[state.donationAmt]||null;
+    } else {
+      paymentUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt]||null;
+    }
+
+    if(paymentUrl&&paymentUrl.indexOf('PLACEHOLDER')===-1){
+      /* FIX #6: same-tab redirect — Stripe/PayPal success URL → thankyou-hebrew.html */
+      window.location.href=paymentUrl;
+    } else if(paymentUrl){
+      showAlert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');  /* FIX #4 */
+    } else {
+      showAlert('אנא בחר סכום תרומה.');  /* FIX #4 */
+    }
+  } else {
+    goThankyou();
+  }
 }
 
 function buildPayload(type){
@@ -399,10 +465,11 @@ function buildPayload(type){
       nameFields[prefix+'hebrew_name']=entries[i].heb_name||'';
       nameFields[prefix+'mothers_name']=entries[i].mothers_name||'';
       nameFields[prefix+'gender']=entries[i].gender||'';
-      nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';nameFields[prefix+'custom_prayer']=entries[i].custom_prayer||'';
+      nameFields[prefix+'intentions']=entries[i].intentions?entries[i].intentions.join(', '):'';
+      nameFields[prefix+'custom_prayer']=entries[i].custom_prayer||'';
       var prayers=entries[i].intentions||[];
       for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]=p<prayers.length?prayers[p]:'';}
-    }else{
+    } else {
       nameFields[prefix+'hebrew_name']='';nameFields[prefix+'mothers_name']='';nameFields[prefix+'gender']='';nameFields[prefix+'intentions']='';
       for(var p=0;p<16;p++){nameFields[prefix+'prayer_'+(p+1)]='';}
     }
@@ -411,7 +478,6 @@ function buildPayload(type){
   Object.assign(base,nameFields);
   return base;
 }
-
 
 var STRIPE_LINKS_HE={
   'תפילה - ₪56':'https://buy.stripe.com/eVqdR9bTY9bO1dMgkl6wE0i',
@@ -422,9 +488,23 @@ var STRIPE_LINKS_HE={
   'חי רוטל 18 ליטר יין - ₪260':'https://buy.stripe.com/8x2dR9cY2ew85u27NP6wE0e',
   'פדיון נפש - ₪360':'https://buy.stripe.com/00wbJ1cY273G7Cad896wE0f',
   'חי רוטל 54 ליטר יין - ₪780':'https://buy.stripe.com/9B628rgaegEgaOmecd6wE0k',
-  'תומך יהלום לג בעומר - ₪1,000':'https://buy.stripe.com/dRm00jcY25ZCaOm4BD6wE0l'
+  'תומך יהלום לג בעומר - ₪1,000':'https://buy.stripe.com/dRm00jcY25ZCaOm4BD6wE0l',
+  /* FIX #7: "סכום אחר" Stripe link — add your custom amount Stripe link below */
+  'סכום אחר':'PLACEHOLDER_STRIPE_OTHER_HE'
 };
 
+/* FIX #3: PayPal links for Hebrew page — replace PLACEHOLDER values with actual PayPal links */
+var PAYPAL_LINKS_HE={
+  'תפילה - ₪56':'https://www.paypal.com/ncp/payment/ZJY4FKSG5V49W',
+  'תפילה והדלקת נר - ₪72':'https://www.paypal.com/ncp/payment/CLYAYDSUVMP9J',
+  'הוספת שמן למדורה - ₪100':'https://www.paypal.com/ncp/payment/MU7UDPS4G7QW2',
+  'אמירת ספר תהילים בציון - ₪180':'https://www.paypal.com/ncp/payment/35Y6MB3UBH6V2',
+  'חסות לימוד זוהר - ₪180':'https://www.paypal.com/ncp/payment/Y486WUAE3D4JQ',
+  'חי רוטל 18 ליטר יין - ₪260':'https://www.paypal.com/ncp/payment/LLNWAZ8BAGECU',
+  'פדיון נפש - ₪360':'https://www.paypal.com/ncp/payment/2AC9C8HWMLKJA',
+  'חי רוטל 54 ליטר יין - ₪780':'https://www.paypal.com/ncp/payment/8H2FJY99ARVWQ',
+  'תומך יהלום לג בעומר - ₪1,000':'https://www.paypal.com/ncp/payment/7T4EEP6NDLRC6'
+};
 
 function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-hebrew.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
 
@@ -441,7 +521,7 @@ function shareWA(e){
 
 <footer style="width:100%;background:rgba(0,0,0,0.85);border-top:1px solid rgba(184,134,11,0.2);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center;">
   <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:60px;width:auto;object-fit:contain;mix-blend-mode:multiply;">
-  <p style="font-size:0.72rem;color:rgba(255,255,255,0.25);font-family:'Heebo',sans-serif;font-weight:300;line-height:1.6;">מוסדות רחל אמנו · קופת צדקת רשב"י · צפת, ישראל<br>כל הזכויות שמורות © 2026</p>
+  <p style="font-size:0.72rem;color:rgba(255,255,255,0.25);font-family:'Rubik',sans-serif;font-weight:300;line-height:1.6;">מוסדות רחל אמנו · קופת צדקת רשב"י · צפת, ישראל<br>כל הזכויות שמורות © 2026</p>
 </footer>
 
 </body>
