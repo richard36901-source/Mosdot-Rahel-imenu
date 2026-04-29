@@ -415,25 +415,24 @@ function goStep3(){
   document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-var _submitted=false; /* guard — prevents duplicate webhook calls on double-click */
+var _webhookSent=false;
+var _btnCooldown=false;
 function submitFinal(){
-  if(_submitted)return;
-  _submitted=true;
-  var btn=document.getElementById('submitBtn');
-  if(btn){btn.disabled=true;btn.style.opacity='0.6';}
+  if(_btnCooldown)return;
+  _btnCooldown=true;
+  setTimeout(function(){_btnCooldown=false;},2000);
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'Credit Card';
-  var payload=buildPayload('submission');
-  fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
-
+  if(!_webhookSent){
+    _webhookSent=true;
+    var payload=buildPayload('submission');
+    fetch('https://hook.eu1.make.com/e60wnfgstl38iwe9b69ljhy10mcnei2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+  }
   if(state.donation_included){
     var paymentMethod=state.payment_method;
     var paymentUrl=null;
-
     if(paymentMethod==='PayPal'){
-      /* Other amount is Stripe only */
       if(state.donationAmt==='Other'){
-        _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
         showAlert('Other Amount is available via Credit Card only. Please select Credit Card or choose a fixed amount for PayPal.');
         return;
       }
@@ -441,15 +440,11 @@ function submitFinal(){
     } else {
       paymentUrl=STRIPE_LINKS[state.donationAmt]||null;
     }
-
     if(paymentUrl&&paymentUrl.indexOf('PLACEHOLDER')===-1){
-      /* FIX #6: redirect in same tab — Stripe/PayPal success URL should point to thankyou-english.html */
       window.location.href=paymentUrl;
     } else if(paymentUrl){
-      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
       showAlert('Payment link for this amount is not yet configured. Please choose another amount.');
     } else {
-      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
       showAlert('Please select a donation amount.');
     }
   } else {
