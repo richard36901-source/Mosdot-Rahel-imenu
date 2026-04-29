@@ -119,13 +119,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#eee;min-height
     <img src="hero-campaign.jpeg" alt="Meron Lag B'Omer">
   </div>
   <div class="logo-bar">
-    <!-- FIX #1: Rashbi logo height now 120px to match Rachel Imenu -->
-    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;">
-      <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi" style="height:120px;width:auto;object-fit:contain;">
+    <!-- Rashbi logo: fixed container so wide banner image scales correctly -->
+    <a href="https://www.rashbi.org/" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;justify-content:center;width:220px;height:110px;">
+      <img src="logo-banner.jpeg" alt="Kupat Tzidkat Rashbi"
+           style="max-width:220px;max-height:110px;width:auto;height:auto;object-fit:contain;">
     </a>
-    <!-- FIX #2: Rachel Imenu logo now wrapped in link — update HREF below to the correct URL -->
-    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener" style="display:inline-flex;">
-      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu" style="height:120px;width:auto;object-fit:contain;">
+    <!-- Rachel Imenu logo: same fixed container height -->
+    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;justify-content:center;width:220px;height:110px;">
+      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="Mosdot Rachel Imenu"
+           style="max-width:220px;max-height:110px;width:auto;height:auto;object-fit:contain;">
     </a>
   </div>
   <div class="hero-content">
@@ -417,10 +421,12 @@ function goStep3(){
   document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-/* ─── FIX #6: Stripe redirect happens in same tab so thank-you page only ───
-   appears AFTER the user completes payment (configured via Stripe success URL).
-   The webhook is sent with keepalive:true before navigation.               */
+var _submitted=false; /* guard — prevents duplicate webhook calls on double-click */
 function submitFinal(){
+  if(_submitted)return;
+  _submitted=true;
+  var btn=document.getElementById('submitBtn');
+  if(btn){btn.disabled=true;btn.style.opacity='0.6';}
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'Credit Card';
   var payload=buildPayload('submission');
@@ -433,6 +439,7 @@ function submitFinal(){
     if(paymentMethod==='PayPal'){
       /* Other amount is Stripe only */
       if(state.donationAmt==='Other'){
+        _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
         showAlert('Other Amount is available via Credit Card only. Please select Credit Card or choose a fixed amount for PayPal.');
         return;
       }
@@ -445,9 +452,11 @@ function submitFinal(){
       /* FIX #6: redirect in same tab — Stripe/PayPal success URL should point to thankyou-english.html */
       window.location.href=paymentUrl;
     } else if(paymentUrl){
-      showAlert('Payment link for this amount is not yet configured. Please choose another amount.');  /* FIX #4 */
+      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
+      showAlert('Payment link for this amount is not yet configured. Please choose another amount.');
     } else {
-      showAlert('Please select a donation amount.');  /* FIX #4 */
+      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
+      showAlert('Please select a donation amount.');
     }
   } else {
     goThankyou();
