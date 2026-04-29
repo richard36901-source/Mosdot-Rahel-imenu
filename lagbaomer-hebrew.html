@@ -118,13 +118,17 @@ body{font-family:'Rubik',sans-serif;background:var(--bg);color:#eee;min-height:1
 <div class="hero-page">
   <div class="hero-image-wrap"><img src="hero-campaign.jpeg" alt="מירון ל״ג בעומר"></div>
   <div class="logo-bar">
-    <!-- FIX #1: Rashbi logo height now 120px to match Rachel Imenu -->
-    <a href="https://www.rashbi.org/" target="_blank" rel="noopener" style="display:inline-flex;">
-      <img src="logo-banner.jpeg" alt="קופת צדקת רשב״י" style="height:120px;width:auto;object-fit:contain;">
+    <!-- Rashbi logo: fixed container so wide banner image scales correctly -->
+    <a href="https://www.rashbi.org/" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;justify-content:center;width:220px;height:110px;">
+      <img src="logo-banner.jpeg" alt="קופת צדקת רשב״י"
+           style="max-width:220px;max-height:110px;width:auto;height:auto;object-fit:contain;">
     </a>
-    <!-- FIX #2: Rachel Imenu logo now wrapped in link — update HREF below to the correct URL -->
-    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener" style="display:inline-flex;">
-      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו" style="height:120px;width:auto;object-fit:contain;">
+    <!-- Rachel Imenu logo: same fixed container height -->
+    <a href="https://www.mosdotrachel.org/" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;justify-content:center;width:220px;height:110px;">
+      <img src="WhatsApp_Image_2026-04-22_at_17_14_29.jpeg" alt="מוסדות רחל אמנו"
+           style="max-width:220px;max-height:110px;width:auto;height:auto;object-fit:contain;">
     </a>
   </div>
   <div class="hero-content">
@@ -420,9 +424,12 @@ function goStep3(){
   document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-/* FIX #6: redirect in same tab so thank-you page shows only after payment completes.
-   Configure the success_url in your Stripe dashboard to point to thankyou-hebrew.html */
+var _submitted=false; /* guard — prevents duplicate webhook calls on double-click */
 function submitFinal(){
+  if(_submitted)return;
+  _submitted=true;
+  var btn=document.getElementById('submitBtn');
+  if(btn){btn.disabled=true;btn.style.opacity='0.6';}
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'כרטיס אשראי';
   var payload=buildPayload('submission');
@@ -435,6 +442,7 @@ function submitFinal(){
     if(paymentMethod==='PayPal'){
       /* סכום אחר זמין רק דרך Stripe */
       if(state.donation_choice==='סכום אחר'||state.donationAmt==='סכום אחר'){
+        _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
         showAlert('סכום אחר זמין בכרטיס אשראי בלבד. אנא בחר כרטיס אשראי או סכום קבוע עבור PayPal.');
         return;
       }
@@ -447,9 +455,11 @@ function submitFinal(){
       /* FIX #6: same-tab redirect — Stripe/PayPal success URL → thankyou-hebrew.html */
       window.location.href=paymentUrl;
     } else if(paymentUrl){
-      showAlert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');  /* FIX #4 */
+      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
+      showAlert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');
     } else {
-      showAlert('אנא בחר סכום תרומה.');  /* FIX #4 */
+      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
+      showAlert('אנא בחר סכום תרומה.');
     }
   } else {
     goThankyou();
