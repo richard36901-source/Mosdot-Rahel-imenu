@@ -418,25 +418,24 @@ function goStep3(){
   document.getElementById('overlay-step2').classList.remove('open');document.getElementById('overlay-step4').classList.add('open');fbq('track','CompleteRegistration');
 }
 
-var _submitted=false; /* guard — prevents duplicate webhook calls on double-click */
+var _webhookSent=false;
+var _btnCooldown=false;
 function submitFinal(){
-  if(_submitted)return;
-  _submitted=true;
-  var btn=document.getElementById('submitBtn');
-  if(btn){btn.disabled=true;btn.style.opacity='0.6';}
+  if(_btnCooldown)return;
+  _btnCooldown=true;
+  setTimeout(function(){_btnCooldown=false;},2000);
   var pm=document.querySelector('input[name="pay-method"]:checked');
   state.payment_method=pm?pm.value:'כרטיס אשראי';
-  var payload=buildPayload('submission');
-  fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
-
+  if(!_webhookSent){
+    _webhookSent=true;
+    var payload=buildPayload('submission');
+    fetch('https://hook.eu1.make.com/n4ccubkch848bttv9err87qv4rhjuzkd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+  }
   if(state.donation_included){
     var paymentMethod=state.payment_method;
     var paymentUrl=null;
-
     if(paymentMethod==='PayPal'){
-      /* סכום אחר זמין רק דרך Stripe */
       if(state.donation_choice==='סכום אחר'||state.donationAmt==='סכום אחר'){
-        _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
         showAlert('סכום אחר זמין בכרטיס אשראי בלבד. אנא בחר כרטיס אשראי או סכום קבוע עבור PayPal.');
         return;
       }
@@ -444,15 +443,11 @@ function submitFinal(){
     } else {
       paymentUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt]||null;
     }
-
     if(paymentUrl&&paymentUrl.indexOf('PLACEHOLDER')===-1){
-      /* FIX #6: same-tab redirect — Stripe/PayPal success URL → thankyou-hebrew.html */
       window.location.href=paymentUrl;
     } else if(paymentUrl){
-      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
       showAlert('לינק התשלום לסכום זה עדיין לא הוגדר. אנא בחר סכום אחר.');
     } else {
-      _submitted=false;if(btn){btn.disabled=false;btn.style.opacity='';}
       showAlert('אנא בחר סכום תרומה.');
     }
   } else {
