@@ -435,10 +435,6 @@ function submitFinal(){
     var paymentMethod=state.payment_method;
     var paymentUrl=null;
     if(paymentMethod==='PayPal'){
-      if(state.donation_choice==='סכום אחר'||state.donationAmt==='סכום אחר'){
-        showAlert('סכום אחר זמין בכרטיס אשראי בלבד. אנא בחר כרטיס אשראי או סכום קבוע עבור PayPal.');
-        return;
-      }
       paymentUrl=PAYPAL_LINKS_HE[state.donation_choice]||PAYPAL_LINKS_HE[state.donationAmt]||null;
     } else {
       paymentUrl=STRIPE_LINKS_HE[state.donation_choice]||STRIPE_LINKS_HE[state.donationAmt]||null;
@@ -492,7 +488,7 @@ var STRIPE_LINKS_HE={
   'סכום אחר':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'
 };
 
-/* FIX #3: PayPal links for Hebrew page — replace PLACEHOLDER values with actual PayPal links */
+/* FIX #3: PayPal links for Hebrew page */
 var PAYPAL_LINKS_HE={
   'תפילה - ₪56':'https://www.paypal.com/ncp/payment/ZJY4FKSG5V49W',
   'תפילה והדלקת נר - ₪72':'https://www.paypal.com/ncp/payment/CLYAYDSUVMP9J',
@@ -502,7 +498,8 @@ var PAYPAL_LINKS_HE={
   'חי רוטל 18 ליטר יין - ₪260':'https://www.paypal.com/ncp/payment/LLNWAZ8BAGECU',
   'פדיון נפש - ₪360':'https://www.paypal.com/ncp/payment/2AC9C8HWMLKJA',
   'חי רוטל 54 ליטר יין - ₪780':'https://www.paypal.com/ncp/payment/8H2FJY99ARVWQ',
-  'תומך יהלום לג בעומר - ₪1,000':'https://www.paypal.com/ncp/payment/7T4EEP6NDLRC6'
+  'תומך יהלום לג בעומר - ₪1,000':'https://www.paypal.com/ncp/payment/7T4EEP6NDLRC6',
+  'סכום אחר':'https://www.paypal.com/ncp/payment/M5XTBNZEQQ46Q'
 };
 
 function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-hebrew.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
