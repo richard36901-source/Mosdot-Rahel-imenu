@@ -432,10 +432,6 @@ function submitFinal(){
     var paymentMethod=state.payment_method;
     var paymentUrl=null;
     if(paymentMethod==='PayPal'){
-      if(state.donationAmt==='Other'){
-        showAlert('Other Amount is available via Credit Card only. Please select Credit Card or choose a fixed amount for PayPal.');
-        return;
-      }
       paymentUrl=PAYPAL_LINKS[state.donationAmt]||null;
     } else {
       paymentUrl=STRIPE_LINKS[state.donationAmt]||null;
@@ -488,7 +484,7 @@ var STRIPE_LINKS={
   'Other':'https://buy.stripe.com/00w6oHcY2gEgaOmfgh6wE08'
 };
 
-/* FIX #3: PayPal links — replace PLACEHOLDER values with your actual PayPal.me or hosted PayPal links */
+/* FIX #3: PayPal links */
 var PAYPAL_LINKS={
   '$18':'https://www.paypal.com/ncp/payment/4BB4FEVZAEQLC',
   '$36':'https://www.paypal.com/ncp/payment/VG8K8QC66QDDG',
@@ -498,7 +494,8 @@ var PAYPAL_LINKS={
   '$180':'https://www.paypal.com/ncp/payment/HU9Q6ZJR6DY5J',
   '$260':'https://www.paypal.com/ncp/payment/DZL9HJ9YQY59C',
   '$360':'https://www.paypal.com/ncp/payment/CGVPBFP3BQB64',
-  '$500':'https://www.paypal.com/ncp/payment/V6SM4SL2N7GE6'
+  '$500':'https://www.paypal.com/ncp/payment/V6SM4SL2N7GE6',
+  'Other':'https://www.paypal.com/ncp/payment/ZLWCEAUNGC9CL'
 };
 
 function goThankyou(){closeAll();setTimeout(function(){window.location.href='thankyou-english.html?email='+encodeURIComponent(state.email)+'&names='+encodeURIComponent(state.names_entries.map(function(n){return n.heb_name;}).join(', '))+'&donated='+(state.donation_included?'1':'0');},400);}
